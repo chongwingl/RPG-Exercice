@@ -21,6 +21,10 @@
         </activity>
         <activity android:name=".activities.HomeActivity"/>
         <activity android:name=".activities.FighterActivity"/>
+        <activity android:name=".activities.ActionActivity"/>
+        <activity android:name=".activities.StateActivity"/>
+        <activity android:name=".activities.BagActivity"/>
+        <activity android:name=".activities.FighterStoreActivity"/>
     </application>
 
 </manifest>

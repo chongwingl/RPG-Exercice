@@ -39,6 +39,11 @@
     
     <string name="healing_potion">Potion</string>
 
+    <string name="character_button_fight">Combat</string>
+    <string name="character_button_state">État</string>
+    <string name="character_button_bag">Sac</string>
+    <string name="character_button_store">Boutique</string>
+
     <string-array name="fighter_tab_title">
         <item>Combat</item>
         <item>État</item>

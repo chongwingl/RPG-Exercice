@@ -1,6 +1,0 @@
-/home/laetitia/Projects/Exercices/RPG/app/build/intermediates/classes/debug
-/home/laetitia/Projects/Exercices/RPG/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.3-efce768cb246adbebaf2ab046f1d5de9b641379a.jar
-/home/laetitia/Projects/Exercices/RPG/app/build/intermediates/pre-dexed/debug/butterknife-5.0.0-fc35ebd8375d21ad298bac23e7c98eb819a76a63.jar
-/home/laetitia/Projects/Exercices/RPG/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-c2f3f93dd01a962c0908d170a28e73773975826c.jar
-/home/laetitia/Projects/Exercices/RPG/app/build/intermediates/pre-dexed/debug/classes-2e8f28248abc6972185c29bd0e635880e203f92a.jar
-/home/laetitia/Projects/Exercices/RPG/app/build/intermediates/pre-dexed/debug/classes-3a0a929fbb24e588d368bb9be2bd7855b0d8cc80.jar

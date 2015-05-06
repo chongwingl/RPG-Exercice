@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/expandable_list_header"
-    android:layout_width="match_parent"
-    style="@style/TextAppearance.AppCompat.Medium"
-    android:paddingLeft="?android:attr/expandableListPreferredItemPaddingLeft"
-    android:paddingTop="@dimen/listview_padding_horizontal"
-    android:paddingBottom="@dimen/listview_padding_horizontal"
-    android:layout_height="match_parent"/><!-- From: file:/home/laetitia/Projects/Exercices/RPG/app/src/main/res/layout/expandable_list_group.xml -->

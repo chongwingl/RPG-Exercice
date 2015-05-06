@@ -1,4 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<shape xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="@color/background_listview_item" />
-</shape><!-- From: file:/home/laetitia/Projects/Exercices/RPG/app/src/main/res/drawable/item_pressed.xml -->

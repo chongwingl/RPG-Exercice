@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<items version="2" >
+
+    <item
+        jar="/home/laetitia/Projects/Exercices/RPG/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/libs/internal_impl-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="01ec05bfbafcc07646ba813000bf2ef11742dd03">
+        <dex dex="/home/laetitia/Projects/Exercices/RPG/app/build/intermediates/pre-dexed/debug/internal_impl-21.0.3-c2f3f93dd01a962c0908d170a28e73773975826c.jar" />
+    </item>
+    <item
+        jar="/home/laetitia/.gradle/caches/modules-2/files-2.1/com.google.code.findbugs/annotations/2.0.1/9ef6656259841cebfb9fb0697bb122ada4485498/annotations-2.0.1.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="9ef6656259841cebfb9fb0697bb122ada4485498">
+        <dex dex="/home/laetitia/Projects/Exercices/RPG/app/build/intermediates/pre-dexed/debug/annotations-2.0.1-004c120c9505a590de7b059bbd2b6980e8e5780f.jar" />
+    </item>
+    <item
+        jar="/home/laetitia/.gradle/caches/modules-2/files-2.1/com.google.guava/guava/15.0/ed727a8d9f247e2050281cb083f1c77b09dcb5cd/guava-15.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="ed727a8d9f247e2050281cb083f1c77b09dcb5cd">
+        <dex dex="/home/laetitia/Projects/Exercices/RPG/app/build/intermediates/pre-dexed/debug/guava-15.0-c6e56ae575f4a0a8c684642871b5e2d44d78ecdf.jar" />
+    </item>
+    <item
+        jar="/home/laetitia/Programs/sdk/extras/android/m2repository/com/android/support/support-annotations/21.0.3/support-annotations-21.0.3.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="4b74cefe1f0c1b819e7260c8627a14674e37fd35">
+        <dex dex="/home/laetitia/Projects/Exercices/RPG/app/build/intermediates/pre-dexed/debug/support-annotations-21.0.3-efce768cb246adbebaf2ab046f1d5de9b641379a.jar" />
+    </item>
+    <item
+        jar="/home/laetitia/Projects/Exercices/RPG/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="81d42bf983a8741f4888a6e333e454e4a5e0eeb7">
+        <dex dex="/home/laetitia/Projects/Exercices/RPG/app/build/intermediates/pre-dexed/debug/classes-2e8f28248abc6972185c29bd0e635880e203f92a.jar" />
+    </item>
+    <item
+        jar="/home/laetitia/.gradle/caches/modules-2/files-2.1/org.reflections/reflections/0.9.9/296d8adb2f22a38025f44b45cac89835ff0bbaf/reflections-0.9.9.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="0296d8adb2f22a38025f44b45cac89835ff0bbaf">
+        <dex dex="/home/laetitia/Projects/Exercices/RPG/app/build/intermediates/pre-dexed/debug/reflections-0.9.9-df78fb39166600f787ce19f2d89ec42cb195f132.jar" />
+    </item>
+    <item
+        jar="/home/laetitia/Projects/Exercices/RPG/app/build/intermediates/exploded-aar/com.android.support/support-v4/21.0.3/classes.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="2c91c949a45a21cdecf26e03951e46c7beec9ad8">
+        <dex dex="/home/laetitia/Projects/Exercices/RPG/app/build/intermediates/pre-dexed/debug/classes-3a0a929fbb24e588d368bb9be2bd7855b0d8cc80.jar" />
+    </item>
+    <item
+        jar="/home/laetitia/.gradle/caches/modules-2/files-2.1/com.jakewharton/butterknife/5.0.0/34f9a9915c4ac33f97a9339f4caad41cb02638d8/butterknife-5.0.0.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="34f9a9915c4ac33f97a9339f4caad41cb02638d8">
+        <dex dex="/home/laetitia/Projects/Exercices/RPG/app/build/intermediates/pre-dexed/debug/butterknife-5.0.0-fc35ebd8375d21ad298bac23e7c98eb819a76a63.jar" />
+    </item>
+    <item
+        jar="/home/laetitia/.gradle/caches/modules-2/files-2.1/org.javassist/javassist/3.18.2-GA/1180a90fbad732b60fb728a6bbe8fcb3151423d7/javassist-3.18.2-GA.jar"
+        jumboMode="false"
+        revision="21.1.2"
+        sha1="1180a90fbad732b60fb728a6bbe8fcb3151423d7">
+        <dex dex="/home/laetitia/Projects/Exercices/RPG/app/build/intermediates/pre-dexed/debug/javassist-3.18.2-GA-958aa19e96dc6127683c6259259e2190149199e6.jar" />
+    </item>
+
+</items>

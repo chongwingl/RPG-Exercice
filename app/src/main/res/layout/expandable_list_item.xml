@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/expandable_list_item"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    style="@style/TextAppearance.AppCompat.Small"
+    android:paddingLeft="?android:attr/expandableListPreferredChildPaddingLeft"
+    android:paddingTop="@dimen/listview_subitem_padding_horizontal"
+    android:paddingBottom="@dimen/listview_subitem_padding_horizontal"/>

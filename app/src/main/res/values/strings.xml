@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">rpg</string>
+
+    <string name="character_choice">Choisissez votre classe </string>
+
+    <string name="type_armor">Armure</string>
+    <string name="type_weapon">Arme</string>
+    <string name="type_material">Materiel</string>
+    <string name="type_healing">Soin</string>
+
+    <string name="armor_armor">Armure</string>
+    <string name="armor_tunic">Tunique</string>
+    <string name="armor_cap">Bonnet</string>
+    <string name="armor_hat">Chapeau</string>
+    <string name="armor_helmet">Casque</string>
+    <string name="armor_leg_armor">Chausses de metal</string>
+    <string name="armor_pants">Pantalon</string>
+    <string name="armor_boot">Bottes</string>
+    <string name="armor_shoe">Chaussures</string>
+    <string name="armor_shield">Bouclier</string>
+
+    <string name="weapon_axe">Hache</string>
+    <string name="weapon_dagger">Dague</string>
+    <string name="weapon_hammer">Marteau</string>
+    <string name="weapon_sword">Epee</string>
+
+    <string name="material_bone">Os</string>
+    <string name="material_skin">Peau</string>
+    <string name="material_copper">Cuivre</string>
+    <string name="material_gold">Or</string>
+    <string name="material_iron">Fer</string>
+    <string name="material_mithril">Mithril</string>
+    <string name="material_silver">Argent</string>
+    <string name="material_steel">Acier</string>
+    <string name="material_rock">Pierre</string>
+    <string name="material_wood">Bois</string>
+    
+    <string name="healing_potion">Potion</string>
+
+    <string-array name="fighter_tab_title">
+        <item>Combat</item>
+        <item>État</item>
+        <item>Sac</item>
+        <item>Boutique</item>
+    </string-array>
+
+</resources>

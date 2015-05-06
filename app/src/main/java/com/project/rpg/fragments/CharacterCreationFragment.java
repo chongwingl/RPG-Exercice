@@ -12,7 +12,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.project.rpg.R;
-import com.project.rpg.activities.CharacterActivity;
+import com.project.rpg.activities.AbstractCharacterActivity;
 import com.project.rpg.utils.PreferencesHelper;
 
 import butterknife.ButterKnife;
@@ -51,7 +51,7 @@ public class CharacterCreationFragment extends Fragment {
                     Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(fighterName.getWindowToken(), 0);
 
-            ((CharacterActivity)getActivity()).onFragmentCreationFinished();
+            ((AbstractCharacterActivity)getActivity()).onFragmentCreationFinished();
 
         } else {
             Toast.makeText(getActivity(), "Enter a name please !", Toast.LENGTH_SHORT).show();

@@ -11,7 +11,7 @@ import com.project.rpg.models.stores.AbstractStoreBuilder;
 /**
  * Created by laetitia on 4/22/15.
  */
-public abstract class StoreFragment2 extends ShowCategoryItemFragment {
+public abstract class AbstractStoreFragment extends AbstractShowCategoryItemFragment {
 
 
     protected AbstractStoreBuilder builder;

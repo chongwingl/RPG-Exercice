@@ -6,14 +6,14 @@ import android.support.v4.app.FragmentManager;
 
 import com.project.rpg.R;
 import com.project.rpg.fragments.BagFragment;
-import com.project.rpg.fragments.FighterStoreFragment2;
+import com.project.rpg.fragments.FighterStoreFragment;
 import com.project.rpg.fragments.knight.KnighStateFragment;
 import com.project.rpg.fragments.knight.KnightActionFragment;
 
 /**
  * Created by laetitia on 4/22/15.
  */
-public class FighterActionPagerAdapter extends CharacterActionPagerAdapter {
+public class FighterActionPagerAdapter extends AbstractCharacterActionPagerAdapter {
 
     public FighterActionPagerAdapter(FragmentManager fm, Activity activity) {
         super(fm, activity);
@@ -29,7 +29,7 @@ public class FighterActionPagerAdapter extends CharacterActionPagerAdapter {
             case 2 :
                 return new BagFragment();
             case 3 :
-                return new FighterStoreFragment2();
+                return new FighterStoreFragment();
             default:
                 return new KnightActionFragment();
         }

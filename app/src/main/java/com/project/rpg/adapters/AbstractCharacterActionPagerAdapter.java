@@ -7,7 +7,7 @@ import android.support.v4.app.FragmentPagerAdapter;
 /**
  * Created by laetitia on 4/21/15.
  */
-public abstract class CharacterActionPagerAdapter extends FragmentPagerAdapter {
+public abstract class AbstractCharacterActionPagerAdapter extends FragmentPagerAdapter {
 
     public static final int FRAGMENT_NUMBER = 4;
 
@@ -15,7 +15,7 @@ public abstract class CharacterActionPagerAdapter extends FragmentPagerAdapter {
 
     protected Activity mActivity;
 
-    public CharacterActionPagerAdapter(FragmentManager fm, Activity activity) {
+    public AbstractCharacterActionPagerAdapter(FragmentManager fm, Activity activity) {
         super(fm);
         mActivity = activity;
         setTitleList();

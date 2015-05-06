@@ -11,7 +11,7 @@ import com.project.rpg.models.stores.FighterStoreBuilder;
 /**
  * Created by laetitia on 5/6/15.
  */
-public class FighterStorePagerAdapter extends StorePagerAdapter {
+public class FighterStorePagerAdapter extends AbstractStorePagerAdapter {
 
     private FighterStoreBuilder mBuilder;
 

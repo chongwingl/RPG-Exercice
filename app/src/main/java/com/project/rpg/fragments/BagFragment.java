@@ -1,16 +1,14 @@
 package com.project.rpg.fragments;
 
-import java.util.ArrayList;
-import java.util.HashMap;
+import com.project.rpg.adapters.AbstractItemCategoryPagerAdapter;
 
 /**
  * Created by laetitia on 4/22/15.
  */
-public class BagFragment extends ShowListItemFragment {
+public class BagFragment extends AbstractShowCategoryItemFragment {
 
     @Override
-    protected void fillData() {
-        mItemTypes = new ArrayList<>();
-        mItemList = new HashMap<>();
+    protected AbstractItemCategoryPagerAdapter getAdapter() {
+        return null;
     }
 }

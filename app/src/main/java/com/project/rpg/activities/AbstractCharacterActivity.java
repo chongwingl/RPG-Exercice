@@ -8,7 +8,7 @@ import android.text.TextUtils;
 import android.widget.TextView;
 
 import com.project.rpg.R;
-import com.project.rpg.adapters.CharacterActionPagerAdapter;
+import com.project.rpg.adapters.AbstractCharacterActionPagerAdapter;
 import com.project.rpg.fragments.CharacterCreationFragment;
 import com.project.rpg.interfaces.OnFragmentFinished;
 import com.project.rpg.models.enumerations.Character;
@@ -17,7 +17,7 @@ import com.project.rpg.widgets.SlidingTabLayout;
 
 import butterknife.InjectView;
 
-public abstract class CharacterActivity extends AbstractActivity implements OnFragmentFinished {
+public abstract class AbstractCharacterActivity extends AbstractActivity implements OnFragmentFinished {
 
     private final static String CHARACTER_CREATION = "CHARACTER_CREATION";
 
@@ -44,9 +44,9 @@ public abstract class CharacterActivity extends AbstractActivity implements OnFr
 
         final Character character = Character.getCharacterByType(preferencesHelper.getCharacterType());
 
-        final CharacterActionPagerAdapter mCharacterActionPagerAdapter = getCharacterAdapter();
+        final AbstractCharacterActionPagerAdapter mAbstractCharacterActionPagerAdapter = getCharacterAdapter();
 
-        mCharacterActionViewPager.setAdapter(mCharacterActionPagerAdapter);
+        mCharacterActionViewPager.setAdapter(mAbstractCharacterActionPagerAdapter);
 //        mSlidingTabLayout.setDistributeEvenly(true);
         mSlidingTabLayout.setCustomTabColorizer(new SlidingTabLayout.TabColorizer() {
             @Override
@@ -98,5 +98,5 @@ public abstract class CharacterActivity extends AbstractActivity implements OnFr
                 .commit();
     }
 
-    protected abstract CharacterActionPagerAdapter getCharacterAdapter();
+    protected abstract AbstractCharacterActionPagerAdapter getCharacterAdapter();
 }

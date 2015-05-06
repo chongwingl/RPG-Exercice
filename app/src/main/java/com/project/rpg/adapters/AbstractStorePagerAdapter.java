@@ -6,11 +6,11 @@ import android.support.v4.app.FragmentManager;
 /**
  * Created by laetitia on 5/5/15.
  */
-public abstract class StorePagerAdapter extends ItemCategoryPagerAdapter {
+public abstract class AbstractStorePagerAdapter extends AbstractItemCategoryPagerAdapter {
 
     protected Activity mActivity;
 
-    public StorePagerAdapter(FragmentManager fm, Activity activity, String [] categories) {
+    public AbstractStorePagerAdapter(FragmentManager fm, Activity activity, String[] categories) {
         super(fm);
         mTitles = categories;
         mActivity = activity;

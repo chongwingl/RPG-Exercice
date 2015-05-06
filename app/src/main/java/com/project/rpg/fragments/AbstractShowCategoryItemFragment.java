@@ -6,7 +6,7 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 
 import com.project.rpg.R;
-import com.project.rpg.adapters.ItemCategoryPagerAdapter;
+import com.project.rpg.adapters.AbstractItemCategoryPagerAdapter;
 import com.project.rpg.models.enumerations.Character;
 import com.project.rpg.utils.PreferencesHelper;
 import com.project.rpg.widgets.SlidingTabLayout;
@@ -16,7 +16,7 @@ import butterknife.InjectView;
 /**
  * Created by laetitia on 4/21/15.
  */
-public abstract class ShowCategoryItemFragment extends AbstractFragment {
+public abstract class AbstractShowCategoryItemFragment extends AbstractFragment {
 
 
     @InjectView(R.id.item_list_pager)
@@ -33,18 +33,20 @@ public abstract class ShowCategoryItemFragment extends AbstractFragment {
 
         final Character character = Character.getCharacterByType(preferencesHelper.getCharacterType());
 
-        final ItemCategoryPagerAdapter mItemCategoryAdapter = getAdapter();
-        mItemViewPager.setAdapter(mItemCategoryAdapter);
+        final AbstractItemCategoryPagerAdapter mItemCategoryAdapter = getAdapter();
+        if (mItemCategoryAdapter != null) {
+            mItemViewPager.setAdapter(mItemCategoryAdapter);
 
-        mSlidingTabLayout.setCustomTabColorizer(new SlidingTabLayout.TabColorizer() {
-            @Override
-            public int getIndicatorColor(int position) {
-                return getResources().getColor(character.getColorId());
-            }
+            mSlidingTabLayout.setCustomTabColorizer(new SlidingTabLayout.TabColorizer() {
+                @Override
+                public int getIndicatorColor(int position) {
+                    return getResources().getColor(character.getColorId());
+                }
 
 
-        });
-        mSlidingTabLayout.setViewPager(mItemViewPager);
+            });
+            mSlidingTabLayout.setViewPager(mItemViewPager);
+        }
     }
 
     @Override
@@ -57,5 +59,5 @@ public abstract class ShowCategoryItemFragment extends AbstractFragment {
         return getClass().getSimpleName();
     }
 
-    protected abstract ItemCategoryPagerAdapter getAdapter();
+    protected abstract AbstractItemCategoryPagerAdapter getAdapter();
 }

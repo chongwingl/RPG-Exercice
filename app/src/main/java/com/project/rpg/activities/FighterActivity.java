@@ -1,8 +1,6 @@
 package com.project.rpg.activities;
 
 import com.project.rpg.R;
-import com.project.rpg.adapters.AbstractCharacterActionPagerAdapter;
-import com.project.rpg.adapters.FighterActionPagerAdapter;
 import com.project.rpg.intents.ActionIntent;
 import com.project.rpg.intents.BagIntent;
 import com.project.rpg.intents.StateIntent;
@@ -14,11 +12,6 @@ import butterknife.OnClick;
  * Created by laetitia on 4/22/15.
  */
 public class FighterActivity extends AbstractCharacterActivity {
-
-//    @Override
-//    protected AbstractCharacterActionPagerAdapter getCharacterAdapter() {
-//        return new FighterActionPagerAdapter(mFragmentManager, this);
-//    }
 
     @OnClick(R.id.character_button_action)
     void onActionClick(){

@@ -2,29 +2,55 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:background="@color/background_light"
+    android:orientation="vertical"
     android:padding="@dimen/activity_margin">
 
     <TextView
         android:id="@+id/character_title"
+        style="@style/Base.TextAppearance.AppCompat.Title"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        style="@style/Base.TextAppearance.AppCompat.Title"/>
+        android:gravity="center" />
 
-    <com.project.rpg.widgets.SlidingTabLayout
-        android:layout_below="@id/character_title"
-        android:id="@+id/character_sliding_tabs"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
 
-    <android.support.v4.view.ViewPager
-        android:id="@+id/character_pager"
-        android:overScrollMode="never"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@id/character_sliding_tabs"/>
+        <Button
+            android:id="@+id/character_button_action"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:text="@string/character_button_fight" />
+
+        <Button
+            android:id="@+id/character_button_state"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:text="@string/character_button_state" />
+
+        <Button
+            android:id="@+id/character_button_bag"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:text="@string/character_button_bag" />
+
+        <Button
+            android:id="@+id/character_button_store"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingLeft="50dp"
+            android:paddingRight="50dp"
+            android:text="@string/character_button_store" />
+    </LinearLayout>
 
     <FrameLayout
         android:id="@+id/character_container"

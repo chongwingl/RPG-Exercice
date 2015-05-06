@@ -1,14 +1,14 @@
 package com.project.rpg.activities;
 
-import com.project.rpg.R;
+import com.project.rpg.adapters.AbstractItemCategoryPagerAdapter;
 
 /**
  * Created by laetitia on 5/6/15.
  */
-public class BagActivity extends AbstractActivity {
+public class BagActivity extends AbstractShowCategoryItemActivity {
 
     @Override
-    public int getLayoutResourceId() {
-        return R.layout.activity_bag;
+    protected AbstractItemCategoryPagerAdapter getAdapter() {
+        return null;
     }
 }

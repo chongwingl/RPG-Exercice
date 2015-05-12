@@ -8,8 +8,10 @@ import com.project.rpg.models.items.material.AbstractMaterial;
 
 public class Bone extends AbstractMaterial {
 
-	public Bone(Context context) {
-		super(context, R.string.material_bone, Probability.LEVEL6);
+    private static final long serialVersionUID = 4025136346687645075L;
+
+    public Bone(Context context) {
+		super(context.getString(R.string.material_bone), Probability.LEVEL6);
 	}
 
 }

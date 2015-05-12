@@ -12,8 +12,10 @@ import com.project.rpg.models.items.armor.AbstractArmor;
  */
 public class BasicPants extends AbstractArmor{
 
+    private static final long serialVersionUID = 3332555389360052541L;
+
     public BasicPants(Context context) {
-        super(context, R.string.armor_pants);
+        super(context.getString(R.string.armor_pants));
         setResistance(Resistance.WEAK);
         setWeight(Weight.LIGHT);
     }

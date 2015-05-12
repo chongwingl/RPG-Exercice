@@ -12,8 +12,10 @@ import com.project.rpg.models.items.armor.AbstractArmor;
  */
 public class BasicLegArmor extends AbstractArmor {
 
+    private static final long serialVersionUID = -3442280494304532641L;
+
     public BasicLegArmor(Context context) {
-        super(context, R.string.armor_leg_armor);
+        super(context.getString(R.string.armor_leg_armor));
         setResistance(Resistance.NORMAL);
         setWeight(Weight.NORMAL);
     }

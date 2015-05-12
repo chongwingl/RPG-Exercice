@@ -1,15 +1,16 @@
 package com.project.rpg.models.items.weapons;
 
-import android.content.Context;
-
 import com.project.rpg.models.enumerations.Accuracy;
 import com.project.rpg.models.enumerations.Strength;
+import com.project.rpg.models.enumerations.items.ItemType;
 import com.project.rpg.models.items.AbstractItem;
 import com.project.rpg.models.powers.AbstractPower;
 
 public abstract class AbstractWeapon extends AbstractItem {
 
-	private Strength mStrength; // en pourcentage
+    private static final long serialVersionUID = 5161970984203019127L;
+
+    private Strength mStrength; // en pourcentage
 	private Strength mStrengthWhenBroken;
 	private Accuracy mAccuracy; // en pourcentage
 	private Accuracy mAccuracyWhenBroken;
@@ -17,8 +18,8 @@ public abstract class AbstractWeapon extends AbstractItem {
 	private int mHitsBeforeSharpening;
 	private AbstractPower mPower;
 
-    protected AbstractWeapon(Context context, int nameRefId) {
-        super(context, nameRefId);
+    protected AbstractWeapon(String name) {
+        super(name);
     }
 
 	public Strength getStrength() {
@@ -77,4 +78,8 @@ public abstract class AbstractWeapon extends AbstractItem {
 		this.mPower = mPower;
 	}
 
+    @Override
+    protected void setItemType() {
+        mItemType = ItemType.WEAPON;
+    }
 }

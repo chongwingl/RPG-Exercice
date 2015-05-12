@@ -5,5 +5,5 @@ package com.project.rpg.interfaces;
  */
 public interface OnFragmentFinished {
 
-    public void onFragmentCreationFinished();
+    public void onFragmentCreationFinished(String name);
 }

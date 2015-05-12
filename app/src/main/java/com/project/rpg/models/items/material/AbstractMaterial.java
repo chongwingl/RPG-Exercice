@@ -1,19 +1,20 @@
 package com.project.rpg.models.items.material;
 
-import android.content.Context;
-
 import com.project.rpg.models.enumerations.Probability;
+import com.project.rpg.models.enumerations.items.ItemType;
 import com.project.rpg.models.items.AbstractItem;
 
 
 public abstract class AbstractMaterial extends AbstractItem {
-	
-	private int mGatherTime;
+
+    private static final long serialVersionUID = 86139421248075891L;
+
+    private int mGatherTime;
 	private Probability mProbabilityToFind;
 
 
-    protected AbstractMaterial(Context context, int nameRefId, Probability probability) {
-        super(context, nameRefId);
+    protected AbstractMaterial(String name, Probability probability) {
+        super(name);
 		mProbabilityToFind = probability;
     }
 
@@ -24,5 +25,10 @@ public abstract class AbstractMaterial extends AbstractItem {
 	protected void setGatherTime(int mGatherTime) {
 		this.mGatherTime = mGatherTime;
 	}
+
+    @Override
+    protected void setItemType() {
+        mItemType = ItemType.MATERIAL;
+    }
 
 }

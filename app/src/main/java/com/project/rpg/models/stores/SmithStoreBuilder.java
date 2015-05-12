@@ -75,13 +75,7 @@ public class SmithStoreBuilder extends AbstractStoreBuilder {
 	}
 
     @Override
-    public void buildStore(List<String> itemType, HashMap<String, List<String>> items) {
-        itemType = new ArrayList<>();
-        items = new HashMap<>();
-    }
-
-    @Override
-    public AbstractItem buildItem(String type, String item) {
+    public AbstractItem buildItem(Class<?> clss) {
         return null;
     }
 

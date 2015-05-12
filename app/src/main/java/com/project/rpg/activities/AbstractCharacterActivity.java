@@ -3,13 +3,16 @@ package com.project.rpg.activities;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.text.TextUtils;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.project.rpg.R;
 import com.project.rpg.fragments.CharacterCreationFragment;
 import com.project.rpg.interfaces.OnFragmentFinished;
-import com.project.rpg.utils.PreferencesHelper;
+import com.project.rpg.models.characters.AbstractCharacter;
+import com.project.rpg.utils.CharacterUtils;
+
+import java.io.IOException;
 
 import butterknife.InjectView;
 
@@ -21,7 +24,6 @@ public abstract class AbstractCharacterActivity extends AbstractActivity impleme
 
     protected final FragmentManager mFragmentManager = getSupportFragmentManager();
     private Fragment mCreationFragment = null;
-    private PreferencesHelper preferencesHelper;
 
     @InjectView(R.id.character_title)
     TextView mCharacterTitle;
@@ -30,13 +32,13 @@ public abstract class AbstractCharacterActivity extends AbstractActivity impleme
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        preferencesHelper = PreferencesHelper.getInstance(this);
+        AbstractCharacter character = getApp().getCharacter();
 
-        if (!TextUtils.isEmpty(preferencesHelper.getCharacterName())) {
-            mCharacterTitle.setText(preferencesHelper.getCharacterName());
+        if (character != null) {
+            mCharacterTitle.setText(character.getName());
         }
 
-        if (savedInstanceState == null && TextUtils.isEmpty(preferencesHelper.getCharacterName())) {
+        if (savedInstanceState == null && character == null) {
               mCreationFragment = new CharacterCreationFragment();
         } else if (savedInstanceState != null){
             mIsCreating = savedInstanceState.getBoolean(CHARACTER_CREATION, true);
@@ -50,6 +52,7 @@ public abstract class AbstractCharacterActivity extends AbstractActivity impleme
                     .add(R.id.character_container, mCreationFragment, CharacterCreationFragment.TAG)
                     .commit();
         }
+
     }
 
     @Override
@@ -64,12 +67,24 @@ public abstract class AbstractCharacterActivity extends AbstractActivity impleme
     }
 
     @Override
-    public void onFragmentCreationFinished() {
+    public void onFragmentCreationFinished(String name) {
         mIsCreating = false;
-        mCharacterTitle.setText(preferencesHelper.getCharacterName());
+        mCharacterTitle.setText(name);
         mFragmentManager.beginTransaction()
                 .remove(mCreationFragment)
                 .commit();
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        AbstractCharacter character = getApp().getCharacter();
+        if (character != null) {
+            try {
+                CharacterUtils.saveCharacter(this, character);
+            } catch (IOException e) {
+                Log.e(getClass().getSimpleName(), e.getMessage());
+            }
+        }
+    }
 }

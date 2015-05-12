@@ -8,7 +8,9 @@ import com.project.rpg.models.items.material.AbstractMaterial;
 
 public class Steel extends AbstractMaterial {
 
-	public Steel(Context context) {
-		super(context, R.string.material_steel, Probability.LEVEL5);
+    private static final long serialVersionUID = -6623491119710473852L;
+
+    public Steel(Context context) {
+		super(context.getString(R.string.material_steel), Probability.LEVEL5);
 	}
 }

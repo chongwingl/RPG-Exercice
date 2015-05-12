@@ -8,12 +8,10 @@ import android.support.v4.app.FragmentManager;
  */
 public abstract class AbstractStorePagerAdapter extends AbstractItemCategoryPagerAdapter {
 
-    protected Activity mActivity;
 
     public AbstractStorePagerAdapter(FragmentManager fm, Activity activity, String[] categories) {
-        super(fm);
+        super(fm, activity);
         mTitles = categories;
-        mActivity = activity;
     }
 
     @Override

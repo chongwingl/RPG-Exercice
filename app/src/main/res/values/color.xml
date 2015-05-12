@@ -3,6 +3,7 @@
 
     <color name="background_light">@android:color/background_light</color>
     <color name="background_listview_item">#eee</color>
-    <color name="knight_color">@android:color/holo_green_light</color>
-    <color name="smith_color">@android:color/holo_orange_light</color>
+    <color name="primary_dark_color">@android:color/holo_orange_dark</color>
+    <color name="primary_color">@android:color/holo_orange_light</color>
+    <color name="accent_color">@android:color/holo_red_light</color>
 </resources>

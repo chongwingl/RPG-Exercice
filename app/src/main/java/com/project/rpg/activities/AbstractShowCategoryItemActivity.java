@@ -5,8 +5,8 @@ import android.support.v4.view.ViewPager;
 
 import com.project.rpg.R;
 import com.project.rpg.adapters.AbstractItemCategoryPagerAdapter;
-import com.project.rpg.models.enumerations.Character;
-import com.project.rpg.utils.PreferencesHelper;
+import com.project.rpg.models.characters.AbstractCharacter;
+import com.project.rpg.models.enumerations.CharacterType;
 import com.project.rpg.widgets.SlidingTabLayout;
 
 import butterknife.InjectView;
@@ -26,9 +26,9 @@ public abstract class AbstractShowCategoryItemActivity extends AbstractActivity 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        final PreferencesHelper preferencesHelper = PreferencesHelper.getInstance(this);
+        AbstractCharacter character = getApp().getCharacter();
 
-        final com.project.rpg.models.enumerations.Character character = Character.getCharacterByType(preferencesHelper.getCharacterType());
+        final CharacterType characterType = character.getCharacterType();
 
         final AbstractItemCategoryPagerAdapter mItemCategoryAdapter = getAdapter();
         if (mItemCategoryAdapter != null) {
@@ -37,7 +37,7 @@ public abstract class AbstractShowCategoryItemActivity extends AbstractActivity 
             mSlidingTabLayout.setCustomTabColorizer(new SlidingTabLayout.TabColorizer() {
                 @Override
                 public int getIndicatorColor(int position) {
-                    return getResources().getColor(character.getColorId());
+                    return getResources().getColor(characterType.getColorId());
                 }
 
 

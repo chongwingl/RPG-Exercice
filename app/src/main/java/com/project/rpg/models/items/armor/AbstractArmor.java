@@ -1,16 +1,16 @@
 package com.project.rpg.models.items.armor;
 
-import android.content.Context;
-
 import com.project.rpg.models.enumerations.Resistance;
+import com.project.rpg.models.enumerations.items.ItemType;
 import com.project.rpg.models.items.AbstractItem;
 
 public abstract class AbstractArmor extends AbstractItem {
 
-	private Resistance mResistance;
+    private static final long serialVersionUID = -222751367454373841L;
+    private Resistance mResistance;
 
-    protected AbstractArmor(Context context, int nameRefId) {
-        super(context, nameRefId);
+    protected AbstractArmor(String name) {
+        super(name);
     }
 
     public Resistance getResistance() {
@@ -21,4 +21,8 @@ public abstract class AbstractArmor extends AbstractItem {
 		mResistance = resistance;
 	}
 
+    @Override
+    protected void setItemType() {
+        mItemType = ItemType.ARMOR;
+    }
 }

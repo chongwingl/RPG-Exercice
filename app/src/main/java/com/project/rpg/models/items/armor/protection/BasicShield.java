@@ -9,8 +9,10 @@ import com.project.rpg.models.items.armor.AbstractArmor;
 
 public class BasicShield extends AbstractArmor {
 
-	public BasicShield(Context context) {
-		super(context, R.string.armor_shield);
+    private static final long serialVersionUID = 4958055318867751490L;
+
+    public BasicShield(Context context) {
+		super(context.getString(R.string.armor_shield));
 		setResistance(Resistance.NORMAL);
 		setWeight(Weight.NORMAL);
 	}

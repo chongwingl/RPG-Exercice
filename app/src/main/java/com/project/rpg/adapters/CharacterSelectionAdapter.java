@@ -8,7 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.project.rpg.R;
-import com.project.rpg.models.enumerations.Character;
+import com.project.rpg.models.enumerations.CharacterType;
 
 import java.util.ArrayList;
 
@@ -20,8 +20,8 @@ public class CharacterSelectionAdapter extends BaseAdapter{
 	public CharacterSelectionAdapter(Activity activity) {
 		this.activity = activity;
 		characters = new ArrayList<String>();
-		characters.add(Character.KNIGHT.toString());
-		characters.add(Character.SMITH.toString());
+		characters.add(CharacterType.KNIGHT.toString());
+		characters.add(CharacterType.SMITH.toString());
 	}
 	
 	public class Holder{
@@ -47,7 +47,7 @@ public class CharacterSelectionAdapter extends BaseAdapter{
 	public View getView(int position, View convertView, ViewGroup parent) {
 		Holder holder;
 		if(convertView == null){
-			convertView = LayoutInflater.from(activity).inflate(R.layout.listview_text_item, null);
+			convertView = LayoutInflater.from(activity).inflate(R.layout.listview_text_item, parent, false);
 			holder = new Holder();
 			holder.text = (TextView) convertView.findViewById(R.id.character_name);
 			convertView.setTag(holder);

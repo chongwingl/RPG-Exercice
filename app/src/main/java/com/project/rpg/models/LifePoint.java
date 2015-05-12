@@ -1,8 +1,11 @@
 package com.project.rpg.models;
 
-public class LifePoint {
+import java.io.Serializable;
 
-	private int lifePoints;
+public class LifePoint implements Serializable {
+
+    private static final long serialVersionUID = 4129751603983840843L;
+    private int lifePoints;
 	private static int MAX_LIFE_POINTS;
 
 	public LifePoint(int maxLifePoints) {

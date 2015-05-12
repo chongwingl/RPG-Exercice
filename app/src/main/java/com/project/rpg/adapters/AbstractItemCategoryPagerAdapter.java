@@ -1,5 +1,6 @@
 package com.project.rpg.adapters;
 
+import android.app.Activity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
@@ -9,9 +10,11 @@ import android.support.v4.app.FragmentPagerAdapter;
 public abstract class AbstractItemCategoryPagerAdapter extends FragmentPagerAdapter {
 
     protected String [] mTitles;
+    protected Activity mActivity;
 
-    public AbstractItemCategoryPagerAdapter(FragmentManager fm) {
+    public AbstractItemCategoryPagerAdapter(FragmentManager fm, Activity activity) {
         super(fm);
+        mActivity = activity;
     }
 
     @Override

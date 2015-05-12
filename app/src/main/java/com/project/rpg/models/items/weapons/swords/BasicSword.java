@@ -10,8 +10,10 @@ import com.project.rpg.models.items.weapons.AbstractWeapon;
 
 public class BasicSword extends AbstractWeapon {
 
-	public BasicSword(Context context) {
-		super(context, R.string.weapon_sword);
+    private static final long serialVersionUID = 2841968724658795947L;
+
+    public BasicSword(Context context) {
+		super(context.getString(R.string.weapon_sword));
 		setAccuracy(Accuracy.NORMAL);
 		setmAccuracyWhenBroken(Accuracy.LOW);
 		setmHitsBeforeSharpening(25);

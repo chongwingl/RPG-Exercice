@@ -10,8 +10,10 @@ import com.project.rpg.models.items.weapons.AbstractWeapon;
 
 public class BasicHammer extends AbstractWeapon {
 
-	public BasicHammer(Context context) {
-		super(context, R.string.weapon_hammer);
+    private static final long serialVersionUID = 4938497316908847755L;
+
+    public BasicHammer(Context context) {
+		super(context.getString(R.string.weapon_hammer));
 		setAccuracy(Accuracy.NORMAL);
 		setmAccuracyWhenBroken(Accuracy.LOW);
 		setmHitsBeforeSharpening(25);

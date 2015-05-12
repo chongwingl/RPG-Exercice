@@ -9,8 +9,10 @@ import com.project.rpg.models.items.armor.AbstractArmor;
 
 public class BasicBoot extends AbstractArmor {
 
-	public BasicBoot(Context context) {
-		super(context, R.string.armor_boot);
+    private static final long serialVersionUID = -3705870619808505528L;
+
+    public BasicBoot(Context context) {
+		super(context.getString(R.string.armor_boot));
 		setResistance(Resistance.LOW);
 		setWeight(Weight.MEDIUM);
 	}

@@ -2,8 +2,11 @@ package com.project.rpg.models;
 
 import com.project.rpg.models.enumerations.CharacterState;
 
-public class Stat {
-	private LifePoint lifePoints;
+import java.io.Serializable;
+
+public class Stat implements Serializable {
+    private static final long serialVersionUID = 3012347748078701155L;
+    private LifePoint lifePoints;
 	private int strength;
 	private int speed;
 	private int accuracy;

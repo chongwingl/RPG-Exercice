@@ -9,8 +9,10 @@ import com.project.rpg.models.items.armor.AbstractArmor;
 
 public class BasicHelmet extends AbstractArmor {
 
-	public BasicHelmet(Context context) {
-		super(context, R.string.armor_helmet);
+    private static final long serialVersionUID = -8658928941690720273L;
+
+    public BasicHelmet(Context context) {
+		super(context.getString(R.string.armor_helmet));
 		setResistance(Resistance.MEDIUM);
 		setWeight(Weight.NORMAL);
 	}

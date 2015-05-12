@@ -9,8 +9,10 @@ import com.project.rpg.models.items.armor.AbstractArmor;
 
 public class BasicShoe extends AbstractArmor {
 
-	public BasicShoe(Context context) {
-		super(context, R.string.armor_shoe);
+    private static final long serialVersionUID = 2533990971521472858L;
+
+    public BasicShoe(Context context) {
+		super(context.getString(R.string.armor_shoe));
 		setResistance(Resistance.WEAK);
 		setWeight(Weight.LIGHT);
 	}

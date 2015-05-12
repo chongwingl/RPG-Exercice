@@ -8,7 +8,6 @@ import com.project.rpg.models.items.AbstractItem;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 
 public abstract class AbstractStoreBuilder extends ContextWrapper {
 
@@ -53,10 +52,8 @@ public abstract class AbstractStoreBuilder extends ContextWrapper {
         return mCategories;
     }
 
-    public abstract void buildStore(List<String> itemType, HashMap<String, List<String>> items);
-
     public abstract HashMap<String, Class<?>> buildCategory(ItemType itemType);
 
-    public abstract AbstractItem buildItem(String type, String item);
+    public abstract AbstractItem buildItem(Class<?> clss);
 
 }

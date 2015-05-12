@@ -4,6 +4,7 @@ import android.content.Context;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +14,11 @@ import android.widget.Toast;
 
 import com.project.rpg.R;
 import com.project.rpg.activities.AbstractCharacterActivity;
-import com.project.rpg.utils.PreferencesHelper;
+import com.project.rpg.core.RPGApplication;
+import com.project.rpg.models.characters.AbstractCharacter;
+import com.project.rpg.utils.CharacterUtils;
+
+import java.io.IOException;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
@@ -41,17 +46,22 @@ public class CharacterCreationFragment extends Fragment {
     void onFighterCreated(){
         String name = fighterName.getText().toString();
         if (!TextUtils.isEmpty(name)){
-            PreferencesHelper helper = PreferencesHelper.getInstance(getActivity());
-            helper.setCharacterName(name);
-            helper.setCharacterLevel(1);
-            helper.setCharacterGold(100);
-            helper.setCharacterLife(10);
+
+            ((RPGApplication)getActivity().getApplication()).createKnight(name);
+            AbstractCharacter character = ((RPGApplication)getActivity().getApplication()).getCharacter();
+            character.setLevel(1);
+            character.setGold(100);
+            try {
+                CharacterUtils.saveCharacter(getActivity(), character);
+            } catch (IOException e) {
+                Log.e(getClass().getSimpleName(), e.getMessage());
+            }
 
             InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(
                     Context.INPUT_METHOD_SERVICE);
             imm.hideSoftInputFromWindow(fighterName.getWindowToken(), 0);
 
-            ((AbstractCharacterActivity)getActivity()).onFragmentCreationFinished();
+            ((AbstractCharacterActivity)getActivity()).onFragmentCreationFinished(name);
 
         } else {
             Toast.makeText(getActivity(), "Enter a name please !", Toast.LENGTH_SHORT).show();

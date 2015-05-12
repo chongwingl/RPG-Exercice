@@ -1,72 +1,77 @@
 package com.project.rpg.models.characters;
 
+import com.project.rpg.models.Bag;
+import com.project.rpg.models.enumerations.CharacterType;
+import com.project.rpg.models.enumerations.items.ItemType;
 import com.project.rpg.models.items.AbstractItem;
-import com.project.rpg.models.items.Bag;
 
-import java.util.Iterator;
+import java.io.Serializable;
 
-public abstract class AbstractCharacter {
-	private String name;
-	private int level;
-	private int money;
-	private Bag<AbstractItem> bag;
+public abstract class AbstractCharacter
+        implements Serializable {
 
-	public AbstractCharacter(String name) {
-		this.name = name;
-	}
+    private static final long serialVersionUID = 7574347050097636816L;
 
-	public String getName() {
-		return name;
-	}
+    private CharacterType mCharacterType;
+    private String mName;
+    private int mLevel;
+    private int mGold;
+    private Bag mBag;
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    protected AbstractCharacter(CharacterType characterType, String name, int maxBagSize) {
+        this.mCharacterType = characterType;
+        this.mName = name;
+        mBag = Bag.getInstance(maxBagSize);
+    }
 
-	public int getLevel() {
-		return level;
-	}
+    public CharacterType getCharacterType() {
+        return mCharacterType;
+    }
 
-	public void setLevel(int level) {
-		this.level = level;
-	}
+    public String getName() {
+        return mName;
+    }
 
-	public int getMoney() {
-		return money;
-	}
+    public int getLevel() {
+        return mLevel;
+    }
 
-	protected void setMoney(int money) {
-		this.money = money;
-	}
+    public void setLevel(int level) {
+        this.mLevel = level;
+    }
 
-	public void addMoney(int money) {
-		this.money += money;
-	}
+    public int getGold() {
+        return mGold;
+    }
 
-	public boolean removeMoney(int money) {
-		if (this.money - money > 0) {
-			this.money -= money;
-			return true;
-		}
-		return false;
-	}
-	
-	public boolean addToBag(AbstractItem item){
-		return bag.add(item);
-	}
-	
-	public Bag getBag(){
-		return bag;
-	}
-	
-	public void removeItem(AbstractItem item){
-		Iterator<AbstractItem> iterator = bag.iterator();
-		while(iterator.hasNext()){
-			AbstractItem currentItem = iterator.next();
-			if(currentItem == item){
-				iterator.remove();
-			}
-		}
-	}
+    public void setGold(int gold) {
+        this.mGold = gold;
+    }
+
+    public void addGold(int gold) {
+        this.mGold += gold;
+    }
+
+    public boolean removeGold(int gold) {
+        if (this.mGold - gold > 0) {
+            this.mGold -= gold;
+            return true;
+        }
+        return false;
+    }
+
+    public void addToBag(AbstractItem item) {
+        mBag.addItem(item);
+    }
+
+    public Bag getBag() {
+        return mBag;
+    }
+
+    public boolean removeItem(ItemType itemType, AbstractItem item) {
+        return mBag.removeItem(itemType, item);
+    }
+
+    public abstract int getLife();
 
 }

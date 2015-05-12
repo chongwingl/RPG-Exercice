@@ -1,10 +1,8 @@
 package com.project.rpg.activities;
 
-import android.os.Bundle;
 import android.widget.TextView;
 
 import com.project.rpg.R;
-import com.project.rpg.utils.PreferencesHelper;
 
 import butterknife.InjectView;
 
@@ -22,24 +20,36 @@ public class StateActivity extends AbstractActivity {
     @InjectView(R.id.life)
     TextView mLife;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    @InjectView(R.id.strength)
+    TextView mStrength;
 
-        PreferencesHelper helper = PreferencesHelper.getInstance(this);
+    @InjectView(R.id.speed)
+    TextView mSpeed;
 
-        if (helper.getCharacterLevel() != -1) {
-            mLevel.setText("" + helper.getCharacterLevel());
-        }
+    @InjectView(R.id.resistance)
+    TextView mResistance;
 
-        if (helper.getCharacterGold() != -1) {
-            mGold.setText("" + helper.getCharacterGold());
-        }
+    @InjectView(R.id.accuracy)
+    TextView mAccuracy;
 
-        if (helper.getCharacterLife() != -1) {
-            mLife.setText("" + helper.getCharacterLife());
-        }
-    }
+    @InjectView(R.id.head)
+    TextView mHead;
+
+    @InjectView(R.id.body)
+    TextView mBody;
+
+    @InjectView(R.id.legs)
+    TextView mLegs;
+
+    @InjectView(R.id.foot)
+    TextView mFoot;
+
+    @InjectView(R.id.left_hand)
+    TextView mLeftHand;
+
+    @InjectView(R.id.right_hand)
+    TextView mRightHand;
+
 
     @Override
     public int getLayoutResourceId() {

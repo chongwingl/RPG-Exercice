@@ -7,13 +7,13 @@ import android.os.Handler;
 import android.os.Message;
 import android.os.SystemClock;
 import android.support.v7.appcompat.BuildConfig;
-import android.text.TextUtils;
 
 import com.project.rpg.R;
+import com.project.rpg.core.RPGApplication;
 import com.project.rpg.intents.CharacterIntent;
 import com.project.rpg.intents.HomeIntent;
+import com.project.rpg.models.characters.AbstractCharacter;
 import com.project.rpg.utils.ItemUtils;
-import com.project.rpg.utils.PreferencesHelper;
 
 public class SplashActivity extends Activity {
 
@@ -85,11 +85,11 @@ public class SplashActivity extends Activity {
             if (msg.what == MSG_FINISH && mSplashActivity != null) {
                 ItemUtils.loadAllItems(mSplashActivity);
                 Intent intent;
-                PreferencesHelper preferencesHelper = PreferencesHelper.getInstance(mSplashActivity);
-                if (TextUtils.isEmpty(preferencesHelper.getCharacterType())) {
+                AbstractCharacter character = ((RPGApplication)mSplashActivity.getApplication()).getCharacter();
+                if (character == null) {
                     intent = new HomeIntent(mSplashActivity);
                 } else {
-                    intent = new CharacterIntent(mSplashActivity, preferencesHelper.getCharacterType());
+                    intent = new CharacterIntent(mSplashActivity, character.getCharacterType());
                 }
                 mSplashActivity.startActivity(intent);
                 mSplashActivity.finish();

@@ -6,18 +6,17 @@ import com.project.rpg.activities.FighterActivity;
 /**
  * Created by laetitia on 4/20/15.
  */
-public enum Character {
+public enum CharacterType {
 
-    KNIGHT("Chevalier", R.color.knight_color, FighterActivity.class),
-    SMITH("Forgeron", R.color.smith_color, null),
-    UNKNOWN("Unknown", 0, null);
+    KNIGHT("Chevalier", R.color.primary_dark_color, FighterActivity.class),
+    SMITH("Forgeron", R.color.primary_color, null);
 
     private String mType = "";
     private int mColorId;
     private Class<?> mCharacterActivity;
 
     // Constructeur
-    Character(String type, int colorId, Class<?> characterActivity) {
+    CharacterType(String type, int colorId, Class<?> characterActivity) {
         mType = type;
         mColorId = colorId;
         mCharacterActivity = characterActivity;
@@ -35,13 +34,13 @@ public enum Character {
         return mCharacterActivity;
     }
 
-    public static Character getCharacterByType(String type) {
-        for(Character character : values()) {
-            if (character.getName().equals(type)) {
-                return character;
+    public static CharacterType getCharacterByType(String type) {
+        for(CharacterType characterType : values()) {
+            if (characterType.getName().equals(type)) {
+                return characterType;
             }
         }
-        return UNKNOWN;
+        return null;
     }
 
     @Override

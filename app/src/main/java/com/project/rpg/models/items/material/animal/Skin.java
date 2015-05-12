@@ -8,8 +8,10 @@ import com.project.rpg.models.items.material.AbstractMaterial;
 
 public class Skin extends AbstractMaterial {
 
-	public Skin(Context context) {
-		super(context, R.string.material_skin, Probability.LEVEL9);
+    private static final long serialVersionUID = 2393071689305455950L;
+
+    public Skin(Context context) {
+		super(context.getString(R.string.material_skin), Probability.LEVEL9);
 	}
 
 

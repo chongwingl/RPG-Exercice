@@ -10,8 +10,11 @@ import com.project.rpg.models.items.healing.AbstractHealing;
  */
 public class BasicPotion extends AbstractHealing {
 
+    private static final long serialVersionUID = 436683358659644413L;
+
     public BasicPotion(Context context) {
-        super(context, R.string.healing_potion);
+        super(context.getString(R.string.healing_potion));
+        setPrice(10);
     }
 
 }

@@ -8,12 +8,14 @@ import com.project.rpg.models.powers.AbstractPower;
 
 public abstract class AbstractMonster extends AbstractCharacter {
 
-	private AbstractPower power;
+    private static final long serialVersionUID = -4281126169918483572L;
+
+    private AbstractPower power;
 	private Stat stat;
 
 	public AbstractMonster(String name, int maxLifePoints, int strength,
 			int speed, int accuracy, int resistance) {
-		super(name);
+		super(null, name, 0);
 		stat = new Stat(maxLifePoints, strength, speed, accuracy, resistance);
 	}
 

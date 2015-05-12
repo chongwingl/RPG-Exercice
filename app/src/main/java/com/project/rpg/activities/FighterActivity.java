@@ -20,7 +20,7 @@ public class FighterActivity extends AbstractCharacterActivity {
 
     @OnClick(R.id.character_button_state)
     void onStateClick(){
-        startActivity(new StateIntent(this));
+        startActivity(new StateIntent(this, FighterStateActivity.class));
     }
 
     @OnClick(R.id.character_button_bag)

@@ -4,7 +4,8 @@ import android.app.Activity;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 
-import com.project.rpg.fragments.ItemListFragment;
+import com.project.rpg.activities.AbstractStoreActivity;
+import com.project.rpg.fragments.StoreItemListFragment;
 import com.project.rpg.models.enumerations.items.ItemType;
 import com.project.rpg.models.stores.FighterStoreBuilder;
 
@@ -23,9 +24,12 @@ public class FighterStorePagerAdapter extends AbstractStorePagerAdapter {
 
     @Override
     public Fragment getItem(int position) {
-        return ItemListFragment.newInstance(
-            mBuilder.buildCategory(ItemType.getItemTypeByName(mActivity, mTitles[position]))
+        ItemType type = ItemType.getItemTypeByName(mActivity, mTitles[position]);
+        StoreItemListFragment fragment =  StoreItemListFragment.newInstance(
+                mBuilder.buildCategory(type)
         );
+        fragment.setListener((AbstractStoreActivity)mActivity);
+        return fragment;
     }
 
 }

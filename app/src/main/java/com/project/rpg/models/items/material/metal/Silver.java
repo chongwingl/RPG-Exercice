@@ -8,8 +8,10 @@ import com.project.rpg.models.items.material.AbstractMaterial;
 
 public class Silver extends AbstractMaterial {
 
-	public Silver(Context context) {
-		super(context, R.string.material_silver, Probability.LEVEL3);
+    private static final long serialVersionUID = -3100424949660753382L;
+
+    public Silver(Context context) {
+		super(context.getString(R.string.material_silver), Probability.LEVEL3);
 	}
 
 }

@@ -5,6 +5,4 @@
     android:layout_height="match_parent"
     android:layout_margin="10dp"
     android:padding="@dimen/listview_padding_horizontal"
-    style="@style/Base.TextAppearance.AppCompat.Medium" >
-    
-</TextView>
+    style="@style/Base.TextAppearance.AppCompat.Medium" />

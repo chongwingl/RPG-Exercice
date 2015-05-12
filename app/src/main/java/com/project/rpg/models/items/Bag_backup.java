@@ -3,11 +3,13 @@ package com.project.rpg.models.items;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 
-public class Bag<Item> implements Iterable<Item> {
+public class Bag_backup<AbstractItem> implements Iterable<AbstractItem> {
 
+    private static final int MAX_SIZE = 50;
+//    private static Bag<AbstractItem> bag;
 	private int maxSize;
 	private int currentNumber;
-	private Node<Item> first;
+	private Node<AbstractItem> first;
 
 	// helper linked list class
 	private static class Node<Item> {
@@ -15,10 +17,18 @@ public class Bag<Item> implements Iterable<Item> {
 		private Node<Item> next;
 	}
 
+//    public static Bag<AbstractItem> getInstance(){
+//
+//        if (bag == null) {
+//            bag = new Bag<>(MAX_SIZE);
+//        }
+//        return bag;
+//    }
+
 	/**
 	 * Initializes an empty bag.
 	 */
-	public Bag(int maxSize) {
+	private Bag_backup(int maxSize) {
 		first = null;
 		currentNumber = 0;
 		this.maxSize = maxSize;
@@ -48,10 +58,10 @@ public class Bag<Item> implements Iterable<Item> {
 	 * @param item
 	 *            the item to add to this bag
 	 */
-	public boolean add(Item item){ // TODO lancer une exception quand la taille maximum est atteinte
+	public boolean add(AbstractItem item){ // TODO lancer une exception quand la taille maximum est atteinte
 		if(currentNumber < maxSize){
-			Node<Item> oldfirst = first;
-			first = new Node<Item>();
+			Node<AbstractItem> oldfirst = first;
+			first = new Node<AbstractItem>();
 			first.item = item;
 			first.next = oldfirst;
 			currentNumber++;
@@ -61,8 +71,8 @@ public class Bag<Item> implements Iterable<Item> {
 	}
 
 	@Override
-	public Iterator<Item> iterator() {
-		return new ListIterator<Item>(first);
+	public Iterator<AbstractItem> iterator() {
+		return new ListIterator<AbstractItem>(first);
 	}
 
 	// an iterator, doesn't implement remove() since it's optional

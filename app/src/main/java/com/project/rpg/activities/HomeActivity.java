@@ -10,8 +10,7 @@ import android.widget.ListView;
 import com.project.rpg.R;
 import com.project.rpg.adapters.CharacterSelectionAdapter;
 import com.project.rpg.intents.CharacterIntent;
-import com.project.rpg.models.enumerations.Character;
-import com.project.rpg.utils.PreferencesHelper;
+import com.project.rpg.models.enumerations.CharacterType;
 
 import butterknife.InjectView;
 
@@ -36,9 +35,8 @@ public class HomeActivity extends AbstractActivity {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int position,
 					long id) {
-				if(cAdapter.getItem(position).equals(Character.KNIGHT.toString())){
-                    PreferencesHelper.getInstance(HomeActivity.this).setCharacterClass((String)cAdapter.getItem(position));
-					CharacterIntent intent = new CharacterIntent(context, (String)cAdapter.getItem(position));
+				if(cAdapter.getItem(position).equals(CharacterType.KNIGHT.toString())){
+					CharacterIntent intent = new CharacterIntent(context, CharacterType.getCharacterByType((String)cAdapter.getItem(position)));
 					startActivity(intent);
 				}
 			}

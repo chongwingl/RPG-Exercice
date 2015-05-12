@@ -6,6 +6,7 @@
 
 
     <application
+        android:name=".core.RPGApplication"
         android:allowBackup="true"
         android:icon="@drawable/ic_launcher"
         android:label="@string/app_name"
@@ -23,6 +24,7 @@
         <activity android:name=".activities.FighterActivity"/>
         <activity android:name=".activities.ActionActivity"/>
         <activity android:name=".activities.StateActivity"/>
+        <activity android:name=".activities.FighterStateActivity"/>
         <activity android:name=".activities.BagActivity"/>
         <activity android:name=".activities.FighterStoreActivity"/>
     </application>

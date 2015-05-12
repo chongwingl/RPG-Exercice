@@ -9,8 +9,10 @@ import com.project.rpg.models.items.armor.AbstractArmor;
 
 public class BasicHat extends AbstractArmor{
 
-	public BasicHat(Context context) {
-		super(context, R.string.armor_hat);
+    private static final long serialVersionUID = 9018545604526435774L;
+
+    public BasicHat(Context context) {
+		super(context.getString(R.string.armor_hat));
 		setResistance(Resistance.LOW);
 		setWeight(Weight.SUPERLIGHT);
 	}

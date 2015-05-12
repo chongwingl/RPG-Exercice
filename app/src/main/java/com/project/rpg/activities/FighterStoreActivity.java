@@ -9,6 +9,7 @@ import com.project.rpg.models.stores.FighterStoreBuilder;
  */
 public class FighterStoreActivity extends AbstractStoreActivity {
 
+
     @Override
     public void setStoreBuilder() {
         builder = new FighterStoreBuilder(this);
@@ -18,4 +19,5 @@ public class FighterStoreActivity extends AbstractStoreActivity {
     protected AbstractItemCategoryPagerAdapter getAdapter() {
         return new FighterStorePagerAdapter(getSupportFragmentManager(), this, (FighterStoreBuilder) builder);
     }
+
 }

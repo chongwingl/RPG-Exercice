@@ -8,7 +8,9 @@ import com.project.rpg.models.items.material.AbstractMaterial;
 
 public class Rock extends AbstractMaterial {
 
-	public Rock(Context context) {
-		super(context, R.string.material_rock, Probability.LEVEL9);
+    private static final long serialVersionUID = -3802825210312700299L;
+
+    public Rock(Context context) {
+		super(context.getString(R.string.material_rock), Probability.LEVEL9);
 	}
 }

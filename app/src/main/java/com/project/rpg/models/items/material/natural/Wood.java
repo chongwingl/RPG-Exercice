@@ -8,7 +8,9 @@ import com.project.rpg.models.items.material.AbstractMaterial;
 
 public class Wood extends AbstractMaterial {
 
-	public Wood(Context context) {
-		super(context, R.string.material_wood, Probability.LEVEL9);
+    private static final long serialVersionUID = -2889583806263147888L;
+
+    public Wood(Context context) {
+		super(context.getString(R.string.material_wood), Probability.LEVEL9);
 	}
 }

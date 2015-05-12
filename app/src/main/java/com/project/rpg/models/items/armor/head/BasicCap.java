@@ -9,8 +9,10 @@ import com.project.rpg.models.items.armor.AbstractArmor;
 
 public class BasicCap extends AbstractArmor {
 
-	public BasicCap(Context context) {
-		super(context, R.string.armor_cap);
+    private static final long serialVersionUID = 687467401139236596L;
+
+    public BasicCap(Context context) {
+		super(context.getString(R.string.armor_cap));
 		setResistance(Resistance.WEAK);
 		setWeight(Weight.SUPERLIGHT);
 	}

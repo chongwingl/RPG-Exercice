@@ -8,8 +8,10 @@ import com.project.rpg.models.items.material.AbstractMaterial;
 
 public class Copper extends AbstractMaterial {
 
-	public Copper(Context context) {
-		super(context, R.string.material_copper, Probability.LEVEL8);
+    private static final long serialVersionUID = -5147724696662066552L;
+
+    public Copper(Context context) {
+		super(context.getString(R.string.material_copper), Probability.LEVEL8);
 	}
 
 

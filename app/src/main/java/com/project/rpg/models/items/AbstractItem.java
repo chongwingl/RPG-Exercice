@@ -1,21 +1,24 @@
 package com.project.rpg.models.items;
 
-import android.content.Context;
-import android.content.ContextWrapper;
-
 import com.project.rpg.models.enumerations.Weight;
+import com.project.rpg.models.enumerations.items.ItemType;
 
-public abstract class AbstractItem extends ContextWrapper {
-	
-	private String mName;
+import java.io.Serializable;
+
+public abstract class AbstractItem implements Serializable {
+
+    private static final long serialVersionUID = 7993915847142984426L;
+
+    private String mName;
 	private int price;
 	private Weight weight; // used for calculate the speed of the knight( lighter
 	// -> faster)
+    protected ItemType mItemType;
 
 
-    public AbstractItem(Context context, int nameRefId) {
-        super(context);
-        mName = context.getString(nameRefId);
+    public AbstractItem(String name) {
+        mName = name;
+        setItemType();
     }
 	
 	public String getName() {
@@ -25,7 +28,8 @@ public abstract class AbstractItem extends ContextWrapper {
 	public int getPrice(){
 		return price;
 	}
-	
+
+    // TODO set price to each item
 	public void setPrice(int price){
 		this.price = price;
 	}
@@ -42,4 +46,10 @@ public abstract class AbstractItem extends ContextWrapper {
     public String toString() {
         return mName;
     }
+
+    public ItemType getItemType() {
+        return mItemType;
+    }
+
+    protected abstract void setItemType();
 }

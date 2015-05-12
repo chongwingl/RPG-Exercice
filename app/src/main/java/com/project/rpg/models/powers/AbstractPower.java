@@ -3,8 +3,12 @@ package com.project.rpg.models.powers;
 import com.project.rpg.models.enumerations.Probability;
 import com.project.rpg.utils.RandomGenerator;
 
-public abstract class AbstractPower {
-	private String name;
+import java.io.Serializable;
+
+public abstract class AbstractPower implements Serializable{
+
+    private static final long serialVersionUID = 6270650943827781204L;
+    private String name;
 	private int startRange;
 	private int endRange;
 	private Probability probabilityToHappen;

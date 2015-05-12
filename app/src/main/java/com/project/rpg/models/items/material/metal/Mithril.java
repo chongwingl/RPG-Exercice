@@ -8,7 +8,9 @@ import com.project.rpg.models.items.material.AbstractMaterial;
 
 public class Mithril extends AbstractMaterial {
 
-	public Mithril(Context context) {
-		super(context, R.string.material_mithril, Probability.LEVEL0);
+    private static final long serialVersionUID = 5155097410806964666L;
+
+    public Mithril(Context context) {
+		super(context.getString(R.string.material_mithril), Probability.LEVEL0);
 	}
 }

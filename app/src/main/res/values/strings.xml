@@ -4,6 +4,7 @@
     <string name="app_name">rpg</string>
 
     <string name="character_choice">Choisissez votre classe </string>
+    <string name="no_equipment">N/A</string>
 
     <string name="type_armor">Armure</string>
     <string name="type_weapon">Arme</string>

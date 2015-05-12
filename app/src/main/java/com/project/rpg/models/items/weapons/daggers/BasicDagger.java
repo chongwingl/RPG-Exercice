@@ -10,8 +10,10 @@ import com.project.rpg.models.items.weapons.AbstractWeapon;
 
 public class BasicDagger extends AbstractWeapon {
 
-	public BasicDagger(Context context) {
-		super(context, R.string.weapon_dagger);
+    private static final long serialVersionUID = 3949502030077144782L;
+
+    public BasicDagger(Context context) {
+		super(context.getString(R.string.weapon_dagger));
 		setAccuracy(Accuracy.NORMAL);
 		setmAccuracyWhenBroken(Accuracy.LOW);
 		setmHitsBeforeSharpening(25);

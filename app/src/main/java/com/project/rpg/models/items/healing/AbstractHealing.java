@@ -1,7 +1,6 @@
 package com.project.rpg.models.items.healing;
 
-import android.content.Context;
-
+import com.project.rpg.models.enumerations.items.ItemType;
 import com.project.rpg.models.items.AbstractItem;
 
 /**
@@ -9,10 +8,16 @@ import com.project.rpg.models.items.AbstractItem;
  */
 public abstract class AbstractHealing extends AbstractItem {
 
-    protected AbstractHealing(Context context, int nameRefId) {
-        super(context, nameRefId);
+    private static final long serialVersionUID = -373216204069937455L;
+
+    protected AbstractHealing(String name) {
+        super(name);
     }
 
     // TODO the healing power!!
 
+    @Override
+    protected void setItemType() {
+        mItemType = ItemType.HEALING;
+    }
 }

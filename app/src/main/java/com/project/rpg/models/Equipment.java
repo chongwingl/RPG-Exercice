@@ -7,17 +7,21 @@ import com.project.rpg.models.enumerations.Weight;
 import com.project.rpg.models.items.armor.AbstractArmor;
 import com.project.rpg.models.items.weapons.AbstractWeapon;
 
-public class Equipment {
+import java.io.Serializable;
 
-	private AbstractWeapon rightWeapon;
+public class Equipment implements Serializable {
+
+    private static final long serialVersionUID = -2708294008490069216L;
+    private AbstractWeapon rightWeapon;
 	private AbstractWeapon leftWeapon;
 	private AbstractArmor headArmor;
 	private AbstractArmor bodyArmor;
 	private AbstractArmor legArmor;
+	private AbstractArmor footArmor;
 	private int weaponNumber = 0;
 	private int armorNumber = 0;
-	
-	public AbstractWeapon getRightWeapon() {
+
+    public AbstractWeapon getRightWeapon() {
 		return rightWeapon;
 	}
 	
@@ -96,6 +100,22 @@ public class Equipment {
 			armorNumber -= 1;
 		}
 	}
+
+    public AbstractArmor getFootArmor() {
+        return footArmor;
+    }
+
+    public void setFootArmor(AbstractArmor footArmor) {
+        this.footArmor = footArmor;
+        armorNumber += 1;
+    }
+
+    public void removeFootArmor(){
+        if(legArmor != null){
+            legArmor = null;
+            armorNumber -= 1;
+        }
+    }
 	
 	public int getArmorNumber(){
 		return armorNumber;

@@ -8,7 +8,9 @@ import com.project.rpg.models.items.material.AbstractMaterial;
 
 public class Gold extends AbstractMaterial {
 
-	public Gold(Context context) {
-		super(context, R.string.material_gold, Probability.LEVEL2);
+    private static final long serialVersionUID = -3243519724550333649L;
+
+    public Gold(Context context) {
+		super(context.getString(R.string.material_gold), Probability.LEVEL2);
 	}
 }

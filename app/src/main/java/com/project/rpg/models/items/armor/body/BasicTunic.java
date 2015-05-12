@@ -9,8 +9,10 @@ import com.project.rpg.models.items.armor.AbstractArmor;
 
 public class BasicTunic extends AbstractArmor {
 
-	public BasicTunic(Context context) {
-		super(context, R.string.armor_tunic);
+    private static final long serialVersionUID = 4334998169220008591L;
+
+    public BasicTunic(Context context) {
+		super(context.getString(R.string.armor_tunic));
 		setResistance(Resistance.WEAK);
 		setWeight(Weight.SUPERLIGHT);
 	}

@@ -1,12 +1,8 @@
 package com.project.rpg.activities;
 
-import android.os.Bundle;
-import android.view.View;
-import android.widget.AdapterView;
-import android.widget.ListView;
+import android.widget.Button;
 
 import com.project.rpg.R;
-import com.project.rpg.adapters.FighterActionAdapter;
 
 import butterknife.InjectView;
 
@@ -15,25 +11,15 @@ import butterknife.InjectView;
  */
 public class ActionActivity extends AbstractActivity {
 
-    @InjectView(R.id.character_actions)
-    ListView actionList;
+    @InjectView(R.id.action1)
+    Button mAction1;
 
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
+    @InjectView(R.id.action2)
+    Button mAction2;
 
-        FighterActionAdapter mAdapter = new FighterActionAdapter(this);
-        actionList.setAdapter(mAdapter);
+    @InjectView(R.id.action3)
+    Button mAction3;
 
-        actionList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-
-            @Override
-            public void onItemClick(AdapterView<?> arg0, View arg1, int position,
-                                    long id) {
-
-            }
-        });
-    }
 
     @Override
     public int getLayoutResourceId() {

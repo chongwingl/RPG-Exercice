@@ -3,7 +3,6 @@ package com.project.rpg.activities;
 import android.os.Bundle;
 
 import com.project.rpg.R;
-import com.project.rpg.models.Equipment;
 import com.project.rpg.models.characters.fighters.AbstractFighter;
 
 /**
@@ -16,7 +15,6 @@ public class FighterStateActivity extends StateActivity {
         super.onCreate(savedInstanceState);
 
         AbstractFighter character = (AbstractFighter) getApp().getCharacter();
-        mLevel.setText("" + character.getLevel());
         mGold.setText("" + character.getGold());
         mLife.setText("" + character.getLife());
         mStrength.setText("" + character.getStat().getStrength());
@@ -24,42 +22,40 @@ public class FighterStateActivity extends StateActivity {
         mResistance.setText("" + character.getStat().getResistance());
         mAccuracy.setText("" + character.getStat().getAccuracy());
 
-        Equipment equipment = character.getEquipment();
-
-        if (equipment.getHeadArmor() == null) {
+        if (character.getHeadArmor() == null) {
             mHead.setText(R.string.no_equipment);
         } else {
-            mHead.setText(equipment.getHeadArmor().getName());
+            mHead.setText(character.getHeadArmor().getName());
         }
 
-        if (equipment.getBodyArmor() == null) {
+        if (character.getBodyArmor() == null) {
             mBody.setText(R.string.no_equipment);
         } else {
-            mBody.setText(equipment.getBodyArmor().getName());
+            mBody.setText(character.getBodyArmor().getName());
         }
 
-        if (equipment.getLegArmor() == null) {
+        if (character.getLegArmor() == null) {
             mLegs.setText(R.string.no_equipment);
         } else {
-            mLegs.setText(equipment.getLegArmor().getName());
+            mLegs.setText(character.getLegArmor().getName());
         }
 
-        if (equipment.getFootArmor() == null) {
+        if (character.getFootArmor() == null) {
             mFoot.setText(R.string.no_equipment);
         } else {
-            mFoot.setText(equipment.getFootArmor().getName());
+            mFoot.setText(character.getFootArmor().getName());
         }
 
-        if (equipment.getRightWeapon() == null) {
+        if (character.getRightWeapon() == null) {
             mRightHand.setText(R.string.no_equipment);
         } else {
-            mRightHand.setText(equipment.getRightWeapon().getName());
+            mRightHand.setText(character.getRightWeapon().getName());
         }
 
-        if (equipment.getLeftWeapon() == null) {
+        if (character.getLeftWeapon() == null) {
             mLeftHand.setText(R.string.no_equipment);
         } else {
-            mLeftHand.setText(equipment.getLeftWeapon().getName());
+            mLeftHand.setText(character.getLeftWeapon().getName());
         }
 
     }

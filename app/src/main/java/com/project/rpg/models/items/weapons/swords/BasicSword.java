@@ -21,6 +21,7 @@ public class BasicSword extends AbstractWeapon {
 		setStrength(Strength.LOW);
 		setStrengthWhenBroken(Strength.WEAK);
 		setWeight(Weight.NORMAL);
+        setPrice(40);
 	}
 
 }

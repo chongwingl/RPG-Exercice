@@ -15,6 +15,7 @@ public class BasicShoe extends AbstractArmor {
 		super(context.getString(R.string.armor_shoe));
 		setResistance(Resistance.WEAK);
 		setWeight(Weight.LIGHT);
+        setPrice(20);
 	}
 
 }

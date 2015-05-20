@@ -11,9 +11,6 @@ import butterknife.InjectView;
  */
 public class StateActivity extends AbstractActivity {
 
-    @InjectView(R.id.level)
-    TextView mLevel;
-
     @InjectView(R.id.gold)
     TextView mGold;
 

@@ -6,66 +6,84 @@ import java.io.Serializable;
 
 public class Stat implements Serializable {
     private static final long serialVersionUID = 3012347748078701155L;
-    private LifePoint lifePoints;
-	private int strength;
-	private int speed;
-	private int accuracy;
-	private int resistance;
-	private CharacterState state = CharacterState.NOR;
-	
-	public Stat(int maxLifePoints){
-		lifePoints = new LifePoint(maxLifePoints);
-	}
+    public static final int MAX_STAT = 100;
 
-	public Stat(int maxLifePoints, int strength, int speed, int accuracy, int resistance) {
-		lifePoints = new LifePoint(maxLifePoints);
-		this.strength = strength;
-		this.speed = speed;
-		this.accuracy = accuracy;
-		this.resistance = resistance;
-	}
+    private LifePoint mLifePoints;
+    private int mStrength;
+    private int mSpeed;
+    private int mAccuracy;
+    private int mResistance;
+    private CharacterState mState = CharacterState.NOR;
 
-	public int getStrength() {
-		return strength;
-	}
+    public Stat(int maxLifePoints) {
+        mLifePoints = new LifePoint(maxLifePoints);
+    }
 
-	protected void setStrength(int strength) {
-		this.strength = strength;
-	}
+    public Stat(int maxLifePoints, int strength, int speed, int accuracy, int resistance) {
+        mLifePoints = new LifePoint(maxLifePoints);
+        mStrength = strength;
+        mSpeed = speed;
+        mAccuracy = accuracy;
+        mResistance = resistance;
+    }
 
-	public int getSpeed() {
-		return speed;
-	}
+    public int getStrength() {
+        return mStrength;
+    }
 
-	protected void setSpeed(int speed) {
-		this.speed = speed;
-	}
+    public void setStrength(int strength) {
+        if (strength < MAX_STAT) {
+            mStrength = strength;
+        } else {
+            mStrength = MAX_STAT;
+        }
+    }
 
-	public LifePoint getLifePoints() {
-		return lifePoints;
-	}
-	
-	public int getAccuracy() {
-		return accuracy;
-	}
+    public int getSpeed() {
+        return mSpeed;
+    }
 
-	protected void setAccuracy(int accuracy) {
-		this.accuracy = accuracy;
-	}
+    public void setSpeed(int speed) {
+        if (speed < MAX_STAT) {
+            mSpeed = speed;
+        } else {
+            mSpeed = MAX_STAT;
+        }
+    }
 
-	public int getResistance() {
-		return resistance;
-	}
+    public LifePoint getLifePoints() {
+        return mLifePoints;
+    }
 
-	protected void setResistance(int resistance) {
-		this.resistance = resistance;
-	}
+    public int getAccuracy() {
+        return mAccuracy;
+    }
 
-	public CharacterState getState() {
-		return state;
-	}
+    public void setAccuracy(int accuracy) {
+        if (accuracy < MAX_STAT) {
+            mAccuracy = accuracy;
+        } else {
+            mAccuracy = MAX_STAT;
+        }
+    }
 
-	public void setState(CharacterState state) {
-		this.state = state;
-	}
+    public int getResistance() {
+        return mResistance;
+    }
+
+    public void setResistance(int resistance) {
+        if (resistance < MAX_STAT) {
+            mResistance = resistance;
+        } else {
+            mResistance = MAX_STAT;
+        }
+    }
+
+    public CharacterState getState() {
+        return mState;
+    }
+
+    public void setState(CharacterState state) {
+        this.mState = state;
+    }
 }

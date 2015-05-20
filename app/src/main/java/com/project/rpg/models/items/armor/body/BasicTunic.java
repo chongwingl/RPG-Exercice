@@ -15,6 +15,7 @@ public class BasicTunic extends AbstractArmor {
 		super(context.getString(R.string.armor_tunic));
 		setResistance(Resistance.WEAK);
 		setWeight(Weight.SUPERLIGHT);
+        setPrice(30);
 	}
 
 }

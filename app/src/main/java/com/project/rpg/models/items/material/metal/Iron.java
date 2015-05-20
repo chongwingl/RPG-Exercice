@@ -12,5 +12,6 @@ public class Iron extends AbstractMaterial {
 
     public Iron(Context context) {
 		super(context.getString(R.string.material_iron), Probability.LEVEL7);
+        setPrice(20);
 	}
 }

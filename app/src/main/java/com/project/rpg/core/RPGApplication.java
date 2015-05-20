@@ -17,7 +17,7 @@ public class RPGApplication extends Application {
     private AbstractCharacter abstractCharacter;
 
     public void createKnight(String name) {
-        abstractCharacter = Knight.getKnight(name);
+        abstractCharacter = new Knight(name);
     }
 
     public AbstractCharacter getCharacter(){
@@ -31,10 +31,6 @@ public class RPGApplication extends Application {
             }
         }
         return abstractCharacter;
-    }
-
-    public void setCharacter(AbstractCharacter character) {
-        abstractCharacter = character;
     }
 
 }

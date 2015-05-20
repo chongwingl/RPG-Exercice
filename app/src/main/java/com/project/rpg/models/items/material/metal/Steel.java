@@ -12,5 +12,6 @@ public class Steel extends AbstractMaterial {
 
     public Steel(Context context) {
 		super(context.getString(R.string.material_steel), Probability.LEVEL5);
+        setPrice(25);
 	}
 }

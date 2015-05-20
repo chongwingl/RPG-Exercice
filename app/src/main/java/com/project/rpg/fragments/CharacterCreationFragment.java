@@ -28,28 +28,27 @@ public class CharacterCreationFragment extends Fragment {
 
     public static final String TAG = CharacterCreationFragment.class.getSimpleName();
 
-    @InjectView(R.id.fighter_name)
-	EditText fighterName;
+    @InjectView(R.id.create_character_name)
+	EditText mCharacterName;
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			final Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        View fragmentView = inflater.inflate(R.layout.fragment_fighter_creation, container, false);
+        View fragmentView = inflater.inflate(R.layout.fragment_creation, container, false);
 
         ButterKnife.inject(this, fragmentView);
 
         return fragmentView;
     }
 
-    @OnClick(R.id.fighter_created)
+    @OnClick(R.id.character_created)
     void onFighterCreated(){
-        String name = fighterName.getText().toString();
+        String name = mCharacterName.getText().toString();
         if (!TextUtils.isEmpty(name)){
 
             ((RPGApplication)getActivity().getApplication()).createKnight(name);
             AbstractCharacter character = ((RPGApplication)getActivity().getApplication()).getCharacter();
-            character.setLevel(1);
             character.setGold(100);
             try {
                 CharacterUtils.saveCharacter(getActivity(), character);
@@ -59,7 +58,7 @@ public class CharacterCreationFragment extends Fragment {
 
             InputMethodManager imm = (InputMethodManager) getActivity().getSystemService(
                     Context.INPUT_METHOD_SERVICE);
-            imm.hideSoftInputFromWindow(fighterName.getWindowToken(), 0);
+            imm.hideSoftInputFromWindow(mCharacterName.getWindowToken(), 0);
 
             ((AbstractCharacterActivity)getActivity()).onFragmentCreationFinished(name);
 

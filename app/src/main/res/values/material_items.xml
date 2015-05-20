@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="material_bone">Os</string>
+    <string name="material_skin">Peau</string>
+    <string name="material_copper">Cuivre</string>
+    <string name="material_gold">Or</string>
+    <string name="material_iron">Fer</string>
+    <string name="material_mithril">Mithril</string>
+    <string name="material_silver">Argent</string>
+    <string name="material_steel">Acier</string>
+    <string name="material_rock">Pierre</string>
+    <string name="material_wood">Bois</string>
+</resources>

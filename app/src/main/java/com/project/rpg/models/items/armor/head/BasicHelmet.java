@@ -15,6 +15,7 @@ public class BasicHelmet extends AbstractArmor {
 		super(context.getString(R.string.armor_helmet));
 		setResistance(Resistance.MEDIUM);
 		setWeight(Weight.NORMAL);
+        setPrice(30);
 	}
 
 }

@@ -12,5 +12,6 @@ public class Rock extends AbstractMaterial {
 
     public Rock(Context context) {
 		super(context.getString(R.string.material_rock), Probability.LEVEL9);
+        setPrice(5);
 	}
 }

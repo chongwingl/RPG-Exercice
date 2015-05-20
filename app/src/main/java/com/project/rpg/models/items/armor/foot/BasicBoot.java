@@ -15,6 +15,7 @@ public class BasicBoot extends AbstractArmor {
 		super(context.getString(R.string.armor_boot));
 		setResistance(Resistance.LOW);
 		setWeight(Weight.MEDIUM);
+        setPrice(30);
 	}
 
 }

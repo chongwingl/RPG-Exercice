@@ -13,11 +13,11 @@ import java.io.InputStream;
  */
 public final class JSONLoaderUtils {
 
-    private static String getJsonFromItemMapping(Context context){
+    private static String getJsonFromMapping(Context context, String fileName){
         String json;
         try {
 
-            InputStream is = context.getAssets().open("item_mapping.json");
+            InputStream is = context.getAssets().open(fileName);
 
             int size = is.available();
 
@@ -38,7 +38,17 @@ public final class JSONLoaderUtils {
     }
 
     public static JSONObject getItemsClass(Context context) {
-        String json = getJsonFromItemMapping(context);
+        String json = getJsonFromMapping(context, "item_mapping.json");
+        try {
+            return new JSONObject(json);
+        } catch (JSONException e) {
+            e.printStackTrace();
+            return null;
+        }
+    }
+
+    public static JSONObject getMonstersClass(Context context) {
+        String json = getJsonFromMapping(context, "monster_mapping.json");
         try {
             return new JSONObject(json);
         } catch (JSONException e) {

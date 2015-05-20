@@ -12,6 +12,7 @@ public class Copper extends AbstractMaterial {
 
     public Copper(Context context) {
 		super(context.getString(R.string.material_copper), Probability.LEVEL8);
+        setPrice(10);
 	}
 
 

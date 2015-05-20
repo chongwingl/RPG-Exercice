@@ -1,6 +1,5 @@
 package com.project.rpg.activities;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
@@ -16,8 +15,7 @@ import butterknife.InjectView;
 
 public class HomeActivity extends AbstractActivity {
 	
-	private CharacterSelectionAdapter cAdapter = new CharacterSelectionAdapter(this);
-	private Context context;
+	private CharacterSelectionAdapter cAdapter;
 
     @InjectView(R.id.character_list)
     ListView characterList;
@@ -26,8 +24,7 @@ public class HomeActivity extends AbstractActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 
-
-		context = getBaseContext();
+        cAdapter = new CharacterSelectionAdapter(this);
 		characterList.setAdapter(cAdapter);
 		
 		characterList.setOnItemClickListener(new OnItemClickListener() {
@@ -35,8 +32,11 @@ public class HomeActivity extends AbstractActivity {
 			@Override
 			public void onItemClick(AdapterView<?> arg0, View arg1, int position,
 					long id) {
-				if(cAdapter.getItem(position).equals(CharacterType.KNIGHT.toString())){
-					CharacterIntent intent = new CharacterIntent(context, CharacterType.getCharacterByType((String)cAdapter.getItem(position)));
+				if(cAdapter.getItem(position).equals(HomeActivity.this.getString(CharacterType.KNIGHT.getTypeRefId()))){
+					CharacterIntent intent = new CharacterIntent(
+                            HomeActivity.this,
+                            CharacterType.getCharacterByType(HomeActivity.this, (String)cAdapter.getItem(position))
+                    );
 					startActivity(intent);
 				}
 			}

@@ -21,6 +21,7 @@ public class BasicDagger extends AbstractWeapon {
 		setStrength(Strength.MEDIUM);
 		setStrengthWhenBroken(Strength.WEAK);
 		setWeight(Weight.LIGHT);
+        setPrice(20);
 	}
 
 }

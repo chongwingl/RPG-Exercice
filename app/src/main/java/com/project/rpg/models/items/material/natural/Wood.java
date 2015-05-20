@@ -12,5 +12,6 @@ public class Wood extends AbstractMaterial {
 
     public Wood(Context context) {
 		super(context.getString(R.string.material_wood), Probability.LEVEL9);
+        setPrice(10);
 	}
 }

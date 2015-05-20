@@ -12,7 +12,7 @@ import com.project.rpg.models.items.armor.head.BasicHat;
 import com.project.rpg.models.items.armor.head.BasicHelmet;
 import com.project.rpg.models.items.armor.legs.BasicLegArmor;
 import com.project.rpg.models.items.armor.legs.BasicPants;
-import com.project.rpg.models.items.armor.protection.BasicShield;
+import com.project.rpg.models.items.weapons.protection.BasicShield;
 
 /**
  * Created by laetitia on 4/27/15.

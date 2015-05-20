@@ -12,6 +12,7 @@ public class Skin extends AbstractMaterial {
 
     public Skin(Context context) {
 		super(context.getString(R.string.material_skin), Probability.LEVEL9);
+        setPrice(20);
 	}
 
 

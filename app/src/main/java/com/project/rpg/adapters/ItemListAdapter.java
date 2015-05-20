@@ -8,6 +8,8 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.project.rpg.R;
+import com.project.rpg.models.items.AbstractItem;
+import com.project.rpg.utils.ItemUtils;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -44,10 +46,26 @@ public class ItemListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
+        Holder holder;
         if (convertView == null) {
-            convertView = mInflater.inflate(R.layout.listview_text_item, parent, false);
+            convertView = mInflater.inflate(R.layout.listview_bag_item, parent, false);
+            holder = new Holder();
+            holder.name = (TextView) convertView.findViewById(R.id.item_name);
+            holder.price = (TextView) convertView.findViewById(R.id.item_number);
+            convertView.setTag(holder);
+        } else {
+            holder = (Holder) convertView.getTag();
         }
-        ((TextView)convertView).setText((String)getItem(position));
+        String name = (String)getItem(position);
+        holder.name.setText(name);
+        AbstractItem item = ItemUtils.getItemFromClass(convertView.getContext(), mClassMapping.get(name));
+        holder.price.setText(String.valueOf(item.getPrice()));
+
         return convertView;
+    }
+
+    class Holder {
+        TextView name;
+        TextView price;
     }
 }

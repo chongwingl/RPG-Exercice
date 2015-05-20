@@ -4,7 +4,8 @@
             "com.project.rpg.models.items.weapons.axes.BasicAxe",
             "com.project.rpg.models.items.weapons.daggers.BasicDagger",
             "com.project.rpg.models.items.weapons.hammers.BasicHammer",
-            "com.project.rpg.models.items.weapons.swords.BasicSword"
+            "com.project.rpg.models.items.weapons.swords.BasicSword",
+            "com.project.rpg.models.items.weapons.protection.BasicShield"
         ],
         "armor" : [
             "com.project.rpg.models.items.armor.body.BasicArmor",
@@ -15,8 +16,7 @@
             "com.project.rpg.models.items.armor.head.BasicHat",
             "com.project.rpg.models.items.armor.head.BasicHelmet",
             "com.project.rpg.models.items.armor.legs.BasicLegArmor",
-            "com.project.rpg.models.items.armor.legs.BasicPants",
-            "com.project.rpg.models.items.armor.protection.BasicShield"
+            "com.project.rpg.models.items.armor.legs.BasicPants"
         ],
         "healing" : [
             "com.project.rpg.models.items.healing.potion.BasicPotion"

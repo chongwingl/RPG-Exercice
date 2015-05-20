@@ -1,55 +1,76 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
-    <string name="app_name">rpg</string>
+    <string name="app_name">RPG</string>
 
     <string name="character_choice">Choisissez votre classe </string>
     <string name="no_equipment">N/A</string>
+
+    <string name="character_creation">Création du personnage</string>
+    <string name="name">Nom :</string>
+    <string name="ok">OK</string>
+
+    <string name="general">Général</string>
+    <string name="life">Vie</string>
+    <string name="level">Niveau</string>
+    <string name="gold">Or</string>
+    <string name="stats">Statistiques</string>
+    <string name="strength">Force</string>
+    <string name="speed">Vitesse</string>
+    <string name="resistance">Résistance</string>
+    <string name="accuracy">Précision</string>
+    <string name="equipment">Equipement</string>
+    <string name="head">Tête</string>
+    <string name="body">Corps</string>
+    <string name="legs">Jambes</string>
+    <string name="foot">Pied</string>
+    <string name="left_hand">Main gauche</string>
+    <string name="right_hand">Main droite</string>
 
     <string name="type_armor">Armure</string>
     <string name="type_weapon">Arme</string>
     <string name="type_material">Materiel</string>
     <string name="type_healing">Soin</string>
 
-    <string name="armor_armor">Armure</string>
-    <string name="armor_tunic">Tunique</string>
-    <string name="armor_cap">Bonnet</string>
-    <string name="armor_hat">Chapeau</string>
-    <string name="armor_helmet">Casque</string>
-    <string name="armor_leg_armor">Chausses de metal</string>
-    <string name="armor_pants">Pantalon</string>
-    <string name="armor_boot">Bottes</string>
-    <string name="armor_shoe">Chaussures</string>
-    <string name="armor_shield">Bouclier</string>
-
-    <string name="weapon_axe">Hache</string>
-    <string name="weapon_dagger">Dague</string>
-    <string name="weapon_hammer">Marteau</string>
-    <string name="weapon_sword">Epee</string>
-
-    <string name="material_bone">Os</string>
-    <string name="material_skin">Peau</string>
-    <string name="material_copper">Cuivre</string>
-    <string name="material_gold">Or</string>
-    <string name="material_iron">Fer</string>
-    <string name="material_mithril">Mithril</string>
-    <string name="material_silver">Argent</string>
-    <string name="material_steel">Acier</string>
-    <string name="material_rock">Pierre</string>
-    <string name="material_wood">Bois</string>
-    
-    <string name="healing_potion">Potion</string>
-
     <string name="character_button_fight">Combat</string>
     <string name="character_button_state">État</string>
     <string name="character_button_bag">Sac</string>
     <string name="character_button_store">Boutique</string>
 
-    <string-array name="fighter_tab_title">
-        <item>Combat</item>
-        <item>État</item>
-        <item>Sac</item>
-        <item>Boutique</item>
-    </string-array>
+    <string name="no_item">No item</string>
+    <string name="error_not_enough_gold">Combattez pour gagner plus d\'or !</string>
+    <string name="added_to_bag">" ajouté au sac"</string>
+    <string name="store_error_message_title">Vous ne pouvez pas acheter cet objet…</string>
+    <string name="no_more_life_error_message_title">Vous êtes mort…</string>
+
+    <string name="monster_name_dragon">Dragon</string>
+    <string name="monster_name_spider">Araignée</string>
+    <string name="monster_name_wolf">Loup</string>
+    <string name="fight">Combattre !</string>
+    <string name="error_no_more_life">Vous ne pouvez plus combattre !</string>
+
+    <string name="attack">Attaquer</string>
+    <string name="open_bag">Ouvrir le sac</string>
+    <string name="abandon">Abandonner</string>
+    <string name="current_life">My life :</string>
+    <string name="monster_current_life">: Monster life</string>
+    <string name="fighting_instruction">Que voulez vous faire ?</string>
+
+    <string name="attack_missed_exception">L\'attaque a raté…</string>
+    <string name="attack_missed" formatted="false">%1$s raté l\'attaque…\n</string>
+    <string name="attack_success" formatted="false">%1$s réussi l\'attaque, %2$s %3$d points de dégats !\n</string>
+    <string name="attack_missed_monster">" a"</string>
+    <string name="attack_success_monster1">" a"</string>
+    <string name="attack_success_monster2">"il vous inflige "</string>
+    <string name="attack_missed_character">"Vous avez "</string>
+    <string name="attack_success_character1">"Vous avez "</string>
+    <string name="attack_success_character2">"vous infligez "</string>
+    <string name="attack_surprise" formatted="false">%1$s %2$s et %3$s %4$d points de dégats.\n</string>
+    <string name="attack_surprise_character1">"Vous devancez l'attaque de "</string>
+    <string name="attack_surprise_character3">"lui infligez "</string>
+    <string name="attack_surprise_monster2">" vous devance "</string>
+    <string name="attack_surprise_monster3">" vous inflige "</string>
+    <string name="character_victory">Vous avez gagne !</string>
+    <string name="monster_cannot_fight">Votre ennemi ne peut plus combattre !</string>
 
 </resources>

@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="character_type_knight">Chevalier</string>
+    <string name="character_type_smith">Forgeron</string>
+    <string name="character_type_monster">Monstre</string>
+</resources>

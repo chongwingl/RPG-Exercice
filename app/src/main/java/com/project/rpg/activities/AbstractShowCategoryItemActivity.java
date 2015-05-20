@@ -22,6 +22,8 @@ public abstract class AbstractShowCategoryItemActivity extends AbstractActivity 
     @InjectView(R.id.item_category_sliding_layout)
     SlidingTabLayout mSlidingTabLayout;
 
+    protected AbstractItemCategoryPagerAdapter mItemCategoryAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -30,7 +32,7 @@ public abstract class AbstractShowCategoryItemActivity extends AbstractActivity 
 
         final CharacterType characterType = character.getCharacterType();
 
-        final AbstractItemCategoryPagerAdapter mItemCategoryAdapter = getAdapter();
+        mItemCategoryAdapter = getAdapter();
         if (mItemCategoryAdapter != null) {
             mItemViewPager.setAdapter(mItemCategoryAdapter);
 

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="armor_armor">Armure</string>
+    <string name="armor_tunic">Tunique</string>
+    <string name="armor_cap">Bonnet</string>
+    <string name="armor_hat">Chapeau</string>
+    <string name="armor_helmet">Casque</string>
+    <string name="armor_leg_armor">Chausses de metal</string>
+    <string name="armor_pants">Pantalon</string>
+    <string name="armor_boot">Bottes</string>
+    <string name="armor_shoe">Chaussures</string>
+    <string name="armor_shield">Bouclier</string>
+</resources>

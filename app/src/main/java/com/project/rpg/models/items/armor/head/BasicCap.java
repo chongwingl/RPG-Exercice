@@ -15,6 +15,7 @@ public class BasicCap extends AbstractArmor {
 		super(context.getString(R.string.armor_cap));
 		setResistance(Resistance.WEAK);
 		setWeight(Weight.SUPERLIGHT);
+        setPrice(15);
 	}
 
 }

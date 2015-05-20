@@ -126,62 +126,74 @@ public class Equipment implements Serializable {
 	}
 	
 	public Weight getEquipementWeight(){
-		int totalWeight = 0;
-		if(rightWeapon != null){
-			totalWeight += rightWeapon.getWeight().getValue();
-		}
-		if(leftWeapon != null){
-			totalWeight += leftWeapon.getWeight().getValue();
-		}
-		if(headArmor != null){
-			totalWeight += headArmor.getWeight().getValue();
-		}
-		if(bodyArmor != null){
-			totalWeight += bodyArmor.getWeight().getValue();
-		}
-		if(legArmor != null){
-			totalWeight += legArmor.getWeight().getValue();
-		}
-		
-		return Weight.getConstant(Math.round(totalWeight / (armorNumber + weaponNumber)));
+        if (armorNumber + weaponNumber > 0) {
+            int totalWeight = 0;
+            if (rightWeapon != null) {
+                totalWeight += rightWeapon.getWeight().getValue();
+            }
+            if (leftWeapon != null) {
+                totalWeight += leftWeapon.getWeight().getValue();
+            }
+            if (headArmor != null) {
+                totalWeight += headArmor.getWeight().getValue();
+            }
+            if (bodyArmor != null) {
+                totalWeight += bodyArmor.getWeight().getValue();
+            }
+            if (legArmor != null) {
+                totalWeight += legArmor.getWeight().getValue();
+            }
+
+            return Weight.getConstant(Math.round(totalWeight / (armorNumber + weaponNumber)));
+        }
+        return Weight.NONE;
 	}
 	
 	public Resistance getEquipementResistance(){
-		int totalResistance = 0;
-		if(headArmor != null){
-			totalResistance += headArmor.getResistance().getValue();
-		}
-		if(bodyArmor != null){
-			totalResistance += bodyArmor.getResistance().getValue();
-		}
-		if(legArmor != null){
-			totalResistance += legArmor.getResistance().getValue();
-		}
-		
-		return Resistance.getConstant(Math.round(totalResistance / armorNumber));
+        if (armorNumber > 0) {
+            int totalResistance = 0;
+            if (headArmor != null) {
+                totalResistance += headArmor.getResistance().getValue();
+            }
+            if (bodyArmor != null) {
+                totalResistance += bodyArmor.getResistance().getValue();
+            }
+            if (legArmor != null) {
+                totalResistance += legArmor.getResistance().getValue();
+            }
+
+            return Resistance.getConstant(Math.round(totalResistance / armorNumber));
+        }
+        return Resistance.NONE;
 	}
 	
 	public Strength getEquipementStrength(){
-		int totalStrength = 0;
-		if(rightWeapon != null){
-			totalStrength += rightWeapon.getStrength().getValue();
-		}
-		if(leftWeapon != null){
-			totalStrength += leftWeapon.getStrength().getValue();
-		}
+        if (weaponNumber > 0) {
+            int totalStrength = 0;
+            if (rightWeapon != null) {
+                totalStrength += rightWeapon.getStrength().getValue();
+            }
+            if (leftWeapon != null) {
+                totalStrength += leftWeapon.getStrength().getValue();
+            }
 
-		return Strength.getConstant(Math.round(totalStrength / weaponNumber));
+            return Strength.getConstant(Math.round(totalStrength / weaponNumber));
+        }
+        return Strength.NONE;
 	}
 	
 	public Accuracy getEquipementAccuracy(){
-		int totalAccuracy = 0;
-		if(rightWeapon != null){
-			totalAccuracy += rightWeapon.getAccuracy().getValue();
-		}
-		if(leftWeapon != null){
-			totalAccuracy += leftWeapon.getAccuracy().getValue();
-		}
-		
-		return Accuracy.getConstant(Math.round(totalAccuracy / weaponNumber));
+        if (weaponNumber > 0) {
+            int totalAccuracy = 0;
+            if (rightWeapon != null) {
+                totalAccuracy += rightWeapon.getAccuracy().getValue();
+            }
+            if (leftWeapon != null) {
+                totalAccuracy += leftWeapon.getAccuracy().getValue();
+            }
+
+            return Accuracy.getConstant(Math.round(totalAccuracy / weaponNumber));
+        }
+        return Accuracy.NONE;
 	}
 }

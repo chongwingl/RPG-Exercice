@@ -12,5 +12,6 @@ public class Gold extends AbstractMaterial {
 
     public Gold(Context context) {
 		super(context.getString(R.string.material_gold), Probability.LEVEL2);
+        setPrice(40);
 	}
 }

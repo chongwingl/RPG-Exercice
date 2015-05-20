@@ -2,6 +2,7 @@ package com.project.rpg.models.enumerations;
 
 public enum Resistance {
 	// Objets directement construits
+    NONE(0),
 	WEAK(5),
 	LOW (15),
 	MEDIUM(25),
@@ -18,21 +19,21 @@ public enum Resistance {
 	public int getValue(){
 		return resistance;
 	}
-	
-	public static Resistance getConstant(int value){
-		switch (value) {
-		case 5:
-			return WEAK;
-		case 15:
-			return LOW;
-		case 25:
-			return MEDIUM;
-		case 35:
-			return NORMAL;
-		case 45:
-			return HIGH;
-		default:
-			return null;
-		}
-	}
+
+    public static Resistance getConstant(int value){
+        if (value == 0) {
+            return NONE;
+        } else if (value <= WEAK.getValue()) {
+            return WEAK;
+        } else if (value <= LOW.getValue()) {
+            return LOW;
+        } else if (value <= MEDIUM.getValue()) {
+            return MEDIUM;
+        } else if (value <= NORMAL.getValue()) {
+            return NORMAL;
+        } else {
+            return HIGH;
+        }
+    }
+
 }

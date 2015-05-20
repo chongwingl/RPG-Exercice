@@ -29,7 +29,6 @@ public abstract class AbstractItem implements Serializable {
 		return price;
 	}
 
-    // TODO set price to each item
 	public void setPrice(int price){
 		this.price = price;
 	}

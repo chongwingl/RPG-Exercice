@@ -12,6 +12,7 @@ public class Bone extends AbstractMaterial {
 
     public Bone(Context context) {
 		super(context.getString(R.string.material_bone), Probability.LEVEL6);
+        setPrice(20);
 	}
 
 }

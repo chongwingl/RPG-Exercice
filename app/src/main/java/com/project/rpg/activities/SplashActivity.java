@@ -14,6 +14,7 @@ import com.project.rpg.intents.CharacterIntent;
 import com.project.rpg.intents.HomeIntent;
 import com.project.rpg.models.characters.AbstractCharacter;
 import com.project.rpg.utils.ItemUtils;
+import com.project.rpg.utils.MonsterUtils;
 
 public class SplashActivity extends Activity {
 
@@ -84,6 +85,7 @@ public class SplashActivity extends Activity {
         public void handleMessage(final Message msg) {
             if (msg.what == MSG_FINISH && mSplashActivity != null) {
                 ItemUtils.loadAllItems(mSplashActivity);
+                MonsterUtils.loadMonsters(mSplashActivity);
                 Intent intent;
                 AbstractCharacter character = ((RPGApplication)mSplashActivity.getApplication()).getCharacter();
                 if (character == null) {

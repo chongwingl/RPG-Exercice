@@ -12,5 +12,6 @@ public class Mithril extends AbstractMaterial {
 
     public Mithril(Context context) {
 		super(context.getString(R.string.material_mithril), Probability.LEVEL0);
+        setPrice(50);
 	}
 }

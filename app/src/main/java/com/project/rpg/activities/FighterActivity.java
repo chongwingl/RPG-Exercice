@@ -5,6 +5,13 @@ import com.project.rpg.intents.ActionIntent;
 import com.project.rpg.intents.BagIntent;
 import com.project.rpg.intents.StateIntent;
 import com.project.rpg.intents.StoreIntent;
+import com.project.rpg.models.characters.fighters.AbstractFighter;
+import com.project.rpg.models.items.armor.body.BasicArmor;
+import com.project.rpg.models.items.armor.foot.BasicBoot;
+import com.project.rpg.models.items.armor.head.BasicHelmet;
+import com.project.rpg.models.items.armor.legs.BasicLegArmor;
+import com.project.rpg.models.items.weapons.protection.BasicShield;
+import com.project.rpg.models.items.weapons.swords.BasicSword;
 
 import butterknife.OnClick;
 
@@ -13,9 +20,10 @@ import butterknife.OnClick;
  */
 public class FighterActivity extends AbstractCharacterActivity {
 
+
     @OnClick(R.id.character_button_action)
     void onActionClick(){
-        startActivity(new ActionIntent(this));
+        startActivity(new ActionIntent(this, FighterActionActivity.class));
     }
 
     @OnClick(R.id.character_button_state)
@@ -31,5 +39,17 @@ public class FighterActivity extends AbstractCharacterActivity {
     @OnClick(R.id.character_button_store)
     void onStoreClick(){
         startActivity(new StoreIntent(this, FighterStoreActivity.class));
+    }
+
+    @Override
+    public void onFragmentCreationFinished(String name) {
+        super.onFragmentCreationFinished(name);
+        AbstractFighter fighter = (AbstractFighter) getApp().getCharacter();
+        fighter.setBodyArmor(new BasicArmor(this));
+        fighter.setFootArmor(new BasicBoot(this));
+        fighter.setHeadArmor(new BasicHelmet(this));
+        fighter.setLegArmor(new BasicLegArmor(this));
+        fighter.setLeftWeapon(new BasicShield(this));
+        fighter.setRightWeapon(new BasicSword(this));
     }
 }

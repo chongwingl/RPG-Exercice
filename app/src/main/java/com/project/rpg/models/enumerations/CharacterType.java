@@ -1,5 +1,7 @@
 package com.project.rpg.models.enumerations;
 
+import android.content.Context;
+
 import com.project.rpg.R;
 import com.project.rpg.activities.FighterActivity;
 
@@ -8,22 +10,23 @@ import com.project.rpg.activities.FighterActivity;
  */
 public enum CharacterType {
 
-    KNIGHT("Chevalier", R.color.primary_dark_color, FighterActivity.class),
-    SMITH("Forgeron", R.color.primary_color, null);
+    KNIGHT(R.string.character_type_knight, R.color.primary_dark_color, FighterActivity.class),
+    SMITH(R.string.character_type_smith, R.color.primary_color, null),
+    MONSTER(R.string.character_type_monster, R.color.accent_color, null);
 
-    private String mType = "";
+    private int mTypeRefId;
     private int mColorId;
     private Class<?> mCharacterActivity;
 
     // Constructeur
-    CharacterType(String type, int colorId, Class<?> characterActivity) {
-        mType = type;
+    CharacterType(int typeRefId, int colorId, Class<?> characterActivity) {
+        mTypeRefId = typeRefId;
         mColorId = colorId;
         mCharacterActivity = characterActivity;
     }
 
-    public String getName() {
-        return mType;
+    public int getTypeRefId() {
+        return mTypeRefId;
     }
 
     public int getColorId() {
@@ -34,17 +37,12 @@ public enum CharacterType {
         return mCharacterActivity;
     }
 
-    public static CharacterType getCharacterByType(String type) {
+    public static CharacterType getCharacterByType(Context context, String type) {
         for(CharacterType characterType : values()) {
-            if (characterType.getName().equals(type)) {
+            if (context.getString(characterType.getTypeRefId()).equals(type)) {
                 return characterType;
             }
         }
         return null;
-    }
-
-    @Override
-    public String toString() {
-        return mType;
     }
 }

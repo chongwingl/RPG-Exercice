@@ -39,21 +39,18 @@ public final class ItemUtils {
         return itemTypes;
     }
 
-    public static List<Class<?>> loadAllItems(Context context) {
+    public static void loadAllItems(Context context) {
 
-        List<Class<?>> itemsList = new ArrayList<>();
         JSONObject json = JSONLoaderUtils.getItemsClass(context);
         try {
             JSONObject items = json.getJSONObject(ITEM_JSON);
-            itemsList.addAll(loadHealingItems(items.getJSONArray(HEALING_JSON)));
-            itemsList.addAll(loadWeaponItems(items.getJSONArray(WEAPON_JSON)));
-            itemsList.addAll(loadMaterialItems(items.getJSONArray(MATERIAL_JSON)));
-            itemsList.addAll(loadArmorItems(items.getJSONArray(ARMOR_JSON)));
+            loadHealingItems(items.getJSONArray(HEALING_JSON));
+            loadWeaponItems(items.getJSONArray(WEAPON_JSON));
+            loadMaterialItems(items.getJSONArray(MATERIAL_JSON));
+            loadArmorItems(items.getJSONArray(ARMOR_JSON));
         } catch (JSONException | NullPointerException e) {
             e.printStackTrace();
         }
-
-        return itemsList;
     }
 
     public static List<Class<?>> loadWeaponItems(JSONArray json) throws JSONException {

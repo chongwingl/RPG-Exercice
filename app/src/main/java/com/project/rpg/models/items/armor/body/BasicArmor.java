@@ -16,5 +16,6 @@ public class BasicArmor extends AbstractArmor {
 		super(context.getString(R.string.armor_armor));
 		setResistance(Resistance.NORMAL);
 		setWeight(Weight.HEAVY);
+        setPrice(50);
 	}
 }

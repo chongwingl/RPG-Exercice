@@ -1,5 +1,6 @@
 package com.project.rpg.models.characters;
 
+import com.project.rpg.exceptions.NotEnoughGoldException;
 import com.project.rpg.models.Bag;
 import com.project.rpg.models.enumerations.CharacterType;
 import com.project.rpg.models.enumerations.items.ItemType;
@@ -14,7 +15,6 @@ public abstract class AbstractCharacter
 
     private CharacterType mCharacterType;
     private String mName;
-    private int mLevel;
     private int mGold;
     private Bag mBag;
 
@@ -32,14 +32,6 @@ public abstract class AbstractCharacter
         return mName;
     }
 
-    public int getLevel() {
-        return mLevel;
-    }
-
-    public void setLevel(int level) {
-        this.mLevel = level;
-    }
-
     public int getGold() {
         return mGold;
     }
@@ -52,12 +44,11 @@ public abstract class AbstractCharacter
         this.mGold += gold;
     }
 
-    public boolean removeGold(int gold) {
-        if (this.mGold - gold > 0) {
-            this.mGold -= gold;
-            return true;
+    public void removeGold(int gold) throws NotEnoughGoldException {
+        if (this.mGold < gold) {
+            throw new NotEnoughGoldException();
         }
-        return false;
+        this.mGold -= gold;
     }
 
     public void addToBag(AbstractItem item) {

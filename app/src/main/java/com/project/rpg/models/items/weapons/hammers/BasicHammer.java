@@ -21,6 +21,7 @@ public class BasicHammer extends AbstractWeapon {
 		setStrength(Strength.MEDIUM);
 		setStrengthWhenBroken(Strength.LOW);
 		setWeight(Weight.NORMAL);
+        setPrice(60);
 	}
 
 }

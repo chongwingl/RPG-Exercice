@@ -1,0 +1,7 @@
+{
+    "monsters" :  [
+            "com.project.rpg.models.monsters.BasicDragon",
+            "com.project.rpg.models.monsters.BasicSpider",
+            "com.project.rpg.models.monsters.BasicWolf"
+        ]
+}

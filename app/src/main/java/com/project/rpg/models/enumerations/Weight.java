@@ -1,13 +1,14 @@
 package com.project.rpg.models.enumerations;
 
 public enum Weight {
-	// Objets directement construits
-	SUPERLIGHT (5),
-	LIGHT(10),
-	MEDIUM(15),
-	NORMAL(20),
-	HEAVY(25),
-	SUPERHEAVY(30);
+	// Objets directement construits3
+    NONE(0),
+	SUPERLIGHT (10),
+	LIGHT(15),
+	MEDIUM(20),
+	NORMAL(25),
+	HEAVY(30),
+	SUPERHEAVY(35);
 
 	private int weight = 0;
 
@@ -21,21 +22,20 @@ public enum Weight {
 	}
 	
 	public static Weight getConstant(int value){
-		switch (value) {
-		case 5:
+        if (value == 0) {
+            return NONE;
+        } else if (value <= SUPERLIGHT.getValue()) {
 			return SUPERLIGHT;
-		case 10:
+        } else if (value <= LIGHT.getValue()) {
 			return LIGHT;
-		case 15:
+        } else if (value <= MEDIUM.getValue()) {
 			return MEDIUM;
-		case 20:
+        } else if (value <= NORMAL.getValue()) {
 			return NORMAL;
-		case 25:
+        } else if (value <= HEAVY.getValue()) {
 			return HEAVY;
-		case 30:
+        } else {
 			return SUPERHEAVY;
-		default:
-			return null;
-		}
+        }
 	}
 }

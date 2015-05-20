@@ -12,6 +12,7 @@ public class Silver extends AbstractMaterial {
 
     public Silver(Context context) {
 		super(context.getString(R.string.material_silver), Probability.LEVEL3);
+        setPrice(30);
 	}
 
 }

@@ -15,6 +15,7 @@ public class BasicHat extends AbstractArmor{
 		super(context.getString(R.string.armor_hat));
 		setResistance(Resistance.LOW);
 		setWeight(Weight.SUPERLIGHT);
+        setPrice(20);
 	}
 
 }

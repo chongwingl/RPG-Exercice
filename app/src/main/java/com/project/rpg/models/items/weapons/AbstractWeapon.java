@@ -1,5 +1,6 @@
 package com.project.rpg.models.items.weapons;
 
+import com.project.rpg.models.characters.AbstractCharacter;
 import com.project.rpg.models.enumerations.Accuracy;
 import com.project.rpg.models.enumerations.Strength;
 import com.project.rpg.models.enumerations.items.ItemType;
@@ -81,5 +82,10 @@ public abstract class AbstractWeapon extends AbstractItem {
     @Override
     protected void setItemType() {
         mItemType = ItemType.WEAPON;
+    }
+
+    @Override
+    public void use(AbstractCharacter character) {
+
     }
 }

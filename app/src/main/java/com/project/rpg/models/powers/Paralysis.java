@@ -10,4 +10,9 @@ public class Paralysis extends AbstractPower {
 		super("Paralysie", 2, 5, Probability.LEVEL3);
 	}
 
+    @Override
+    public Object getPowerEffect() {
+        return null;
+    }
+
 }

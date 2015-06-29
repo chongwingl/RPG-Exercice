@@ -3,7 +3,7 @@ package com.project.rpg.models.enumerations.items;
 import android.content.Context;
 
 import com.project.rpg.R;
-import com.project.rpg.models.items.healing.potion.BasicPotion;
+import com.project.rpg.models.items.enhancement.healing.BasicPotion;
 
 /**
  * Created by laetitia on 4/27/15.

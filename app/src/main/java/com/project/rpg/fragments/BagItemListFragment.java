@@ -58,6 +58,10 @@ public class BagItemListFragment extends ListFragment {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
                 String name = (String) adapter.getItem(position);
+                Pair<Integer, Class<?>> pair = mapItem.get(name);
+                int number = pair.first - 1;
+                mapItem.put(name, new Pair<Integer, Class<?>>(number, pair.second));
+                adapter.notifyDataSetChanged();
                 mListener.onItemSelected(mapItem.get(name).second);
             }
         });
@@ -68,6 +72,6 @@ public class BagItemListFragment extends ListFragment {
     }
 
     public interface OnItemSelectedListener {
-        public void onItemSelected(Class<?> clss);
+        void onItemSelected(Class<?> clss);
     }
 }

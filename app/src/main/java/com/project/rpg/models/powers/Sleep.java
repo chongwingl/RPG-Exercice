@@ -10,4 +10,9 @@ public class Sleep extends AbstractPower {
 		super("Sommeil", 2, 5, Probability.LEVEL3);
 	}
 
+    @Override
+    public Object getPowerEffect() {
+        return null;
+    }
+
 }

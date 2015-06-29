@@ -29,13 +29,16 @@ public abstract class AbstractFighter extends AbstractCharacter {
 		mEquipment = new Equipment();
 	}
 
-    @Override
     public int getLife() {
         return mStat.getLifePoints().getLifePoints();
     }
 
     public void removeLife(int points) throws NoMoreLifeException {
         mStat.getLifePoints().removeLifePoints(points);
+    }
+
+    public void addLife(int points) {
+        mStat.getLifePoints().addLifePoints(points);
     }
 
     public Stat getStat() {

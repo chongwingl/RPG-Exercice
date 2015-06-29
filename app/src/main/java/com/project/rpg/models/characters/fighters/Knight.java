@@ -46,8 +46,8 @@ public class Knight extends AbstractFighter {
     }
 
     // Reminder
-    // fight against weak : win 1 potion
-    // fight against same strength : 1pt of stat, 10 pt of life, one object
-    // fight against strong : 2pt of stat, 20 pt of life, one object
+    // fight against weak : win 1 potion + little money
+    // fight against same strength : 1pt of stat, 10 pt of life, one object + middle money
+    // fight against strong : 2pt of stat, 20 pt of life, one object + lot of money
 
 }

@@ -1,5 +1,6 @@
 package com.project.rpg.models.characters;
 
+import com.project.rpg.exceptions.NoItemInBagException;
 import com.project.rpg.exceptions.NotEnoughGoldException;
 import com.project.rpg.models.Bag;
 import com.project.rpg.models.enumerations.CharacterType;
@@ -59,10 +60,8 @@ public abstract class AbstractCharacter
         return mBag;
     }
 
-    public boolean removeItem(ItemType itemType, AbstractItem item) {
-        return mBag.removeItem(itemType, item);
+    public void removeItemFromBag(AbstractItem item) throws NoItemInBagException{
+        mBag.removeItem(item);
     }
-
-    public abstract int getLife();
 
 }

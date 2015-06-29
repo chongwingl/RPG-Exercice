@@ -2,6 +2,7 @@ package com.project.rpg.models;
 
 import android.content.Context;
 
+import com.project.rpg.exceptions.NoItemInBagException;
 import com.project.rpg.models.enumerations.items.ItemType;
 import com.project.rpg.models.items.AbstractItem;
 
@@ -30,7 +31,7 @@ public class Bag implements Serializable {
         return instance;
     }
 
-    private Bag( int maxSize) {
+    private Bag(int maxSize) {
         itemsList = new HashMap<>();
         MAX_SIZE = maxSize;
     }
@@ -48,19 +49,27 @@ public class Bag implements Serializable {
         mCurrentBagSize++;
     }
 
-    public boolean removeItem(ItemType itemType, AbstractItem item) {
+    public void removeItem(AbstractItem item) throws NoItemInBagException {
+        ItemType itemType = item.getItemType();
         List<AbstractItem> items = itemsList.get(itemType);
+        AbstractItem itemToRemove = null;
         for (AbstractItem abstractItem : items) {
             if (abstractItem.getName().equals(item.getName())) {
-                items.remove(abstractItem);
+                itemToRemove = abstractItem;
                 mCurrentBagSize--;
-                return true;
+                break;
             }
         }
-        return false;
+        if (itemToRemove != null) {
+            items.remove(itemToRemove);
+        }
+        if (mCurrentBagSize == 0) {
+            itemsList = new HashMap<>();
+            throw new NoItemInBagException();
+        }
     }
 
-    public int getmCurrentBagSize() {
+    public int getCurrentBagSize() {
         return mCurrentBagSize;
     }
 

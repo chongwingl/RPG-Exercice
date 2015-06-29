@@ -14,4 +14,9 @@ public class Critical extends AbstractPower {
 	public int takenPoints(int lifePoints){
 		return lifePoints * (percentPointsTaken/100);
 	}
+
+    @Override
+    public Object getPowerEffect() {
+        return null;
+    }
 }

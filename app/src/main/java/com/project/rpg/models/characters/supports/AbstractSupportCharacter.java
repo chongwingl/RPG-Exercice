@@ -12,9 +12,4 @@ public abstract class AbstractSupportCharacter extends AbstractCharacter {
     public AbstractSupportCharacter(CharacterType characterType, String name) {
 		super(characterType, name, BAG_SIZE_MAX);
 	}
-
-    @Override
-    public int getLife() {
-        return 0;
-    }
 }

@@ -116,12 +116,14 @@ public class BaseDialogFragment extends DialogFragment {
         show(manager, getDialogTag());
     }
 
-    public void setPositiveListener(DialogButtonsListener listener) {
+    public BaseDialogFragment setPositiveListener(DialogButtonsListener listener) {
         mPositiveListener = listener;
+        return this;
     }
 
-    public void setNegativeListener(DialogButtonsListener listener) {
+    public BaseDialogFragment setNegativeListener(DialogButtonsListener listener) {
         mNegativeListener = listener;
+        return this;
     }
 
     public String getDialogTag() {

@@ -1,5 +1,8 @@
 package com.project.rpg.activities;
 
+import android.os.Bundle;
+import android.widget.Button;
+
 import com.project.rpg.R;
 import com.project.rpg.intents.ActionIntent;
 import com.project.rpg.intents.BagIntent;
@@ -13,6 +16,7 @@ import com.project.rpg.models.items.armor.legs.BasicLegArmor;
 import com.project.rpg.models.items.weapons.protection.BasicShield;
 import com.project.rpg.models.items.weapons.swords.BasicSword;
 
+import butterknife.InjectView;
 import butterknife.OnClick;
 
 /**
@@ -20,6 +24,21 @@ import butterknife.OnClick;
  */
 public class FighterActivity extends AbstractCharacterActivity {
 
+    @InjectView(R.id.character_button_action)
+    Button mActionButton;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        AbstractFighter fighter = (AbstractFighter) getApp().getCharacter();
+        if (fighter != null) {
+            if (fighter.getLife() < 1) {
+                mActionButton.setEnabled(false);
+            } else {
+                mActionButton.setEnabled(true);
+            }
+        }
+    }
 
     @OnClick(R.id.character_button_action)
     void onActionClick(){

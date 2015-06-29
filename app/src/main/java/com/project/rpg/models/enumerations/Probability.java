@@ -11,7 +11,8 @@ public enum Probability {
 	LEVEL6(60),
 	LEVEL7(70),
 	LEVEL8(80),
-	LEVEL9(90);
+	LEVEL9(90),
+    LEVEL10(100);
 
 	private int probability = 0;
 

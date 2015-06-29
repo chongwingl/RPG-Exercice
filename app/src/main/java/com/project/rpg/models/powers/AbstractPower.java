@@ -35,4 +35,6 @@ public abstract class AbstractPower implements Serializable{
 		}
 		return false;
 	}
+
+    public abstract Object getPowerEffect();
 }

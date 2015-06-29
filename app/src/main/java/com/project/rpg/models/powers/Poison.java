@@ -15,4 +15,9 @@ public class Poison extends AbstractPower {
 		return lifePoints * (percentPointsTaken/100);
 	}
 
+    @Override
+    public Object getPowerEffect() {
+        return null;
+    }
+
 }

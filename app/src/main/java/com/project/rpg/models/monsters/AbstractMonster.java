@@ -34,7 +34,6 @@ public abstract class AbstractMonster extends AbstractCharacter {
         return mStat;
     }
 
-    @Override
     public int getLife() {
         return mStat.getLifePoints().getLifePoints();
     }

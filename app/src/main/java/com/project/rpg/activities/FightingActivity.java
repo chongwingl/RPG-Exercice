@@ -15,7 +15,6 @@ import com.project.rpg.intents.CharacterIntent;
 import com.project.rpg.intents.FightingIntent;
 import com.project.rpg.models.characters.fighters.AbstractFighter;
 import com.project.rpg.models.monsters.AbstractMonster;
-import com.project.rpg.utils.RandomGenerator;
 
 import butterknife.InjectView;
 import butterknife.OnClick;

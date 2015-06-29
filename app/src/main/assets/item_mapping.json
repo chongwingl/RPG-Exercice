@@ -19,7 +19,7 @@
             "com.project.rpg.models.items.armor.legs.BasicPants"
         ],
         "healing" : [
-            "com.project.rpg.models.items.healing.potion.BasicPotion"
+            "com.project.rpg.models.items.enhancement.healing.BasicPotion"
         ],
         "material" : [
             "com.project.rpg.models.items.material.animal.Bone",

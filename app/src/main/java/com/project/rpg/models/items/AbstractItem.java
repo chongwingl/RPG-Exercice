@@ -1,5 +1,6 @@
 package com.project.rpg.models.items;
 
+import com.project.rpg.models.characters.AbstractCharacter;
 import com.project.rpg.models.enumerations.Weight;
 import com.project.rpg.models.enumerations.items.ItemType;
 
@@ -51,4 +52,6 @@ public abstract class AbstractItem implements Serializable {
     }
 
     protected abstract void setItemType();
+
+    public abstract void use(AbstractCharacter character);
 }

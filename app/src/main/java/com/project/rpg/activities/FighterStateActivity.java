@@ -15,8 +15,6 @@ public class FighterStateActivity extends StateActivity {
         super.onCreate(savedInstanceState);
 
         AbstractFighter character = (AbstractFighter) getApp().getCharacter();
-        mGold.setText("" + character.getGold());
-        mLife.setText("" + character.getLife());
         mStrength.setText("" + character.getStat().getStrength());
         mSpeed.setText("" + character.getStat().getSpeed());
         mResistance.setText("" + character.getStat().getResistance());
@@ -58,5 +56,10 @@ public class FighterStateActivity extends StateActivity {
             mLeftHand.setText(character.getLeftWeapon().getName());
         }
 
+    }
+
+    @Override
+    protected int getCharacterLife() {
+        return ((AbstractFighter)getCharacter()).getLife();
     }
 }

@@ -3,19 +3,14 @@ package com.project.rpg.activities;
 import android.widget.TextView;
 
 import com.project.rpg.R;
+import com.project.rpg.models.characters.fighters.AbstractFighter;
 
 import butterknife.InjectView;
 
 /**
  * Created by laetitia on 5/6/15.
  */
-public class StateActivity extends AbstractActivity {
-
-    @InjectView(R.id.gold)
-    TextView mGold;
-
-    @InjectView(R.id.life)
-    TextView mLife;
+public class StateActivity extends ToolbarActivity {
 
     @InjectView(R.id.strength)
     TextView mStrength;
@@ -51,5 +46,10 @@ public class StateActivity extends AbstractActivity {
     @Override
     public int getLayoutResourceId() {
         return R.layout.activity_state;
+    }
+
+    @Override
+    protected int getCharacterLife() {
+        return 0;
     }
 }

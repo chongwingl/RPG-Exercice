@@ -9,7 +9,7 @@ import butterknife.InjectView;
 /**
  * Created by laetitia on 5/6/15.
  */
-public class ActionActivity extends AbstractActivity {
+public class ActionActivity extends ToolbarActivity {
 
     @InjectView(R.id.action1)
     Button mAction1;
@@ -24,5 +24,10 @@ public class ActionActivity extends AbstractActivity {
     @Override
     public int getLayoutResourceId() {
         return R.layout.activity_action;
+    }
+
+    @Override
+    protected int getCharacterLife() {
+        return 0;
     }
 }

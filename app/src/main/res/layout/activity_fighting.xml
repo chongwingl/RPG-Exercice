@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:padding="10dp">
+    android:layout_height="match_parent">
 
+    <include layout="@layout/toolbar_character_info" />
 
     <LinearLayout
         android:id="@+id/action_buttons"
@@ -11,7 +11,8 @@
         android:layout_height="wrap_content"
 
         android:layout_alignParentBottom="true"
-        android:orientation="horizontal">
+        android:orientation="horizontal"
+        android:padding="@dimen/normal_padding">
 
         <Button
             android:id="@+id/abandon"
@@ -42,24 +43,19 @@
     </LinearLayout>
 
     <TextView
-        android:id="@+id/character_life"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:padding="5dp" />
-
-    <TextView
+        android:layout_below="@+id/toolbar"
         android:id="@+id/monster_life"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentRight="true"
-        android:padding="5dp" />
+        android:layout_centerHorizontal="true"
+        android:padding="@dimen/normal_padding" />
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_above="@id/action_buttons"
-        android:layout_below="@id/character_life">
+        android:layout_below="@id/monster_life"
+        android:padding="@dimen/normal_padding">
 
 
         <LinearLayout
@@ -71,8 +67,8 @@
                 android:id="@+id/fight_history"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="gone"
-                android:padding="5dp" />
+                android:padding="5dp"
+                android:visibility="gone" />
 
             <TextView
                 android:id="@+id/fight_description"

@@ -14,7 +14,7 @@ import butterknife.InjectView;
 /**
  * Created by laetitia on 5/6/15.
  */
-public abstract class AbstractShowCategoryItemActivity extends AbstractActivity {
+public abstract class AbstractShowCategoryItemActivity extends ToolbarActivity {
 
     @InjectView(R.id.item_list_pager)
     ViewPager mItemViewPager;

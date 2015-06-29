@@ -1,282 +1,238 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:overScrollMode="never"
-    android:scrollbars="none">
+    android:orientation="vertical">
 
-    <TableLayout
+    <include layout="@layout/toolbar_character_info" />
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:overScrollMode="never"
+        android:scrollbars="none">
 
-        <TableRow
+        <TableLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dip"
-            android:padding="5dip">
+            android:layout_height="wrap_content">
 
-            <TextView
-                style="@style/Base.TextAppearance.AppCompat.Medium"
+            <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="@string/general"
-                android:textStyle="bold" />
-        </TableRow>
+                android:layout_height="wrap_content"
+                android:layout_margin="5dip"
+                android:padding="5dip">
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dip"
-            android:padding="5dip">
+                <TextView
+                    style="@style/Base.TextAppearance.AppCompat.Medium"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/stats"
+                    android:textStyle="bold" />
+            </TableRow>
 
-            <TextView
-                style="@style/Base.TextAppearance.AppCompat.Small"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="@string/life" />
-
-            <TextView
-                android:id="@+id/life"
-                style="@style/Base.TextAppearance.AppCompat.Small"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dip"
-            android:padding="5dip">
-
-            <TextView
-                style="@style/Base.TextAppearance.AppCompat.Small"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="@string/gold" />
-
-            <TextView
-                android:id="@+id/gold"
-                style="@style/Base.TextAppearance.AppCompat.Small"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dip"
-            android:padding="5dip">
-
-            <TextView
-                style="@style/Base.TextAppearance.AppCompat.Medium"
+            <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="@string/stats"
-                android:textStyle="bold" />
-        </TableRow>
+                android:layout_height="wrap_content"
+                android:layout_margin="5dip"
+                android:padding="5dip">
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dip"
-            android:padding="5dip">
+                <TextView
+                    style="@style/Base.TextAppearance.AppCompat.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/strength" />
 
-            <TextView
-                style="@style/Base.TextAppearance.AppCompat.Small"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="@string/strength" />
+                <TextView
+                    android:id="@+id/strength"
+                    style="@style/Base.TextAppearance.AppCompat.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+            </TableRow>
 
-            <TextView
-                android:id="@+id/strength"
-                style="@style/Base.TextAppearance.AppCompat.Small"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dip"
-            android:padding="5dip">
-
-            <TextView
-                style="@style/Base.TextAppearance.AppCompat.Small"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="@string/speed" />
-
-            <TextView
-                android:id="@+id/speed"
-                style="@style/Base.TextAppearance.AppCompat.Small"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dip"
-            android:padding="5dip">
-
-            <TextView
-                style="@style/Base.TextAppearance.AppCompat.Small"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="@string/resistance" />
-
-            <TextView
-                android:id="@+id/resistance"
-                style="@style/Base.TextAppearance.AppCompat.Small"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dip"
-            android:padding="5dip">
-
-            <TextView
-                style="@style/Base.TextAppearance.AppCompat.Small"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="@string/accuracy" />
-
-            <TextView
-                android:id="@+id/accuracy"
-                style="@style/Base.TextAppearance.AppCompat.Small"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent" />
-        </TableRow>
-
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dip"
-            android:padding="5dip">
-
-            <TextView
-                style="@style/Base.TextAppearance.AppCompat.Medium"
+            <TableRow
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:text="@string/equipment"
-                android:textStyle="bold" />
-        </TableRow>
+                android:layout_height="wrap_content"
+                android:layout_margin="5dip"
+                android:padding="5dip">
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dip"
-            android:padding="5dip">
+                <TextView
+                    style="@style/Base.TextAppearance.AppCompat.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/speed" />
 
-            <TextView
-                style="@style/Base.TextAppearance.AppCompat.Small"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="@string/head" />
+                <TextView
+                    android:id="@+id/speed"
+                    style="@style/Base.TextAppearance.AppCompat.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+            </TableRow>
 
-            <TextView
-                android:id="@+id/head"
-                style="@style/Base.TextAppearance.AppCompat.Small"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent" />
-        </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dip"
+                android:padding="5dip">
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dip"
-            android:padding="5dip">
+                <TextView
+                    style="@style/Base.TextAppearance.AppCompat.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/resistance" />
 
-            <TextView
-                style="@style/Base.TextAppearance.AppCompat.Small"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="@string/body" />
+                <TextView
+                    android:id="@+id/resistance"
+                    style="@style/Base.TextAppearance.AppCompat.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+            </TableRow>
 
-            <TextView
-                android:id="@+id/body"
-                style="@style/Base.TextAppearance.AppCompat.Small"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent" />
-        </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dip"
+                android:padding="5dip">
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dip"
-            android:padding="5dip">
+                <TextView
+                    style="@style/Base.TextAppearance.AppCompat.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/accuracy" />
 
-            <TextView
-                style="@style/Base.TextAppearance.AppCompat.Small"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="@string/legs" />
+                <TextView
+                    android:id="@+id/accuracy"
+                    style="@style/Base.TextAppearance.AppCompat.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+            </TableRow>
 
-            <TextView
-                android:id="@+id/legs"
-                style="@style/Base.TextAppearance.AppCompat.Small"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent" />
-        </TableRow>
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dip"
+                android:padding="5dip">
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dip"
-            android:padding="5dip">
+                <TextView
+                    style="@style/Base.TextAppearance.AppCompat.Medium"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:text="@string/equipment"
+                    android:textStyle="bold" />
+            </TableRow>
 
-            <TextView
-                style="@style/Base.TextAppearance.AppCompat.Small"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="@string/foot" />
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dip"
+                android:padding="5dip">
 
-            <TextView
-                android:id="@+id/foot"
-                style="@style/Base.TextAppearance.AppCompat.Small"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent" />
-        </TableRow>
+                <TextView
+                    style="@style/Base.TextAppearance.AppCompat.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/head" />
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dip"
-            android:padding="5dip">
+                <TextView
+                    android:id="@+id/head"
+                    style="@style/Base.TextAppearance.AppCompat.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+            </TableRow>
 
-            <TextView
-                style="@style/Base.TextAppearance.AppCompat.Small"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="@string/left_hand" />
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dip"
+                android:padding="5dip">
 
-            <TextView
-                android:id="@+id/left_hand"
-                style="@style/Base.TextAppearance.AppCompat.Small"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent" />
-        </TableRow>
+                <TextView
+                    style="@style/Base.TextAppearance.AppCompat.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/body" />
 
-        <TableRow
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dip"
-            android:padding="5dip">
+                <TextView
+                    android:id="@+id/body"
+                    style="@style/Base.TextAppearance.AppCompat.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+            </TableRow>
 
-            <TextView
-                style="@style/Base.TextAppearance.AppCompat.Small"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent"
-                android:text="@string/right_hand" />
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dip"
+                android:padding="5dip">
 
-            <TextView
-                android:id="@+id/right_hand"
-                style="@style/Base.TextAppearance.AppCompat.Small"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent" />
-        </TableRow>
-    </TableLayout>
-</ScrollView>
+                <TextView
+                    style="@style/Base.TextAppearance.AppCompat.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/legs" />
+
+                <TextView
+                    android:id="@+id/legs"
+                    style="@style/Base.TextAppearance.AppCompat.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dip"
+                android:padding="5dip">
+
+                <TextView
+                    style="@style/Base.TextAppearance.AppCompat.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/foot" />
+
+                <TextView
+                    android:id="@+id/foot"
+                    style="@style/Base.TextAppearance.AppCompat.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dip"
+                android:padding="5dip">
+
+                <TextView
+                    style="@style/Base.TextAppearance.AppCompat.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/left_hand" />
+
+                <TextView
+                    android:id="@+id/left_hand"
+                    style="@style/Base.TextAppearance.AppCompat.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+            </TableRow>
+
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dip"
+                android:padding="5dip">
+
+                <TextView
+                    style="@style/Base.TextAppearance.AppCompat.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent"
+                    android:text="@string/right_hand" />
+
+                <TextView
+                    android:id="@+id/right_hand"
+                    style="@style/Base.TextAppearance.AppCompat.Small"
+                    android:layout_width="wrap_content"
+                    android:layout_height="match_parent" />
+            </TableRow>
+        </TableLayout>
+    </ScrollView>
+</LinearLayout>

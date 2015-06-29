@@ -4,7 +4,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.util.Log;
-import android.widget.TextView;
 
 import com.project.rpg.R;
 import com.project.rpg.fragments.CharacterCreationFragment;
@@ -14,9 +13,7 @@ import com.project.rpg.utils.CharacterUtils;
 
 import java.io.IOException;
 
-import butterknife.InjectView;
-
-public abstract class AbstractCharacterActivity extends AbstractActivity implements OnFragmentFinished {
+public abstract class AbstractCharacterActivity extends ToolbarActivity implements OnFragmentFinished {
 
     private final static String CHARACTER_CREATION = "CHARACTER_CREATION";
 
@@ -25,18 +22,11 @@ public abstract class AbstractCharacterActivity extends AbstractActivity impleme
     protected final FragmentManager mFragmentManager = getSupportFragmentManager();
     private Fragment mCreationFragment = null;
 
-    @InjectView(R.id.character_title)
-    TextView mCharacterTitle;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        AbstractCharacter character = getApp().getCharacter();
-
-        if (character != null) {
-            mCharacterTitle.setText(character.getName());
-        }
+        AbstractCharacter character = getCharacter();
 
         if (savedInstanceState == null && character == null) {
               mCreationFragment = new CharacterCreationFragment();
@@ -69,7 +59,8 @@ public abstract class AbstractCharacterActivity extends AbstractActivity impleme
     @Override
     public void onFragmentCreationFinished(String name) {
         mIsCreating = false;
-        mCharacterTitle.setText(name);
+        AbstractCharacter character = getCharacter();
+        setCharacterInfo(name, 100, character.getGold());
         mFragmentManager.beginTransaction()
                 .remove(mCreationFragment)
                 .commit();

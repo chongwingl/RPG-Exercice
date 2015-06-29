@@ -52,7 +52,7 @@ public class FighterActivity extends AbstractCharacterActivity {
 
     @OnClick(R.id.character_button_bag)
     void onBagClick(){
-        startActivity(new BagIntent(this));
+        startActivity(new BagIntent(this, FighterBagActivity.class));
     }
 
     @OnClick(R.id.character_button_store)
@@ -63,7 +63,7 @@ public class FighterActivity extends AbstractCharacterActivity {
     @Override
     public void onFragmentCreationFinished(String name) {
         super.onFragmentCreationFinished(name);
-        AbstractFighter fighter = (AbstractFighter) getApp().getCharacter();
+        AbstractFighter fighter = (AbstractFighter) getCharacter();
         fighter.setBodyArmor(new BasicArmor(this));
         fighter.setFootArmor(new BasicBoot(this));
         fighter.setHeadArmor(new BasicHelmet(this));
@@ -71,4 +71,10 @@ public class FighterActivity extends AbstractCharacterActivity {
         fighter.setLeftWeapon(new BasicShield(this));
         fighter.setRightWeapon(new BasicSword(this));
     }
+
+    @Override
+    protected int getCharacterLife() {
+        return ((AbstractFighter)getCharacter()).getLife();
+    }
+
 }

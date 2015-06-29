@@ -1,8 +1,11 @@
 package com.project.rpg.activities;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.util.AttributeSet;
 import android.util.Log;
+import android.view.View;
 
 import com.project.rpg.core.RPGApplication;
 import com.project.rpg.models.characters.AbstractCharacter;
@@ -33,7 +36,7 @@ public abstract class AbstractActivity extends ActionBarActivity {
     @Override
     protected void onStop() {
         super.onStop();
-        AbstractCharacter character = getApp().getCharacter();
+        AbstractCharacter character = getCharacter();
         if (character != null) {
             try {
                 CharacterUtils.saveCharacter(this, character);
@@ -41,5 +44,9 @@ public abstract class AbstractActivity extends ActionBarActivity {
                 Log.e(getClass().getSimpleName(), e.getMessage());
             }
         }
+    }
+
+    protected AbstractCharacter getCharacter() {
+        return getApp().getCharacter();
     }
 }

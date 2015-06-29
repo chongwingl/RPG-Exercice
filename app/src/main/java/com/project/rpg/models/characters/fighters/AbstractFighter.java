@@ -37,6 +37,7 @@ public abstract class AbstractFighter extends AbstractCharacter {
         mStat.getLifePoints().removeLifePoints(points);
     }
 
+    // TODO create a listener to inform every time the life and gold changes
     public void addLife(int points) {
         mStat.getLifePoints().addLifePoints(points);
     }

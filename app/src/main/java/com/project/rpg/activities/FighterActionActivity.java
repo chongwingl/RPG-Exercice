@@ -84,4 +84,9 @@ public class FighterActionActivity extends ActionActivity {
             super.onBackPressed();
         }
     }
+
+    @Override
+    protected int getCharacterLife() {
+        return ((AbstractFighter)getCharacter()).getLife();
+    }
 }

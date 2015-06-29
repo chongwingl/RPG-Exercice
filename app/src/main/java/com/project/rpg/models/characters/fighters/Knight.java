@@ -17,15 +17,17 @@ public class Knight extends AbstractFighter {
     @Override
 	public int attack(AbstractMonster monster) throws AttackMissedException {
         int random = RandomGenerator.getRandomInteger(0, Stat.MAX_STAT);
-        int damages;
+        int damages = 0;
         if (random < mStat.getAccuracy()) {
             int strength = mStat.getStrength();
             if (strength > monster.getResistance()) {
                 damages = strength;
             } else {
                 int diff = monster.getResistance() - strength;
-                int random2 = RandomGenerator.getRandomInteger(0, diff);
-                damages = strength - random2;
+                if (diff > 0) {
+                    int random2 = RandomGenerator.getRandomInteger(0, diff);
+                    damages = strength - random2;
+                }
             }
             return damages;
         } else {

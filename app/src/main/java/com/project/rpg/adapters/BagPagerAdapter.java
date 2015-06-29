@@ -4,7 +4,7 @@ import android.app.Activity;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 
-import com.project.rpg.activities.BagActivity;
+import com.project.rpg.activities.AbstractBagActivity;
 import com.project.rpg.core.RPGApplication;
 import com.project.rpg.fragments.BagItemListFragment;
 import com.project.rpg.models.Bag;
@@ -41,7 +41,7 @@ public class BagPagerAdapter extends AbstractItemCategoryPagerAdapter {
         BagItemListFragment fragment =  BagItemListFragment.newInstance(
                 ItemType.getItemTypeByName(mActivity, mTitles[position])
         );
-        fragment.setListener((BagActivity)mActivity);
+        fragment.setListener((AbstractBagActivity)mActivity);
         return fragment;
     }
 }

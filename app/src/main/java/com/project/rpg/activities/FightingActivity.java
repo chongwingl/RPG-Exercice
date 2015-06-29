@@ -22,19 +22,13 @@ import butterknife.OnClick;
 /**
  * Created by laetitia on 5/14/15.
  */
-public class FightingActivity extends AbstractActivity {
-
-    @InjectView(R.id.character_life)
-    TextView mCharacterLife;
+public class FightingActivity extends ToolbarActivity {
 
     @InjectView(R.id.monster_life)
     TextView mMonsterLife;
 
     @InjectView(R.id.fight_history)
     TextView mHistory;
-
-    @InjectView(R.id.fight_description)
-    TextView mDescription;
 
     private AbstractMonster mMonster;
     private AbstractFighter mCharacter;
@@ -47,7 +41,6 @@ public class FightingActivity extends AbstractActivity {
         mMonster = intent.getMonster();
         mCharacter = (AbstractFighter) getApp().getCharacter();
 
-        mCharacterLife.setText(getString(R.string.current_life) + " " + mCharacter.getLife());
         mMonsterLife.setText(mMonster.getLife() + " " + getString(R.string.monster_current_life));
     }
 
@@ -104,7 +97,7 @@ public class FightingActivity extends AbstractActivity {
 
     @OnClick(R.id.open_bag)
     void onOpenBag() {
-        startActivity(new BagIntent(this));
+        startActivity(new BagIntent(this, FighterBagActivity.class));
     }
 
     @OnClick(R.id.abandon)
@@ -134,7 +127,7 @@ public class FightingActivity extends AbstractActivity {
                     mMonster.getName() + getString(R.string.attack_success_monster1),
                     getString(R.string.attack_success_monster2),
                     damage);
-            mCharacterLife.setText(getString(R.string.current_life) + " " + mCharacter.getLife());
+            setCharacterLife(mCharacter.getLife());
         }
         mHistory.setText(text);
     }
@@ -173,7 +166,7 @@ public class FightingActivity extends AbstractActivity {
                     getString(R.string.attack_surprise_monster3),
                     damage
             );
-            mCharacterLife.setText(getString(R.string.current_life) + " " + mCharacter.getLife());
+            setCharacterLife(mCharacter.getLife());
         }
         mHistory.setText(text);
     }
@@ -202,6 +195,11 @@ public class FightingActivity extends AbstractActivity {
                 R.string.ok, -1);
 
         dialog.show(getSupportFragmentManager());
+    }
+
+    @Override
+    protected int getCharacterLife() {
+        return ((AbstractFighter)getCharacter()).getLife();
     }
 
 }

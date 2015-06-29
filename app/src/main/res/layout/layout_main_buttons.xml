@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="@dimen/xxlarge_padding">
+
+    <Button
+        android:id="@+id/character_button_action"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="3dp"
+        android:background="@drawable/button_shadow"
+        android:text="@string/character_button_fight" />
+
+    <Button
+        android:id="@+id/character_button_state"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="3dp"
+        android:background="@drawable/button_shadow"
+        android:text="@string/character_button_state" />
+
+
+    <Button
+        android:id="@+id/character_button_bag"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="3dp"
+        android:background="@drawable/button_shadow"
+        android:text="@string/character_button_bag" />
+
+    <Button
+        android:id="@+id/character_button_store"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="3dp"
+        android:background="@drawable/button_shadow"
+        android:text="@string/character_button_store" />
+</LinearLayout>

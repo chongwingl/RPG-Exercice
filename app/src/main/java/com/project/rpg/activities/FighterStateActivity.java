@@ -57,9 +57,4 @@ public class FighterStateActivity extends StateActivity {
         }
 
     }
-
-    @Override
-    protected int getCharacterLife() {
-        return ((AbstractFighter)getCharacter()).getLife();
-    }
 }

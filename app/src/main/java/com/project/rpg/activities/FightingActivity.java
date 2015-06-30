@@ -41,7 +41,7 @@ public class FightingActivity extends ToolbarActivity {
         mMonster = intent.getMonster();
         mCharacter = (AbstractFighter) getApp().getCharacter();
 
-        mMonsterLife.setText(mMonster.getLife() + " " + getString(R.string.monster_current_life));
+        mMonsterLife.setText(getString(R.string.monster_current_life) + " " +  mMonster.getLife());
     }
 
     @OnClick(R.id.attack)
@@ -97,7 +97,7 @@ public class FightingActivity extends ToolbarActivity {
 
     @OnClick(R.id.open_bag)
     void onOpenBag() {
-        startActivity(new BagIntent(this, FighterBagActivity.class));
+        startActivity(new BagIntent(this));
     }
 
     @OnClick(R.id.abandon)
@@ -127,7 +127,6 @@ public class FightingActivity extends ToolbarActivity {
                     mMonster.getName() + getString(R.string.attack_success_monster1),
                     getString(R.string.attack_success_monster2),
                     damage);
-            setCharacterLife(mCharacter.getLife());
         }
         mHistory.setText(text);
     }
@@ -166,7 +165,6 @@ public class FightingActivity extends ToolbarActivity {
                     getString(R.string.attack_surprise_monster3),
                     damage
             );
-            setCharacterLife(mCharacter.getLife());
         }
         mHistory.setText(text);
     }
@@ -193,13 +191,16 @@ public class FightingActivity extends ToolbarActivity {
         BaseDialogFragment dialog = BaseDialogFragment.newInstance(R.string.character_victory,
                 R.string.monster_cannot_fight,
                 R.string.ok, -1);
-
+        dialog.setPositiveListener(new BaseDialogFragment.DialogButtonsListener() {
+            @Override
+            public void onDialogButtonClick(DialogFragment dialog, int buttonTitle) {
+                CharacterIntent intent = new CharacterIntent(FightingActivity.this, mCharacter.getCharacterType());
+                intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                startActivity(intent);
+                FightingActivity.this.finish();
+            }
+        });
         dialog.show(getSupportFragmentManager());
-    }
-
-    @Override
-    protected int getCharacterLife() {
-        return ((AbstractFighter)getCharacter()).getLife();
     }
 
 }

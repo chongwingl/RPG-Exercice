@@ -1,5 +1,6 @@
 package com.project.rpg.models.monsters;
 
+import com.project.rpg.R;
 import com.project.rpg.exceptions.AttackMissedException;
 import com.project.rpg.exceptions.NoMoreLifeException;
 import com.project.rpg.models.Stat;
@@ -40,6 +41,16 @@ public abstract class AbstractMonster extends AbstractCharacter {
 
     public void removeLife(int points) throws NoMoreLifeException {
         mStat.getLifePoints().removeLifePoints(points);
+    }
+
+    @Override
+    public int getSpecialStat() {
+        return getLife();
+    }
+
+    @Override
+    public int getSpecialStatIconId() {
+        return R.drawable.heart;
     }
 
     public int getStrength() {

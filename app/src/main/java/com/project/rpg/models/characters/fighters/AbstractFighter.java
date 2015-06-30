@@ -1,15 +1,19 @@
 package com.project.rpg.models.characters.fighters;
 
+import com.project.rpg.R;
 import com.project.rpg.exceptions.AttackMissedException;
 import com.project.rpg.exceptions.NoMoreLifeException;
 import com.project.rpg.models.Equipment;
 import com.project.rpg.models.Stat;
 import com.project.rpg.models.characters.AbstractCharacter;
 import com.project.rpg.models.enumerations.CharacterType;
+import com.project.rpg.models.events.UpdateSpecialStatEvent;
 import com.project.rpg.models.items.armor.AbstractArmor;
 import com.project.rpg.models.items.weapons.AbstractWeapon;
 import com.project.rpg.models.monsters.AbstractMonster;
 import com.project.rpg.utils.StatGenerator;
+
+import de.greenrobot.event.EventBus;
 
 public abstract class AbstractFighter extends AbstractCharacter {
 
@@ -35,15 +39,27 @@ public abstract class AbstractFighter extends AbstractCharacter {
 
     public void removeLife(int points) throws NoMoreLifeException {
         mStat.getLifePoints().removeLifePoints(points);
+        EventBus.getDefault().post(new UpdateSpecialStatEvent(getLife()));
     }
 
     // TODO create a listener to inform every time the life and gold changes
     public void addLife(int points) {
         mStat.getLifePoints().addLifePoints(points);
+        EventBus.getDefault().post(new UpdateSpecialStatEvent(getLife()));
     }
 
     public Stat getStat() {
         return mStat;
+    }
+
+    @Override
+    public int getSpecialStat() {
+        return getLife();
+    }
+
+    @Override
+    public int getSpecialStatIconId() {
+        return R.drawable.heart;
     }
 
     public abstract int attack(AbstractMonster monster) throws AttackMissedException;

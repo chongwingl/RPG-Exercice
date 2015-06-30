@@ -1,4 +1,4 @@
-package com.project.rpg.models.enumerations.items;
+package com.project.rpg.models.enumerations;
 
 import android.content.Context;
 

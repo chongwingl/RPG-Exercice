@@ -2,8 +2,8 @@ package com.project.rpg.models.items.weapons;
 
 import com.project.rpg.models.characters.AbstractCharacter;
 import com.project.rpg.models.enumerations.Accuracy;
+import com.project.rpg.models.enumerations.ItemType;
 import com.project.rpg.models.enumerations.Strength;
-import com.project.rpg.models.enumerations.items.ItemType;
 import com.project.rpg.models.items.AbstractItem;
 import com.project.rpg.models.powers.AbstractPower;
 

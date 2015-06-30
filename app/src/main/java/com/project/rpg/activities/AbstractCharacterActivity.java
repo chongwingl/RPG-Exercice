@@ -60,7 +60,9 @@ public abstract class AbstractCharacterActivity extends ToolbarActivity implemen
     public void onFragmentCreationFinished(String name) {
         mIsCreating = false;
         AbstractCharacter character = getCharacter();
-        setCharacterInfo(name, 100, character.getGold());
+        setCharacterInfo(
+                name, character.getGold(), character.getSpecialStat(), character.getSpecialStatIconId()
+        );
         mFragmentManager.beginTransaction()
                 .remove(mCreationFragment)
                 .commit();

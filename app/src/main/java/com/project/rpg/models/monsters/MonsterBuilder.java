@@ -13,11 +13,11 @@ import java.util.List;
  */
 public final class MonsterBuilder {
 
-    private final static int WEAK_MIN_LIFE_PERCENTAGE = 0;
-    private final static int WEAK_MAX_LIFE_PERCENTAGE = 10;
-    private final static int WEAK_ACCURACY_PERCENTAGE = 10;
-    private final static int WEAK_SPEED_PERCENTAGE = 10;
-    private final static int WEAK_RESISTANCE_PERCENTAGE = 10;
+    private final static int WEAK_MIN_LIFE_PERCENTAGE = 20;
+    private final static int WEAK_MAX_LIFE_PERCENTAGE = 30;
+    private final static int WEAK_ACCURACY_PERCENTAGE = 20;
+    private final static int WEAK_SPEED_PERCENTAGE = 20;
+    private final static int WEAK_RESISTANCE_PERCENTAGE = 20;
 
     private final static int NORMAL_STRENGTH_PERCENTAGE = 20;
     private final static int NORMAL_MIN_LIFE_PERCENTAGE = 10;
@@ -123,15 +123,17 @@ public final class MonsterBuilder {
 
     // Reminder
     // weak monster : strength - strength/2 > monster strength > strength - strength/3
-    // weak monster : monster life = life - 10  % max
-    // weak monster : monster accuracy = accuracy - 10 %
-    // weak monster : monster speed = speed - 10 %
-    // weak monster : monster resistance = resistance - 10 %
+    // weak monster : monster life = life - 20  % max - 10 % min
+    // weak monster : monster accuracy = accuracy - 20 %
+    // weak monster : monster speed = speed - 20 %
+    // weak monster : monster resistance = resistance - 20 %
+
     // normal monster : strength - 20 % > monster strength > strength + 20 %
     // normal monster : monster life = life + 20 % max + 10 % min
     // normal monster : monster accuracy = accuracy +- 10 %
     // normal monster : monster speed = speed +- 10 %
     // normal monster : monster resistance = resistance +- 10 %
+
     // strong monster : strength + strength / 3 > monster strength > strength + strength / 2
     // strong monster : monster life = life + 50 % max + 30 % min
     // strong monster : monster accuracy = accuracy + 30 %

@@ -3,7 +3,7 @@ package com.project.rpg.models.stores;
 import android.content.Context;
 import android.util.Log;
 
-import com.project.rpg.models.enumerations.items.ItemType;
+import com.project.rpg.models.enumerations.ItemType;
 import com.project.rpg.models.items.AbstractItem;
 import com.project.rpg.utils.ItemUtils;
 

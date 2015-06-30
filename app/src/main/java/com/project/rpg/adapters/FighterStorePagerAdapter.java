@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentManager;
 
 import com.project.rpg.activities.AbstractStoreActivity;
 import com.project.rpg.fragments.StoreItemListFragment;
-import com.project.rpg.models.enumerations.items.ItemType;
+import com.project.rpg.models.enumerations.ItemType;
 import com.project.rpg.models.stores.FighterStoreBuilder;
 
 /**

@@ -25,9 +25,4 @@ public class ActionActivity extends ToolbarActivity {
     public int getLayoutResourceId() {
         return R.layout.activity_action;
     }
-
-    @Override
-    protected int getCharacterLife() {
-        return 0;
-    }
 }

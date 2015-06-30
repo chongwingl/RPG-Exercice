@@ -1,11 +1,8 @@
 package com.project.rpg.activities;
 
-import android.content.Context;
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
-import android.util.AttributeSet;
 import android.util.Log;
-import android.view.View;
 
 import com.project.rpg.core.RPGApplication;
 import com.project.rpg.models.characters.AbstractCharacter;

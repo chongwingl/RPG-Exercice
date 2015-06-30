@@ -1,8 +1,9 @@
 package com.project.rpg.utils;
 
 import android.content.Context;
+import android.util.Log;
 
-import com.project.rpg.models.enumerations.items.ItemType;
+import com.project.rpg.models.enumerations.ItemType;
 import com.project.rpg.models.items.AbstractItem;
 
 import org.json.JSONArray;
@@ -10,7 +11,6 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +18,8 @@ import java.util.List;
  * Created by laetitia on 5/5/15.
  */
 public final class ItemUtils {
+
+    private static final String TAG = "ItemUtils";
 
     private static final String ITEM_JSON = "items";
     private static final String HEALING_JSON = "healing";
@@ -49,7 +51,7 @@ public final class ItemUtils {
             loadMaterialItems(items.getJSONArray(MATERIAL_JSON));
             loadArmorItems(items.getJSONArray(ARMOR_JSON));
         } catch (JSONException | NullPointerException e) {
-            e.printStackTrace();
+            Log.e(TAG, e.getMessage());
         }
     }
 
@@ -61,7 +63,7 @@ public final class ItemUtils {
                 try {
                     mWeaponClasses.add(Class.forName(json.getString(i)));
                 } catch (ClassNotFoundException e) {
-                    e.printStackTrace();
+                    Log.e(TAG, e.getMessage());
                 }
             }
         }
@@ -80,7 +82,7 @@ public final class ItemUtils {
                 try {
                     mHealingClasses.add(Class.forName(json.getString(i)));
                 } catch (ClassNotFoundException e) {
-                    e.printStackTrace();
+                    Log.e(TAG, e.getMessage());
                 }
             }
         }
@@ -99,7 +101,7 @@ public final class ItemUtils {
                 try {
                     mArmorClasses.add(Class.forName(json.getString(i)));
                 } catch (ClassNotFoundException e) {
-                    e.printStackTrace();
+                    Log.e(TAG, e.getMessage());
                 }
             }
         }
@@ -118,7 +120,7 @@ public final class ItemUtils {
                 try {
                     mMaterialClasses.add(Class.forName(json.getString(i)));
                 } catch (ClassNotFoundException e) {
-                    e.printStackTrace();
+                    Log.e(TAG, e.getMessage());
                 }
             }
         }
@@ -135,7 +137,8 @@ public final class ItemUtils {
             AbstractItem abstractItem = (AbstractItem) constructor.newInstance(context);
             return abstractItem.getName();
 
-        } catch (NoSuchMethodException | IllegalAccessException | InstantiationException | InvocationTargetException e) {
+        } catch (Exception e) {
+            Log.e(TAG, e.getMessage());
             return null;
         }
     }
@@ -145,7 +148,8 @@ public final class ItemUtils {
             Constructor<?> constructor = clazz.getConstructor(Context.class);
             return (AbstractItem) constructor.newInstance(context);
 
-        } catch (NoSuchMethodException | IllegalAccessException | InstantiationException | InvocationTargetException e) {
+        } catch (Exception e) {
+            Log.e(TAG, e.getMessage());
             return null;
         }
     }

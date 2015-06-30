@@ -10,7 +10,7 @@ import android.widget.AdapterView;
 import com.project.rpg.adapters.BagItemListAdapter;
 import com.project.rpg.core.RPGApplication;
 import com.project.rpg.models.characters.AbstractCharacter;
-import com.project.rpg.models.enumerations.items.ItemType;
+import com.project.rpg.models.enumerations.ItemType;
 import com.project.rpg.models.items.AbstractItem;
 
 import java.util.HashMap;

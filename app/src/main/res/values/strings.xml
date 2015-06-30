@@ -53,7 +53,7 @@
     <string name="open_bag">Ouvrir le sac</string>
     <string name="abandon">Abandonner</string>
     <string name="current_life">My life :</string>
-    <string name="monster_current_life">: Monster life</string>
+    <string name="monster_current_life">Monster life :</string>
     <string name="fighting_instruction">Que voulez vous faire ?</string>
 
     <string name="attack_missed_exception">L\'attaque a raté…</string>

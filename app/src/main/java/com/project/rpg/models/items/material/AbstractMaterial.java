@@ -1,8 +1,8 @@
 package com.project.rpg.models.items.material;
 
 import com.project.rpg.models.characters.AbstractCharacter;
+import com.project.rpg.models.enumerations.ItemType;
 import com.project.rpg.models.enumerations.Probability;
-import com.project.rpg.models.enumerations.items.ItemType;
 import com.project.rpg.models.items.AbstractItem;
 
 

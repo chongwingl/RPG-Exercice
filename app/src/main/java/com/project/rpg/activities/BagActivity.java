@@ -18,7 +18,7 @@ import butterknife.InjectView;
 /**
  * Created by laetitia on 5/6/15.
  */
-public abstract class AbstractBagActivity extends AbstractShowCategoryItemActivity
+public class BagActivity extends AbstractShowCategoryItemActivity
         implements BagItemListFragment.OnItemSelectedListener {
 
     @InjectView(R.id.empty)
@@ -50,6 +50,8 @@ public abstract class AbstractBagActivity extends AbstractShowCategoryItemActivi
                             getCharacter().removeItemFromBag(item);
                         } catch (NoItemInBagException e) {
                             mItemViewPager.setAdapter(null);
+                            mSlidingTabLayout.setViewPager(null);
+                            mItemCategoryAdapter.reset();
                             setEmptyViewVisibility();
                         }
 

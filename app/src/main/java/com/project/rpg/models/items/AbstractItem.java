@@ -1,8 +1,8 @@
 package com.project.rpg.models.items;
 
 import com.project.rpg.models.characters.AbstractCharacter;
+import com.project.rpg.models.enumerations.ItemType;
 import com.project.rpg.models.enumerations.Weight;
-import com.project.rpg.models.enumerations.items.ItemType;
 
 import java.io.Serializable;
 

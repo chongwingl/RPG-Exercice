@@ -29,4 +29,8 @@ public abstract class AbstractItemCategoryPagerAdapter extends FragmentPagerAdap
        return mTitles[position];
     }
 
+    public void reset() {
+        mTitles = null;
+    }
+
 }

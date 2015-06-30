@@ -2,7 +2,7 @@ package com.project.rpg.models.items.enhancement.healing;
 
 import com.project.rpg.models.characters.AbstractCharacter;
 import com.project.rpg.models.characters.fighters.AbstractFighter;
-import com.project.rpg.models.enumerations.items.ItemType;
+import com.project.rpg.models.enumerations.ItemType;
 import com.project.rpg.models.items.AbstractItem;
 import com.project.rpg.models.powers.Life;
 

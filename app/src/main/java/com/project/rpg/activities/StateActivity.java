@@ -3,7 +3,6 @@ package com.project.rpg.activities;
 import android.widget.TextView;
 
 import com.project.rpg.R;
-import com.project.rpg.models.characters.fighters.AbstractFighter;
 
 import butterknife.InjectView;
 
@@ -46,10 +45,5 @@ public class StateActivity extends ToolbarActivity {
     @Override
     public int getLayoutResourceId() {
         return R.layout.activity_state;
-    }
-
-    @Override
-    protected int getCharacterLife() {
-        return 0;
     }
 }

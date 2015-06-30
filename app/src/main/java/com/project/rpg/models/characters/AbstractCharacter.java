@@ -4,10 +4,12 @@ import com.project.rpg.exceptions.NoItemInBagException;
 import com.project.rpg.exceptions.NotEnoughGoldException;
 import com.project.rpg.models.Bag;
 import com.project.rpg.models.enumerations.CharacterType;
-import com.project.rpg.models.enumerations.items.ItemType;
+import com.project.rpg.models.events.UpdateGoldEvent;
 import com.project.rpg.models.items.AbstractItem;
 
 import java.io.Serializable;
+
+import de.greenrobot.event.EventBus;
 
 public abstract class AbstractCharacter
         implements Serializable {
@@ -43,6 +45,7 @@ public abstract class AbstractCharacter
 
     public void addGold(int gold) {
         this.mGold += gold;
+        EventBus.getDefault().post(new UpdateGoldEvent(getGold()));
     }
 
     public void removeGold(int gold) throws NotEnoughGoldException {
@@ -50,6 +53,7 @@ public abstract class AbstractCharacter
             throw new NotEnoughGoldException();
         }
         this.mGold -= gold;
+        EventBus.getDefault().post(new UpdateGoldEvent(getGold()));
     }
 
     public void addToBag(AbstractItem item) {
@@ -63,5 +67,9 @@ public abstract class AbstractCharacter
     public void removeItemFromBag(AbstractItem item) throws NoItemInBagException{
         mBag.removeItem(item);
     }
+
+    public abstract int getSpecialStat();
+
+    public abstract int getSpecialStatIconId();
 
 }

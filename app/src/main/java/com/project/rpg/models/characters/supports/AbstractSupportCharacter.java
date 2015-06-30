@@ -12,4 +12,14 @@ public abstract class AbstractSupportCharacter extends AbstractCharacter {
     public AbstractSupportCharacter(CharacterType characterType, String name) {
 		super(characterType, name, BAG_SIZE_MAX);
 	}
+
+	@Override
+	public int getSpecialStat() {
+		return 0;
+	}
+
+	@Override
+	public int getSpecialStatIconId() {
+		return 0;
+	}
 }

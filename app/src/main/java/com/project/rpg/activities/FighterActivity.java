@@ -28,9 +28,9 @@ public class FighterActivity extends AbstractCharacterActivity {
     Button mActionButton;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        AbstractFighter fighter = (AbstractFighter) getApp().getCharacter();
+    protected void onResume() {
+        super.onResume();
+        AbstractFighter fighter = (AbstractFighter) getCharacter();
         if (fighter != null) {
             if (fighter.getLife() < 1) {
                 mActionButton.setEnabled(false);
@@ -41,22 +41,22 @@ public class FighterActivity extends AbstractCharacterActivity {
     }
 
     @OnClick(R.id.character_button_action)
-    void onActionClick(){
+    void onActionClick() {
         startActivity(new ActionIntent(this, FighterActionActivity.class));
     }
 
     @OnClick(R.id.character_button_state)
-    void onStateClick(){
+    void onStateClick() {
         startActivity(new StateIntent(this, FighterStateActivity.class));
     }
 
     @OnClick(R.id.character_button_bag)
-    void onBagClick(){
-        startActivity(new BagIntent(this, FighterBagActivity.class));
+    void onBagClick() {
+        startActivity(new BagIntent(this));
     }
 
     @OnClick(R.id.character_button_store)
-    void onStoreClick(){
+    void onStoreClick() {
         startActivity(new StoreIntent(this, FighterStoreActivity.class));
     }
 
@@ -71,10 +71,4 @@ public class FighterActivity extends AbstractCharacterActivity {
         fighter.setLeftWeapon(new BasicShield(this));
         fighter.setRightWeapon(new BasicSword(this));
     }
-
-    @Override
-    protected int getCharacterLife() {
-        return ((AbstractFighter)getCharacter()).getLife();
-    }
-
 }

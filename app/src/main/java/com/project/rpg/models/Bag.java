@@ -3,7 +3,7 @@ package com.project.rpg.models;
 import android.content.Context;
 
 import com.project.rpg.exceptions.NoItemInBagException;
-import com.project.rpg.models.enumerations.items.ItemType;
+import com.project.rpg.models.enumerations.ItemType;
 import com.project.rpg.models.items.AbstractItem;
 
 import java.io.Serializable;

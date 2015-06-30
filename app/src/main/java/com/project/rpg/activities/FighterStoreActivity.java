@@ -19,9 +19,4 @@ public class FighterStoreActivity extends AbstractStoreActivity {
     protected AbstractItemCategoryPagerAdapter getAdapter() {
         return new FighterStorePagerAdapter(getSupportFragmentManager(), this, (FighterStoreBuilder) builder);
     }
-
-    @Override
-    protected int getCharacterLife() {
-        return 0;
-    }
 }

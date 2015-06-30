@@ -1,6 +1,7 @@
 package com.project.rpg.utils;
 
 import android.content.Context;
+import android.util.Log;
 
 import com.project.rpg.models.monsters.AbstractMonster;
 
@@ -8,7 +9,6 @@ import org.json.JSONArray;
 import org.json.JSONException;
 
 import java.lang.reflect.Constructor;
-import java.lang.reflect.InvocationTargetException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -20,6 +20,8 @@ public final class MonsterUtils {
     private static final String MONSTER_JSON = "monsters";
 
     private static List<Class<?>> monstersClass;
+
+    private static final String TAG = "MonsterUtils";
 
     public static void loadMonsters(Context context) {
         try {
@@ -47,7 +49,8 @@ public final class MonsterUtils {
             Constructor<?> constructor = clazz.getConstructor(Context.class);
             return (AbstractMonster) constructor.newInstance(context);
 
-        } catch (NoSuchMethodException | IllegalAccessException | InstantiationException | InvocationTargetException e) {
+        } catch (Exception e) {
+            Log.e(TAG, e.getMessage());
             return null;
         }
     }

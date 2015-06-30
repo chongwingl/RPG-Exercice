@@ -9,6 +9,7 @@
     <string name="character_creation">Création du personnage</string>
     <string name="name">Nom :</string>
     <string name="ok">OK</string>
+    <string name="cancel">Annuler</string>
 
     <string name="general">Général</string>
     <string name="life">Vie</string>
@@ -70,10 +71,10 @@
     <string name="attack_surprise_character3">"lui infligez "</string>
     <string name="attack_surprise_monster2">" vous devance "</string>
     <string name="attack_surprise_monster3">" vous inflige "</string>
-    <string name="character_victory">Vous avez gagne !</string>
+    <string name="character_victory">Vous avez gagné !</string>
     <string name="monster_cannot_fight">Votre ennemi ne peut plus combattre !</string>
-    <string name="use_item_dialog_title">Vous allez utiliser une potion</string>
-    <string name="use_item_dialog_message">Elle va vous rendre 50 pts de vie</string>
+    <string name="use_potion_dialog_title">Vous allez utiliser une potion</string>
+    <string name="use_potion_dialog_message">Elle va vous rendre %1$d pts de vie</string>
     <string name="no_item_in_bag_exception">No more item in bag</string>
 
 </resources>

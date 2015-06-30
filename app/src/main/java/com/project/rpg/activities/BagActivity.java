@@ -10,10 +10,13 @@ import com.project.rpg.adapters.BagPagerAdapter;
 import com.project.rpg.exceptions.NoItemInBagException;
 import com.project.rpg.fragments.BagItemListFragment;
 import com.project.rpg.fragments.dialogs.BaseDialogFragment;
+import com.project.rpg.fragments.dialogs.UseItemDialogFragment;
+import com.project.rpg.models.events.ItemUsedEvent;
 import com.project.rpg.models.items.AbstractItem;
 import com.project.rpg.utils.ItemUtils;
 
 import butterknife.InjectView;
+import de.greenrobot.event.EventBus;
 
 /**
  * Created by laetitia on 5/6/15.
@@ -38,25 +41,25 @@ public class BagActivity extends AbstractShowCategoryItemActivity
     @Override
     public void onItemSelected(Class<?> clss) {
         final AbstractItem item = ItemUtils.getItemFromClass(this, clss);
-        BaseDialogFragment.newInstance(
-                R.string.use_item_dialog_title,
-                R.string.use_item_dialog_message,
-                R.string.ok, -1)
-                .setPositiveListener(new BaseDialogFragment.DialogButtonsListener() {
-                    @Override
-                    public void onDialogButtonClick(DialogFragment dialog, int buttonTitle) {
-                        item.use(getCharacter());
-                        try {
-                            getCharacter().removeItemFromBag(item);
-                        } catch (NoItemInBagException e) {
-                            mItemViewPager.setAdapter(null);
-                            mSlidingTabLayout.setViewPager(null);
-                            mItemCategoryAdapter.reset();
-                            setEmptyViewVisibility();
-                        }
+        if (item != null) {
+            item.getUseItemDialogFragment(this)
+                    .setPositiveListener(new BaseDialogFragment.DialogButtonsListener() {
+                        @Override
+                        public void onDialogButtonClick(DialogFragment dialog, int buttonTitle) {
+                            item.use(getCharacter());
+                            try {
+                                getCharacter().removeItemFromBag(item);
+                                EventBus.getDefault().post(new ItemUsedEvent(item.getName()));
+                            } catch (NoItemInBagException e) {
+                                mItemViewPager.setAdapter(null);
+                                mSlidingTabLayout.setViewPager(null);
+                                mItemCategoryAdapter.reset();
+                                setEmptyViewVisibility();
+                            }
 
-                    }
-                }).show(getSupportFragmentManager());
+                        }
+                    }).show(getSupportFragmentManager());
+        }
     }
 
     private void setEmptyViewVisibility() {

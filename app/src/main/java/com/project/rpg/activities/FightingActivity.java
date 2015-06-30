@@ -3,6 +3,7 @@ package com.project.rpg.activities;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.DialogFragment;
+import android.util.Log;
 import android.view.View;
 import android.widget.TextView;
 
@@ -41,7 +42,7 @@ public class FightingActivity extends ToolbarActivity {
         mMonster = intent.getMonster();
         mCharacter = (AbstractFighter) getApp().getCharacter();
 
-        mMonsterLife.setText(getString(R.string.monster_current_life) + " " +  mMonster.getLife());
+        mMonsterLife.setText(getString(R.string.monster_current_life) + " " + mMonster.getLife());
     }
 
     @OnClick(R.id.attack)
@@ -51,19 +52,27 @@ public class FightingActivity extends ToolbarActivity {
         if (mMonster.willAttackFirst(mCharacter)) {
             try {
                 int damage = mMonster.attack(mCharacter);
-                mCharacter.removeLife(damage);
-                surpriseAttack(false, damage);
+                if (damage > 1) {
+                    mCharacter.removeLife(damage);
+                    surpriseAttack(false, damage);
+                } else {
+                    missedAttack(false);
+                }
             } catch (AttackMissedException e) {
-                // TODO do nothing
+                Log.d(getClass().getSimpleName(), e.getMessage());
             } catch (NoMoreLifeException e) {
-               noMoreLifeDialog(e);
+                noMoreLifeDialog(e);
             }
         }
         // b) normal attack
         try {
             int damage = mCharacter.attack(mMonster);
-            mMonster.removeLife(damage);
-            attackSuccess(true, damage);
+            if (damage > 1) {
+                mMonster.removeLife(damage);
+                attackSuccess(true, damage);
+            } else {
+                missedAttack(true);
+            }
         } catch (AttackMissedException e) {
             missedAttack(true);
         } catch (NoMoreLifeException e) {
@@ -75,10 +84,14 @@ public class FightingActivity extends ToolbarActivity {
         if (mCharacter.willAttackFirst(mMonster)) {
             try {
                 int damage = mCharacter.attack(mMonster);
-                mMonster.removeLife(damage);
-                surpriseAttack(true, damage);
+                if (damage > 1) {
+                    mMonster.removeLife(damage);
+                    surpriseAttack(true, damage);
+                } else {
+                    missedAttack(true);
+                }
             } catch (AttackMissedException e) {
-                // TODO do nothing
+                Log.d(getClass().getSimpleName(), e.getMessage());
             } catch (NoMoreLifeException e) {
                 noMoreLifeMonsterDialog();
             }
@@ -86,8 +99,12 @@ public class FightingActivity extends ToolbarActivity {
         // b) normal attack
         try {
             int damage = mMonster.attack(mCharacter);
-            mCharacter.removeLife(damage);
-            attackSuccess(false, damage);
+            if (damage > 1) {
+                mCharacter.removeLife(damage);
+                attackSuccess(false, damage);
+            } else {
+                missedAttack(false);
+            }
         } catch (AttackMissedException e) {
             missedAttack(false);
         } catch (NoMoreLifeException e) {

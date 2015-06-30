@@ -11,10 +11,14 @@ import com.project.rpg.adapters.BagItemListAdapter;
 import com.project.rpg.core.RPGApplication;
 import com.project.rpg.models.characters.AbstractCharacter;
 import com.project.rpg.models.enumerations.ItemType;
+import com.project.rpg.models.events.ItemUsedEvent;
+import com.project.rpg.models.events.UpdateSpecialStatEvent;
 import com.project.rpg.models.items.AbstractItem;
 
 import java.util.HashMap;
 import java.util.List;
+
+import de.greenrobot.event.EventBus;
 
 /**
  * Created by laetitia on 5/5/15.
@@ -24,6 +28,7 @@ public class BagItemListFragment extends ListFragment {
     private static final String ITEM_CATEGORY = "ITEM_CATEGORY";
 
     private OnItemSelectedListener mListener;
+    private BagItemListAdapter mAdapter;
 
     public static BagItemListFragment newInstance(ItemType itemtype) {
         final BagItemListFragment bagItemListFragment = new BagItemListFragment();
@@ -37,9 +42,11 @@ public class BagItemListFragment extends ListFragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
+        EventBus.getDefault().register(this);
+
         Bundle bundle = getArguments();
         final ItemType itemType = (ItemType) bundle.getSerializable(ITEM_CATEGORY);
-        final AbstractCharacter character = ((RPGApplication)getActivity().getApplication()).getCharacter();
+        final AbstractCharacter character = ((RPGApplication) getActivity().getApplication()).getCharacter();
         final List<AbstractItem> itemList = character.getBag().getItemByType(itemType);
         final HashMap<String, Pair<Integer, Class<?>>> mapItem = new HashMap<>();
         for (AbstractItem item : itemList) {
@@ -52,16 +59,12 @@ public class BagItemListFragment extends ListFragment {
             }
         }
 
-        final BagItemListAdapter adapter = new BagItemListAdapter(mapItem, getActivity());
-        setListAdapter(adapter);
+        mAdapter = new BagItemListAdapter(mapItem, getActivity());
+        setListAdapter(mAdapter);
         getListView().setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-                String name = (String) adapter.getItem(position);
-                Pair<Integer, Class<?>> pair = mapItem.get(name);
-                int number = pair.first - 1;
-                mapItem.put(name, new Pair<Integer, Class<?>>(number, pair.second));
-                adapter.notifyDataSetChanged();
+                String name = (String) mAdapter.getItem(position);
                 mListener.onItemSelected(mapItem.get(name).second);
             }
         });
@@ -73,5 +76,13 @@ public class BagItemListFragment extends ListFragment {
 
     public interface OnItemSelectedListener {
         void onItemSelected(Class<?> clss);
+    }
+
+    public void onEventMainThread(ItemUsedEvent event) {
+        HashMap<String, Pair<Integer, Class<?>>> classMapping = mAdapter.getClassMapping();
+        Pair<Integer, Class<?>> pair = classMapping.get(event.getName());
+        int number = pair.first - 1;
+        classMapping.put(event.getName(), new Pair<Integer, Class<?>>(number, pair.second));
+        mAdapter.notifyDataSetChanged();
     }
 }

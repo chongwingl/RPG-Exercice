@@ -4,33 +4,20 @@ import android.app.AlertDialog;
 import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
-import android.support.v4.app.FragmentManager;
+import android.text.TextUtils;
 
 /**
- * Created by laetitia on 5/14/15.
+ * Created by laetitia on 6/30/15.
  */
-public class BaseDialogFragment extends DialogFragment {
+public class UseItemDialogFragment extends BaseDialogFragment {
 
-    public static final String TAG = BaseDialogFragment.class.getSimpleName();
-    protected static final String SAVED_TITLE = "savedTitle";
-    protected static final String SAVED_MESSAGE = "savedMessage";
-    protected static final String SAVED_POSITIVE = "savedPositive";
-    protected static final String SAVED_NEGATIVE = "saveNegative";
+    protected String mMessage;
 
-    protected int mTitle;
-    protected int mMessage;
-    protected int mPositive = -1;
-    protected int mNegative = -1;
-
-    protected DialogButtonsListener mPositiveListener;
-    protected DialogButtonsListener mNegativeListener;
-
-    public static BaseDialogFragment newInstance(int title, int message, int positiveButton, int negativeButton) {
-        BaseDialogFragment fragment = new BaseDialogFragment();
+    public static UseItemDialogFragment newInstance(int title, String message, int positiveButton, int negativeButton) {
+        UseItemDialogFragment fragment = new UseItemDialogFragment();
         Bundle bundle = new Bundle();
         bundle.putInt(SAVED_TITLE, title);
-        bundle.putInt(SAVED_MESSAGE, message);
+        bundle.putString(SAVED_MESSAGE, message);
         bundle.putInt(SAVED_POSITIVE, positiveButton);
         bundle.putInt(SAVED_NEGATIVE, negativeButton);
         fragment.setArguments(bundle);
@@ -51,7 +38,7 @@ public class BaseDialogFragment extends DialogFragment {
         }
 
         if (data.containsKey(SAVED_MESSAGE)) {
-            mMessage = data.getInt(SAVED_MESSAGE);
+            mMessage = data.getString(SAVED_MESSAGE);
         }
 
         if (data.containsKey(SAVED_POSITIVE)) {
@@ -72,7 +59,7 @@ public class BaseDialogFragment extends DialogFragment {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
                     if (mPositiveListener != null) {
-                        mPositiveListener.onDialogButtonClick(BaseDialogFragment.this, mPositive);
+                        mPositiveListener.onDialogButtonClick(UseItemDialogFragment.this, mPositive);
                     }
                 }
             });
@@ -83,7 +70,7 @@ public class BaseDialogFragment extends DialogFragment {
                 @Override
                 public void onClick(DialogInterface dialogInterface, int i) {
                     if (mNegativeListener != null) {
-                        mNegativeListener.onDialogButtonClick(BaseDialogFragment.this, mNegative);
+                        mNegativeListener.onDialogButtonClick(UseItemDialogFragment.this, mNegative);
                     }
                 }
             });
@@ -99,8 +86,8 @@ public class BaseDialogFragment extends DialogFragment {
             outState.putInt(SAVED_TITLE, mTitle);
         }
 
-        if (mMessage != -1) {
-            outState.putInt(SAVED_MESSAGE, mMessage);
+        if (!TextUtils.isEmpty(mMessage)) {
+            outState.putString(SAVED_MESSAGE, mMessage);
         }
 
         if (mPositive != -1) {
@@ -110,27 +97,5 @@ public class BaseDialogFragment extends DialogFragment {
         if (mNegative != -1) {
             outState.putInt(SAVED_NEGATIVE, mNegative);
         }
-    }
-
-    public void show(FragmentManager manager) {
-        show(manager, getDialogTag());
-    }
-
-    public BaseDialogFragment setPositiveListener(DialogButtonsListener listener) {
-        mPositiveListener = listener;
-        return this;
-    }
-
-    public BaseDialogFragment setNegativeListener(DialogButtonsListener listener) {
-        mNegativeListener = listener;
-        return this;
-    }
-
-    public String getDialogTag() {
-        return TAG;
-    }
-
-    public interface DialogButtonsListener {
-        void onDialogButtonClick(DialogFragment dialog, int buttonTitle);
     }
 }

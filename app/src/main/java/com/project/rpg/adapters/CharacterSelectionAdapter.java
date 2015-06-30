@@ -19,13 +19,11 @@ public class CharacterSelectionAdapter extends BaseAdapter{
 
 	public CharacterSelectionAdapter(Activity activity) {
 		this.activity = activity;
-		characters = new ArrayList<String>();
+		characters = new ArrayList<>();
         for (CharacterType characterType : CharacterType.values()) {
             String type = activity.getString(characterType.getTypeRefId());
             characters.add(type);
         }
-//		characters.add(activity.getString(CharacterType.KNIGHT.getTypeRefId()));
-//		characters.add(activity.getString(CharacterType.SMITH.getTypeRefId()));
 	}
 	
 	public class Holder{

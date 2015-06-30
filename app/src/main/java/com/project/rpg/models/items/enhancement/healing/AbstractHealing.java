@@ -20,8 +20,6 @@ public abstract class AbstractHealing extends AbstractItem {
         mLifePower = new Life(lifePointsRestored);
     }
 
-    // TODO the healing power!!
-
     @Override
     protected void setItemType() {
         mItemType = ItemType.HEALING;

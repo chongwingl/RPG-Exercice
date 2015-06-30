@@ -1,5 +1,8 @@
 package com.project.rpg.models.items.weapons;
 
+import android.content.Context;
+
+import com.project.rpg.fragments.dialogs.UseItemDialogFragment;
 import com.project.rpg.models.characters.AbstractCharacter;
 import com.project.rpg.models.enumerations.Accuracy;
 import com.project.rpg.models.enumerations.ItemType;
@@ -88,4 +91,9 @@ public abstract class AbstractWeapon extends AbstractItem {
     public void use(AbstractCharacter character) {
 
     }
+
+	@Override
+	public UseItemDialogFragment getUseItemDialogFragment(Context context) {
+		return null;
+	}
 }

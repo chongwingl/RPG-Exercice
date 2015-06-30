@@ -1,5 +1,8 @@
 package com.project.rpg.models.items;
 
+import android.content.Context;
+
+import com.project.rpg.fragments.dialogs.UseItemDialogFragment;
 import com.project.rpg.models.characters.AbstractCharacter;
 import com.project.rpg.models.enumerations.ItemType;
 import com.project.rpg.models.enumerations.Weight;
@@ -54,4 +57,6 @@ public abstract class AbstractItem implements Serializable {
     protected abstract void setItemType();
 
     public abstract void use(AbstractCharacter character);
+
+	public abstract UseItemDialogFragment getUseItemDialogFragment(Context context);
 }

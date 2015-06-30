@@ -1,6 +1,5 @@
 package com.project.rpg.activities;
 
-import android.os.Bundle;
 import android.widget.Button;
 
 import com.project.rpg.R;

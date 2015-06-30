@@ -28,6 +28,10 @@ public class BagItemListAdapter extends BaseAdapter {
         mInflater = activity.getLayoutInflater();
     }
 
+    public HashMap<String, Pair<Integer, Class<?>>> getClassMapping() {
+        return mClassMapping;
+    }
+
     @Override
     public int getCount() {
         return mClassNames.size();

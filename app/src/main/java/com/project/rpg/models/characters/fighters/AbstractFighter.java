@@ -42,7 +42,6 @@ public abstract class AbstractFighter extends AbstractCharacter {
         EventBus.getDefault().post(new UpdateSpecialStatEvent(getLife()));
     }
 
-    // TODO create a listener to inform every time the life and gold changes
     public void addLife(int points) {
         mStat.getLifePoints().addLifePoints(points);
         EventBus.getDefault().post(new UpdateSpecialStatEvent(getLife()));

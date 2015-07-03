@@ -40,21 +40,22 @@ public abstract class ToolbarActivity extends AbstractActivity {
                     character.getName(),
                     character.getGold(),
                     character.getSpecialStat(),
-                    character.getSpecialStatIconId()
+                    character.getSpecialStatIconId(),
+                    character.getSpecialMaxStat()
             );
         }
 
     }
 
-    protected void setCharacterInfo(String name, int gold, int specialStat, int specialStatIcon) {
+    protected void setCharacterInfo(String name, int gold, int specialStat, int specialStatIcon, int specialMaxStat) {
         mCharacterName.setText(name);
         mCharacterGold.setText(String.valueOf(gold));
-        mCharacterSpecialStat.setText(String.valueOf(specialStat));
+        mCharacterSpecialStat.setText(getString(R.string.life_display, specialStat, specialMaxStat));
         mSpecialStatIcon.setImageResource(specialStatIcon);
     }
 
-    protected void setCharacterSpecialStat(int specialStat) {
-        mCharacterSpecialStat.setText(String.valueOf(specialStat));
+    protected void setCharacterSpecialStat(int specialStat, int specialMaxStat) {
+        mCharacterSpecialStat.setText(getString(R.string.life_display, specialStat, specialMaxStat));
     }
 
     protected void setCharacterGold(int gold) {
@@ -66,6 +67,6 @@ public abstract class ToolbarActivity extends AbstractActivity {
     }
 
     public void onEventMainThread(UpdateSpecialStatEvent event) {
-        setCharacterSpecialStat(event.getSpecialStat());
+        setCharacterSpecialStat(event.getSpecialStat(), event.getSpecialMaxStat());
     }
 }

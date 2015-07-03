@@ -3,6 +3,6 @@
     android:id="@+id/character_name"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_margin="10dp"
+    android:layout_margin="@dimen/normal_padding"
     android:padding="@dimen/listview_padding_horizontal"
-    style="@style/Base.TextAppearance.AppCompat.Medium" />
+    style="@style/SubTitleText" />

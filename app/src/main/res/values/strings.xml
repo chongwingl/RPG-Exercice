@@ -44,29 +44,25 @@
     <string name="store_error_message_title">Vous ne pouvez pas acheter cet objet…</string>
     <string name="no_more_life_error_message_title">Vous êtes mort…</string>
 
-    <string name="monster_name_dragon">Dragon</string>
-    <string name="monster_name_spider">Araignée</string>
-    <string name="monster_name_wolf">Loup</string>
     <string name="fight">Combattre !</string>
     <string name="error_no_more_life">Vous ne pouvez plus combattre !</string>
 
     <string name="attack">Attaquer</string>
     <string name="open_bag">Ouvrir le sac</string>
     <string name="abandon">Abandonner</string>
-    <string name="current_life">My life :</string>
     <string name="monster_current_life">Monster life :</string>
     <string name="fighting_instruction">Que voulez vous faire ?</string>
 
     <string name="attack_missed_exception">L\'attaque a raté…</string>
     <string name="attack_missed" formatted="false">%1$s raté l\'attaque…\n</string>
-    <string name="attack_success" formatted="false">%1$s réussi l\'attaque, %2$s %3$d points de dégats !\n</string>
+    <string name="attack_success" formatted="false">%1$s réussi l\'attaque, %2$s %3$d points de dégâts !\n</string>
     <string name="attack_missed_monster">" a"</string>
     <string name="attack_success_monster1">" a"</string>
     <string name="attack_success_monster2">"il vous inflige "</string>
     <string name="attack_missed_character">"Vous avez "</string>
     <string name="attack_success_character1">"Vous avez "</string>
     <string name="attack_success_character2">"vous infligez "</string>
-    <string name="attack_surprise" formatted="false">%1$s %2$s et %3$s %4$d points de dégats.\n</string>
+    <string name="attack_surprise" formatted="false">%1$s %2$s et %3$s %4$d points de dégâts.\n</string>
     <string name="attack_surprise_character1">"Vous devancez l'attaque de "</string>
     <string name="attack_surprise_character3">"lui infligez "</string>
     <string name="attack_surprise_monster2">" vous devance "</string>
@@ -76,5 +72,15 @@
     <string name="use_potion_dialog_title">Vous allez utiliser une potion</string>
     <string name="use_potion_dialog_message">Elle va vous rendre %1$d pts de vie</string>
     <string name="no_item_in_bag_exception">No more item in bag</string>
+
+    <string name="object">Objet</string>
+    <string name="life_display">%1$d / %2$d</string>
+    <string name="victory_stat_title_normal">Augmenter une caractéristique de 1 point</string>
+    <string name="victory_stat_title_strong">Augmenter une caractéristique de 2 points</string>
+    <string name="victory_life_title_normal">Augmenter votre vie de 2 points</string>
+    <string name="victory_life_title_strong">Augmenter votre vie de 5 points</string>
+    <string name="victory_object_title">Objet obtenu</string>
+    <string name="victory_life_message">Vie : %1$d -> %2$d</string>
+    <string name="victory_object_message">Vous obtenez : %1$s</string>
 
 </resources>

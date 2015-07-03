@@ -40,7 +40,7 @@ public class LifePoint implements Serializable {
 
 	public void removeLifePoints(int lifePoints) throws NoMoreLifeException {
 		this.lifePoints -= lifePoints;
-		if (this.lifePoints < 0) {
+		if (this.lifePoints <= 0) {
 			this.lifePoints = 0;
 			throw new NoMoreLifeException();
 		}

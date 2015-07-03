@@ -9,8 +9,14 @@ public class BasicSpider extends AbstractMonster {
 
     private static final long serialVersionUID = 4845746688480640845L;
 
+	private static final int LIFE = 50;
+	private static final int STRENGTH = 20;
+	private static final int SPEED = 20;
+	private static final int ACCURACY = 20;
+	private static final int RESISTANCE = 20;
+
     public BasicSpider(Context context) {
-		super(context.getString(R.string.monster_name_spider), 50, 20, 20, 20, 20);
+		super(context.getString(R.string.spider), LIFE, STRENGTH, SPEED, ACCURACY, RESISTANCE);
 		setPower(new Poison());
 	}
 }

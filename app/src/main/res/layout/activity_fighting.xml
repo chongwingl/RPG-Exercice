@@ -45,6 +45,7 @@
     <TextView
         android:layout_below="@+id/toolbar"
         android:id="@+id/monster_life"
+        style="@style/BodyText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -67,14 +68,16 @@
                 android:id="@+id/fight_history"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="5dp"
+                style="@style/BodyText"
+                android:padding="@dimen/small_padding"
                 android:visibility="gone" />
 
             <TextView
                 android:id="@+id/fight_description"
+                style="@style/BodyText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="5dp"
+                android:padding="@dimen/small_padding"
                 android:text="@string/fighting_instruction" />
 
         </LinearLayout>

@@ -3,6 +3,7 @@ package com.project.rpg.models.characters;
 import com.project.rpg.exceptions.NoItemInBagException;
 import com.project.rpg.exceptions.NotEnoughGoldException;
 import com.project.rpg.models.Bag;
+import com.project.rpg.models.enumerations.CharacterState;
 import com.project.rpg.models.enumerations.CharacterType;
 import com.project.rpg.models.events.UpdateGoldEvent;
 import com.project.rpg.models.items.AbstractItem;
@@ -16,6 +17,8 @@ public abstract class AbstractCharacter
 
     private static final long serialVersionUID = 7574347050097636816L;
 
+    private static final int INIT_GOLD = 200;
+
     private CharacterType mCharacterType;
     private String mName;
     private int mGold;
@@ -25,6 +28,7 @@ public abstract class AbstractCharacter
         this.mCharacterType = characterType;
         this.mName = name;
         mBag = Bag.getInstance(maxBagSize);
+        setGold(INIT_GOLD);
     }
 
     public CharacterType getCharacterType() {
@@ -69,6 +73,8 @@ public abstract class AbstractCharacter
     }
 
     public abstract int getSpecialStat();
+
+    public abstract int getSpecialMaxStat();
 
     public abstract int getSpecialStatIconId();
 

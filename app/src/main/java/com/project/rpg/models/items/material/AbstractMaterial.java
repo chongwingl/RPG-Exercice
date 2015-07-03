@@ -2,7 +2,7 @@ package com.project.rpg.models.items.material;
 
 import android.content.Context;
 
-import com.project.rpg.fragments.dialogs.UseItemDialogFragment;
+import com.project.rpg.fragments.dialogs.StringMessageDialogFragment;
 import com.project.rpg.models.characters.AbstractCharacter;
 import com.project.rpg.models.enumerations.ItemType;
 import com.project.rpg.models.enumerations.Probability;
@@ -14,12 +14,12 @@ public abstract class AbstractMaterial extends AbstractItem {
     private static final long serialVersionUID = 86139421248075891L;
 
     private int mGatherTime;
-	private Probability mProbabilityToFind;
+    private Probability mProbabilityToFind;
 
 
     protected AbstractMaterial(String name, Probability probability) {
         super(name);
-		mProbabilityToFind = probability;
+        mProbabilityToFind = probability;
     }
 
 	public int getGatherTime() {
@@ -41,7 +41,12 @@ public abstract class AbstractMaterial extends AbstractItem {
     }
 
     @Override
-    public UseItemDialogFragment getUseItemDialogFragment(Context context) {
+    public Probability getProbabilityToFind() {
+        return  mProbabilityToFind;
+    }
+
+    @Override
+    public StringMessageDialogFragment getUseItemDialogFragment(Context context) {
         return null;
     }
 }

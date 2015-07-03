@@ -10,7 +10,6 @@ import com.project.rpg.adapters.BagPagerAdapter;
 import com.project.rpg.exceptions.NoItemInBagException;
 import com.project.rpg.fragments.BagItemListFragment;
 import com.project.rpg.fragments.dialogs.BaseDialogFragment;
-import com.project.rpg.fragments.dialogs.UseItemDialogFragment;
 import com.project.rpg.models.events.ItemUsedEvent;
 import com.project.rpg.models.items.AbstractItem;
 import com.project.rpg.utils.ItemUtils;

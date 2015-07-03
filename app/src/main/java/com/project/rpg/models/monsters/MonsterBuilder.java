@@ -3,8 +3,9 @@ package com.project.rpg.models.monsters;
 import android.content.Context;
 
 import com.project.rpg.models.Stat;
+import com.project.rpg.models.enumerations.MonsterLevel;
 import com.project.rpg.utils.MonsterUtils;
-import com.project.rpg.utils.RandomGenerator;
+import com.project.rpg.generators.RandomGenerator;
 
 import java.util.List;
 
@@ -19,9 +20,9 @@ public final class MonsterBuilder {
     private final static int WEAK_SPEED_PERCENTAGE = 20;
     private final static int WEAK_RESISTANCE_PERCENTAGE = 20;
 
-    private final static int NORMAL_STRENGTH_PERCENTAGE = 20;
+    private final static int NORMAL_STRENGTH_PERCENTAGE = 10;
     private final static int NORMAL_MIN_LIFE_PERCENTAGE = 10;
-    private final static int NORMAL_MAX_LIFE_PERCENTAGE = 20;
+    private final static int NORMAL_MAX_LIFE_PERCENTAGE = 15;
     private final static int NORMAL_ACCURACY_PERCENTAGE = 10;
     private final static int NORMAL_SPEED_PERCENTAGE = 10;
     private final static int NORMAL_RESISTANCE_PERCENTAGE = 10;
@@ -41,6 +42,7 @@ public final class MonsterBuilder {
     public AbstractMonster buildWeakMonster(Context context) {
         AbstractMonster monster = getMonster(context);
         Stat stat = monster.getStat();
+        monster.setLevel(MonsterLevel.WEAK);
 
         stat.getLifePoints().setMaxLifePoint(
                 removePercentage(
@@ -63,6 +65,7 @@ public final class MonsterBuilder {
     public AbstractMonster buildNormalMonster(Context context) {
         AbstractMonster monster = getMonster(context);
         Stat stat = monster.getStat();
+        monster.setLevel(MonsterLevel.NORMAL);
 
         stat.getLifePoints().setMaxLifePoint(
                 addPercentage(
@@ -82,6 +85,7 @@ public final class MonsterBuilder {
     public AbstractMonster buildStrongMonster(Context context) {
         AbstractMonster monster = getMonster(context);
         Stat stat = monster.getStat();
+        monster.setLevel(MonsterLevel.STRONG);
 
         stat.getLifePoints().setMaxLifePoint(
                 addPercentage(
@@ -128,8 +132,8 @@ public final class MonsterBuilder {
     // weak monster : monster speed = speed - 20 %
     // weak monster : monster resistance = resistance - 20 %
 
-    // normal monster : strength - 20 % > monster strength > strength + 20 %
-    // normal monster : monster life = life + 20 % max + 10 % min
+    // normal monster : strength - 10 % > monster strength > strength + 10 %
+    // normal monster : monster life = life + 15 % max + 10 % min
     // normal monster : monster accuracy = accuracy +- 10 %
     // normal monster : monster speed = speed +- 10 %
     // normal monster : monster resistance = resistance +- 10 %

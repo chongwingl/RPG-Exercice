@@ -49,7 +49,7 @@ public class CharacterCreationFragment extends Fragment {
 
             ((RPGApplication)getActivity().getApplication()).createKnight(name);
             AbstractCharacter character = ((RPGApplication)getActivity().getApplication()).getCharacter();
-            character.setGold(100);
+
             try {
                 CharacterUtils.saveCharacter(getActivity(), character);
             } catch (IOException e) {

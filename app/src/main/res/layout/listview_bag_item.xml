@@ -6,7 +6,7 @@
 
     <TextView
         android:id="@+id/item_number"
-        style="@style/Base.TextAppearance.AppCompat.Medium"
+        style="@style/SubTitleText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentRight="true"
@@ -15,7 +15,7 @@
 
     <TextView
         android:id="@+id/item_name"
-        style="@style/Base.TextAppearance.AppCompat.Medium"
+        style="@style/SubTitleText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"

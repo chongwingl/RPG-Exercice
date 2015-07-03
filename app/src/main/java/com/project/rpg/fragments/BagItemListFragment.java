@@ -82,7 +82,11 @@ public class BagItemListFragment extends ListFragment {
         HashMap<String, Pair<Integer, Class<?>>> classMapping = mAdapter.getClassMapping();
         Pair<Integer, Class<?>> pair = classMapping.get(event.getName());
         int number = pair.first - 1;
-        classMapping.put(event.getName(), new Pair<Integer, Class<?>>(number, pair.second));
+        if (number == 0) {
+            classMapping.remove(event.getName());
+        } else {
+            classMapping.put(event.getName(), new Pair<Integer, Class<?>>(number, pair.second));
+        }
         mAdapter.notifyDataSetChanged();
     }
 }

@@ -2,6 +2,7 @@ package com.project.rpg.utils;
 
 import android.content.Context;
 import android.util.Log;
+import android.util.Pair;
 
 import com.project.rpg.models.enumerations.ItemType;
 import com.project.rpg.models.items.AbstractItem;
@@ -152,5 +153,14 @@ public final class ItemUtils {
             Log.e(TAG, e.getMessage());
             return null;
         }
+    }
+
+    public static Pair[] getItemProbablityArray(int healingProb, int armorProb, int weaponProb, int materialProb){
+        Pair[] table = new Pair[ItemType.values().length];
+        table[0] = new Pair<>(ItemType.HEALING, healingProb);
+        table[1] = new Pair<>(ItemType.ARMOR, armorProb);
+        table[2] = new Pair<>(ItemType.WEAPON, weaponProb);
+        table[3] = new Pair<>(ItemType.MATERIAL, materialProb);
+        return table;
     }
 }

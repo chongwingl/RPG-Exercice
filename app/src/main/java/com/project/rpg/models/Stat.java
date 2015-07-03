@@ -6,7 +6,7 @@ import java.io.Serializable;
 
 public class Stat implements Serializable {
     private static final long serialVersionUID = 3012347748078701155L;
-    public static final int MAX_STAT = 100;
+    public static final int MAX_STAT = 200;
 
     private LifePoint mLifePoints;
     private int mStrength;
@@ -30,6 +30,9 @@ public class Stat implements Serializable {
     public int getStrength() {
         return mStrength;
     }
+    public void addStrength(int add) {
+        mStrength += add;
+    }
 
     public void setStrength(int strength) {
         if (strength < MAX_STAT) {
@@ -41,6 +44,10 @@ public class Stat implements Serializable {
 
     public int getSpeed() {
         return mSpeed;
+    }
+
+    public void addSpeed(int add) {
+        mSpeed += add;
     }
 
     public void setSpeed(int speed) {
@@ -59,6 +66,10 @@ public class Stat implements Serializable {
         return mAccuracy;
     }
 
+    public void addAccuracy(int add) {
+        mAccuracy += add;
+    }
+
     public void setAccuracy(int accuracy) {
         if (accuracy < MAX_STAT) {
             mAccuracy = accuracy;
@@ -69,6 +80,10 @@ public class Stat implements Serializable {
 
     public int getResistance() {
         return mResistance;
+    }
+
+    public void addResisteance(int add) {
+        mResistance += add;
     }
 
     public void setResistance(int resistance) {

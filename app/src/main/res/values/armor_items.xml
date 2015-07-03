@@ -1,11 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="armor_armor">Armure</string>
-    <string name="armor_tunic">Tunique</string>
-    <string name="armor_cap">Bonnet</string>
-    <string name="armor_hat">Chapeau</string>
-    <string name="armor_helmet">Casque</string>
-    <string name="armor_leg_armor">Chausses de metal</string>
+    <string name="armor_basic_leather_armor">Armure en cuir</string>
+    <string name="armor_super_metal_armor">Armure de metal</string>
+    <string name="armor_basic_tunic">Tunique</string>
+    <string name="armor_basic_cap">Bonnet</string>
+    <string name="armor_basic_hat">Chapeau</string>
+    <string name="armor_basic_leather_helmet">Casque en cuir</string>
+    <string name="armor_super_metal_helmet">Casque en metal</string>
+    <string name="armor_basic_leather_leg_armor">Chausses en cuir</string>
+    <string name="armor_super_metal_leg_armor">Chausses de metal</string>
     <string name="armor_pants">Pantalon</string>
     <string name="armor_boot">Bottes</string>
     <string name="armor_shoe">Chaussures</string>

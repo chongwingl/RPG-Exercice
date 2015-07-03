@@ -43,7 +43,7 @@ public abstract class AbstractStoreActivity extends AbstractShowCategoryItemActi
         } catch (NotEnoughGoldException e) {
             Log.e(getClass().getSimpleName(), e.getMessage(this));
             BaseDialogFragment dialogFragment =
-                    BaseDialogFragment.newInstance(R.string.store_error_message_title, e.getMessageRefId(), R.string.ok, -1);
+                    BaseDialogFragment.newInstance(R.string.store_error_message_title, e.getMessageRefId(), R.string.ok);
             dialogFragment.show(getSupportFragmentManager());
         }
     }

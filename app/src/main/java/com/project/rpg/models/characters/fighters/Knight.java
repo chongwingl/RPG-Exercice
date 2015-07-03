@@ -4,36 +4,38 @@ import com.project.rpg.exceptions.AttackMissedException;
 import com.project.rpg.models.Stat;
 import com.project.rpg.models.enumerations.CharacterType;
 import com.project.rpg.models.monsters.AbstractMonster;
-import com.project.rpg.utils.RandomGenerator;
+import com.project.rpg.generators.RandomGenerator;
 
 public class Knight extends AbstractFighter {
 
     private static final long serialVersionUID = -4324249331855726182L;
 
-	public Knight(String name) {
-		super(CharacterType.KNIGHT, name, 100, 30, 20, 65, 30);
-	}
+    private static final int LIFE = 100;
+    private static final int STRENGTH = 30;
+    private static final int SPEED = 20;
+    private static final int ACCURACY = 75;
+    private static final int RESISTANCE = 30;
+
+    public Knight(String name) {
+        super(CharacterType.KNIGHT, name, LIFE, STRENGTH, SPEED, ACCURACY, RESISTANCE);
+    }
 
     @Override
-	public int attack(AbstractMonster monster) throws AttackMissedException {
-        int random = RandomGenerator.getRandomInteger(0, Stat.MAX_STAT);
-        int damages = 0;
-        if (random < mStat.getAccuracy()) {
-            int strength = mStat.getStrength();
-            if (strength > monster.getResistance()) {
-                damages = strength;
-            } else {
+    public int attack(AbstractMonster monster) throws AttackMissedException {
+        int random = RandomGenerator.getRandomInteger(1, Stat.MAX_STAT);
+        int strength = mStat.getStrength();
+        int damages = strength;
+        if (random <= mStat.getAccuracy()) {
+            if (strength < monster.getResistance()) {
                 int diff = monster.getResistance() - strength;
-                if (diff > 0) {
-                    int random2 = RandomGenerator.getRandomInteger(0, diff);
-                    damages = strength - random2;
-                }
+                int random2 = RandomGenerator.getRandomInteger(0, diff);
+                damages = strength - random2;
             }
             return damages;
         } else {
             throw new AttackMissedException();
         }
-	}
+    }
 
     @Override
     public boolean willAttackFirst(AbstractMonster monster) {

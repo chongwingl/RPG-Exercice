@@ -1,55 +1,78 @@
 package com.project.rpg.models.characters.fighters;
 
+import android.util.Pair;
+import android.util.SparseArray;
+
 import com.project.rpg.R;
 import com.project.rpg.exceptions.AttackMissedException;
 import com.project.rpg.exceptions.NoMoreLifeException;
+import com.project.rpg.generators.StatGenerator;
 import com.project.rpg.models.Equipment;
 import com.project.rpg.models.Stat;
 import com.project.rpg.models.characters.AbstractCharacter;
+import com.project.rpg.models.enumerations.CharacterState;
 import com.project.rpg.models.enumerations.CharacterType;
+import com.project.rpg.models.enumerations.ItemType;
+import com.project.rpg.models.enumerations.StatType;
 import com.project.rpg.models.events.UpdateSpecialStatEvent;
 import com.project.rpg.models.items.armor.AbstractArmor;
 import com.project.rpg.models.items.weapons.AbstractWeapon;
 import com.project.rpg.models.monsters.AbstractMonster;
-import com.project.rpg.utils.StatGenerator;
+import com.project.rpg.utils.ItemUtils;
 
 import de.greenrobot.event.EventBus;
 
 public abstract class AbstractFighter extends AbstractCharacter {
 
     private static final long serialVersionUID = 7431707900608571006L;
-
-	private final static int BAG_SIZE_MAX = 15;
+    private static final int HEALING_PROB = 50;
+    private static final int ARMOR_PROB = 25;
+    private static final int WEAPON_PROB = 25;
+    private static final int MATERIAL_PROB = 0;
+    private final static int BAG_SIZE_MAX = 15;
     protected Stat mStat;
     protected Stat mBasicStat;
+    public static Pair[] mItemProbability = ItemUtils.getItemProbablityArray(HEALING_PROB, ARMOR_PROB, WEAPON_PROB, MATERIAL_PROB);
 
-	private Equipment mEquipment;
 
-	public AbstractFighter(CharacterType characterType, String name, int maxLifePoints, int strength,
-			int speed, int accuracy, int resistance) {
-		super(characterType, name, BAG_SIZE_MAX);
+    private Equipment mEquipment;
+
+    public AbstractFighter(CharacterType characterType, String name, int maxLifePoints, int strength,
+                           int speed, int accuracy, int resistance) {
+        super(characterType, name, BAG_SIZE_MAX);
         mStat = new Stat(maxLifePoints);
         mBasicStat = new Stat(maxLifePoints, strength, speed, accuracy, resistance);
-		mEquipment = new Equipment();
-	}
+        mEquipment = new Equipment();
+
+    }
 
     public int getLife() {
         return mStat.getLifePoints().getLifePoints();
     }
 
     public void removeLife(int points) throws NoMoreLifeException {
-        mStat.getLifePoints().removeLifePoints(points);
-        EventBus.getDefault().post(new UpdateSpecialStatEvent(getLife()));
+        try {
+            mStat.getLifePoints().removeLifePoints(points);
+        } catch (NoMoreLifeException e) {
+            mStat.setState(CharacterState.DEAD);
+            throw e;
+        }
+        EventBus.getDefault().post(new UpdateSpecialStatEvent(getSpecialStat(), getSpecialMaxStat()));
     }
 
     public void addLife(int points) {
         mStat.getLifePoints().addLifePoints(points);
-        EventBus.getDefault().post(new UpdateSpecialStatEvent(getLife()));
+        if (mStat.getState() == CharacterState.DEAD) {
+            mStat.setState(CharacterState.NOR);
+        }
+        EventBus.getDefault().post(new UpdateSpecialStatEvent(getSpecialStat(), getSpecialMaxStat()));
     }
 
     public Stat getStat() {
         return mStat;
     }
+
+    public void addStat(int add) {}
 
     @Override
     public int getSpecialStat() {
@@ -57,11 +80,17 @@ public abstract class AbstractFighter extends AbstractCharacter {
     }
 
     @Override
+    public int getSpecialMaxStat() {
+        return getStat().getLifePoints().getMaxLifePoint();
+    }
+
+    @Override
     public int getSpecialStatIconId() {
-        return R.drawable.heart;
+        return R.drawable.heart_white;
     }
 
     public abstract int attack(AbstractMonster monster) throws AttackMissedException;
+
     public abstract boolean willAttackFirst(AbstractMonster monster);
 
     public AbstractWeapon getRightWeapon() {
@@ -73,7 +102,7 @@ public abstract class AbstractFighter extends AbstractCharacter {
         updateStat();
     }
 
-    public void removeRightWeapon(){
+    public void removeRightWeapon() {
         mEquipment.removeRightWeapon();
         updateStat();
     }
@@ -87,7 +116,7 @@ public abstract class AbstractFighter extends AbstractCharacter {
         updateStat();
     }
 
-    public void removeLeftWeapon(){
+    public void removeLeftWeapon() {
         mEquipment.removeLeftWeapon();
         updateStat();
     }
@@ -101,7 +130,7 @@ public abstract class AbstractFighter extends AbstractCharacter {
         updateStat();
     }
 
-    public void removeHeadArmor(){
+    public void removeHeadArmor() {
         mEquipment.removeHeadArmor();
         updateStat();
     }
@@ -115,7 +144,7 @@ public abstract class AbstractFighter extends AbstractCharacter {
         updateStat();
     }
 
-    public void removeBodyArmor(){
+    public void removeBodyArmor() {
         mEquipment.removeBodyArmor();
         updateStat();
     }
@@ -129,7 +158,7 @@ public abstract class AbstractFighter extends AbstractCharacter {
         updateStat();
     }
 
-    public void removeLegArmor(){
+    public void removeLegArmor() {
         mEquipment.removeLegArmor();
         updateStat();
     }
@@ -143,16 +172,33 @@ public abstract class AbstractFighter extends AbstractCharacter {
         updateStat();
     }
 
-    public void removeFootArmor(){
+    public void removeFootArmor() {
         mEquipment.removeFootArmor();
         updateStat();
     }
 
-    private void updateStat(){
+    private void updateStat() {
         mStat.setAccuracy(StatGenerator.generateAccuracy(mEquipment.getEquipementAccuracy(), mBasicStat.getAccuracy()));
         mStat.setResistance(StatGenerator.generateResistance(mEquipment.getEquipementResistance(), mBasicStat.getResistance()));
         mStat.setSpeed(StatGenerator.generateSpeed(mEquipment.getEquipementWeight(), mBasicStat.getSpeed()));
         mStat.setStrength(StatGenerator.generateStrength(mEquipment.getEquipementStrength(), mBasicStat.getStrength()));
+    }
+
+    public void addStat(StatType statType, int add) {
+        switch (statType) {
+            case STRENGTH:
+                mStat.addStrength(add);
+                break;
+            case SPEED:
+                mStat.addSpeed(add);
+                break;
+            case RESISTANCE:
+                mStat.addResisteance(add);
+                break;
+            case ACCURACY:
+                mStat.addAccuracy(add);
+                break;
+        }
     }
 
 

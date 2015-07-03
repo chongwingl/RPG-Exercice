@@ -54,12 +54,12 @@ public class BagItemListAdapter extends BaseAdapter {
             convertView = mInflater.inflate(R.layout.listview_bag_item, parent, false);
             holder = new Holder();
             holder.name = (TextView) convertView.findViewById(R.id.item_name);
-            holder.number= (TextView) convertView.findViewById(R.id.item_number);
+            holder.number = (TextView) convertView.findViewById(R.id.item_number);
             convertView.setTag(holder);
         } else {
             holder = (Holder) convertView.getTag();
         }
-        String name = (String)getItem(position);
+        String name = (String) getItem(position);
         int number = mClassMapping.get(name).first;
         holder.name.setText(name);
         if (number > 1) {
@@ -74,5 +74,11 @@ public class BagItemListAdapter extends BaseAdapter {
     class Holder {
         TextView name;
         TextView number;
+    }
+
+    @Override
+    public void notifyDataSetChanged() {
+        super.notifyDataSetChanged();
+        mClassNames = new ArrayList<>(mClassMapping.keySet());
     }
 }

@@ -7,8 +7,9 @@ import com.project.rpg.models.Stat;
 import com.project.rpg.models.characters.AbstractCharacter;
 import com.project.rpg.models.characters.fighters.AbstractFighter;
 import com.project.rpg.models.enumerations.CharacterType;
+import com.project.rpg.models.enumerations.MonsterLevel;
 import com.project.rpg.models.powers.AbstractPower;
-import com.project.rpg.utils.RandomGenerator;
+import com.project.rpg.generators.RandomGenerator;
 
 public abstract class AbstractMonster extends AbstractCharacter {
 
@@ -16,6 +17,7 @@ public abstract class AbstractMonster extends AbstractCharacter {
 
     private AbstractPower mPower;
     private Stat mStat;
+    private MonsterLevel mLevel;
 
     public AbstractMonster(String name, int maxLifePoints, int strength,
                            int speed, int accuracy, int resistance) {
@@ -50,7 +52,12 @@ public abstract class AbstractMonster extends AbstractCharacter {
 
     @Override
     public int getSpecialStatIconId() {
-        return R.drawable.heart;
+        return R.drawable.heart_white;
+    }
+
+    @Override
+    public int getSpecialMaxStat() {
+        return getStat().getLifePoints().getMaxLifePoint();
     }
 
     public int getStrength() {
@@ -69,19 +76,23 @@ public abstract class AbstractMonster extends AbstractCharacter {
         return mStat.getResistance();
     }
 
+    public MonsterLevel getLevel() {
+        return mLevel;
+    }
+
+    public void setLevel(MonsterLevel level) {
+        this.mLevel = level;
+    }
+
     public int attack(AbstractFighter fighter) throws AttackMissedException {
         int random = RandomGenerator.getRandomInteger(0, Stat.MAX_STAT);
-        int damages = 0;
-        if (random < mStat.getAccuracy()) {
-            int strength = mStat.getStrength();
-            if (strength > fighter.getStat().getResistance()) {
-                damages = strength;
-            } else {
+        int strength = mStat.getStrength();
+        int damages = strength;
+        if (random <= mStat.getAccuracy()) {
+            if (strength < fighter.getStat().getResistance()) {
                 int diff = fighter.getStat().getResistance() - strength;
-                if (diff > 0) {
-                    int random2 = RandomGenerator.getRandomInteger(0, diff);
-                    damages = strength - random2;
-                }
+                int random2 = RandomGenerator.getRandomInteger(0, diff);
+                damages = strength - random2;
             }
             return damages;
         } else {

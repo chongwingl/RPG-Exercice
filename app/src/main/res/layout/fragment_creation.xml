@@ -10,21 +10,22 @@
         android:layout_height="wrap_content"
         android:text="@string/character_creation"
         android:gravity="center"
-        style="@style/Base.TextAppearance.AppCompat.Title"
+        style="@style/TitleText"
         android:layout_margin="5dip"
         android:padding="5dip"/>
     
     <LinearLayout 
         android:layout_height="wrap_content"
         android:layout_width="match_parent"
-        android:orientation="horizontal" >
+        android:orientation="horizontal"
+        android:layout_margin="@dimen/normal_padding">
         
         <TextView 
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="5dip"
             android:padding="5dip"
-            style="@style/Base.TextAppearance.AppCompat.Medium"
+            style="@style/SubTitleText"
             android:text="@string/name"
             android:layout_weight="2"/>
         
@@ -41,12 +42,10 @@
     
     <Button 
         android:id="@+id/character_created"
+        style="@style/WhiteButton"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="5dip"
-        android:layout_margin="5dip"
+        android:padding="@dimen/small_padding"
         android:text="@string/ok"
-        style="@style/Base.TextAppearance.AppCompat.Large"
         android:layout_gravity="center"/>
 
 </LinearLayout>

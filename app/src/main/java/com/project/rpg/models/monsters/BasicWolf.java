@@ -8,7 +8,13 @@ public class BasicWolf extends AbstractMonster {
 
     private static final long serialVersionUID = -2405508829043369819L;
 
+    private static final int LIFE = 50;
+    private static final int STRENGTH = 20;
+    private static final int SPEED = 20;
+    private static final int ACCURACY = 20;
+    private static final int RESISTANCE = 20;
+
     public BasicWolf(Context context) {
-		super(context.getString(R.string.monster_name_wolf), 50, 20, 20, 20, 20);
+		super(context.getString(R.string.wolf), LIFE, STRENGTH, SPEED, ACCURACY, RESISTANCE);
 	}
 }

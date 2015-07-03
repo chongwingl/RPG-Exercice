@@ -10,5 +10,6 @@
     <dimen name="xlarge_padding">16dp</dimen>
     <dimen name="xxlarge_padding">32dp</dimen>
     <dimen name="header_icon_size">35dp</dimen>
+    <dimen name="normal_icon_size">55dp</dimen>
 
 </resources>

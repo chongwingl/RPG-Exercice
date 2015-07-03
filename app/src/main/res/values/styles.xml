@@ -19,4 +19,38 @@
         <item name="android:colorBackground">@color/background_light</item>
     </style>
 
+    <style name="TitleTextInverse">
+        <item name="android:textAppearance">?android:textAppearanceLargeInverse</item>
+    </style>
+
+    <style name="TitleText">
+        <item name="android:textAppearance">?android:textAppearanceLarge</item>
+    </style>
+
+    <style name="SubTitleTextInverse">
+        <item name="android:textAppearance">?android:textAppearanceMediumInverse</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="SubTitleText">
+        <item name="android:textAppearance">?android:textAppearanceMedium</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="BodyTextInverse">
+        <item name="android:textAppearance">?android:textAppearanceSmallInverse</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="BodyText">
+        <item name="android:textAppearance">?android:textAppearanceSmall</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="WhiteButton">
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:background">@drawable/button_shadow</item>
+        <item name="android:layout_margin">@dimen/small_padding</item>
+    </style>
+
 </resources>

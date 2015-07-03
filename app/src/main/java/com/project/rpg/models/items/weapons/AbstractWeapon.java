@@ -2,7 +2,7 @@ package com.project.rpg.models.items.weapons;
 
 import android.content.Context;
 
-import com.project.rpg.fragments.dialogs.UseItemDialogFragment;
+import com.project.rpg.fragments.dialogs.StringMessageDialogFragment;
 import com.project.rpg.models.characters.AbstractCharacter;
 import com.project.rpg.models.enumerations.Accuracy;
 import com.project.rpg.models.enumerations.ItemType;
@@ -54,7 +54,7 @@ public abstract class AbstractWeapon extends AbstractItem {
 		return mAccuracyWhenBroken;
 	}
 
-	protected void setmAccuracyWhenBroken(Accuracy mAccuracyWhenBroken) {
+	protected void setAccuracyWhenBroken(Accuracy mAccuracyWhenBroken) {
 		this.mAccuracyWhenBroken = mAccuracyWhenBroken;
 	}
 
@@ -70,7 +70,7 @@ public abstract class AbstractWeapon extends AbstractItem {
 		return mHitsBeforeSharpening;
 	}
 
-	protected void setmHitsBeforeSharpening(int mHitsBeforeSharpening) {
+	protected void setHitsBeforeSharpening(int mHitsBeforeSharpening) {
 		this.mHitsBeforeSharpening = mHitsBeforeSharpening;
 	}
 
@@ -93,7 +93,7 @@ public abstract class AbstractWeapon extends AbstractItem {
     }
 
 	@Override
-	public UseItemDialogFragment getUseItemDialogFragment(Context context) {
+	public StringMessageDialogFragment getUseItemDialogFragment(Context context) {
 		return null;
 	}
 }

@@ -1,37 +1,45 @@
 {
-    "items" : {
-        "weapons" : [
-            "com.project.rpg.models.items.weapons.axes.BasicAxe",
-            "com.project.rpg.models.items.weapons.daggers.BasicDagger",
-            "com.project.rpg.models.items.weapons.hammers.BasicHammer",
-            "com.project.rpg.models.items.weapons.swords.BasicSword",
-            "com.project.rpg.models.items.weapons.protection.BasicShield"
-        ],
-        "armor" : [
-            "com.project.rpg.models.items.armor.body.BasicArmor",
-            "com.project.rpg.models.items.armor.body.BasicTunic",
-            "com.project.rpg.models.items.armor.foot.BasicShoe",
-            "com.project.rpg.models.items.armor.foot.BasicBoot",
-            "com.project.rpg.models.items.armor.head.BasicCap",
-            "com.project.rpg.models.items.armor.head.BasicHat",
-            "com.project.rpg.models.items.armor.head.BasicHelmet",
-            "com.project.rpg.models.items.armor.legs.BasicLegArmor",
-            "com.project.rpg.models.items.armor.legs.BasicPants"
-        ],
-        "healing" : [
-            "com.project.rpg.models.items.enhancement.healing.BasicPotion"
-        ],
-        "material" : [
-            "com.project.rpg.models.items.material.animal.Bone",
-            "com.project.rpg.models.items.material.animal.Skin",
-            "com.project.rpg.models.items.material.metal.Copper",
-            "com.project.rpg.models.items.material.metal.Gold",
-            "com.project.rpg.models.items.material.metal.Iron",
-            "com.project.rpg.models.items.material.metal.Mithril",
-            "com.project.rpg.models.items.material.metal.Silver",
-            "com.project.rpg.models.items.material.metal.Steel",
-            "com.project.rpg.models.items.material.natural.Wood",
-            "com.project.rpg.models.items.material.natural.Rock"
-        ]
-    }
+  "items": {
+    "weapons": [
+      "com.project.rpg.models.items.weapons.axes.BasicAxe",
+      "com.project.rpg.models.items.weapons.daggers.BasicDagger",
+      "com.project.rpg.models.items.weapons.hammers.BasicHammer",
+      "com.project.rpg.models.items.weapons.swords.BasicSword",
+      "com.project.rpg.models.items.weapons.protection.BasicShield"
+    ],
+    "armor": [
+      "com.project.rpg.models.items.armor.body.BasicLeatherArmor",
+      "com.project.rpg.models.items.armor.body.SuperMetalArmor",
+      "com.project.rpg.models.items.armor.body.BasicTunic",
+      "com.project.rpg.models.items.armor.foot.BasicLeatherShoe",
+      "com.project.rpg.models.items.armor.foot.BasicLeatherBoot",
+      "com.project.rpg.models.items.armor.foot.SuperMetalBoot",
+      "com.project.rpg.models.items.armor.head.BasicCap",
+      "com.project.rpg.models.items.armor.head.BasicHat",
+      "com.project.rpg.models.items.armor.head.BasicLeatherHelmet",
+      "com.project.rpg.models.items.armor.head.SuperMetalHelmet",
+      "com.project.rpg.models.items.armor.legs.BasicLeatherLegArmor",
+      "com.project.rpg.models.items.armor.legs.SuperMetalLegArmor",
+      "com.project.rpg.models.items.armor.legs.BasicPants"
+    ],
+    "healing": [
+      "com.project.rpg.models.items.enhancement.healing.BasicPotion",
+      "com.project.rpg.models.items.enhancement.healing.SuperPotion",
+      "com.project.rpg.models.items.enhancement.healing.HyperPotion",
+      "com.project.rpg.models.items.enhancement.healing.MegaPotion",
+      "com.project.rpg.models.items.enhancement.healing.UltimatePotion"
+    ],
+    "material": [
+      "com.project.rpg.models.items.material.animal.Bone",
+      "com.project.rpg.models.items.material.animal.Skin",
+      "com.project.rpg.models.items.material.metal.Copper",
+      "com.project.rpg.models.items.material.metal.Gold",
+      "com.project.rpg.models.items.material.metal.Iron",
+      "com.project.rpg.models.items.material.metal.Mithril",
+      "com.project.rpg.models.items.material.metal.Silver",
+      "com.project.rpg.models.items.material.metal.Steel",
+      "com.project.rpg.models.items.material.natural.Wood",
+      "com.project.rpg.models.items.material.natural.Rock"
+    ]
+  }
 }

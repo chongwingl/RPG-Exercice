@@ -3,15 +3,19 @@ package com.project.rpg.activities;
 import android.widget.Button;
 
 import com.project.rpg.R;
+import com.project.rpg.generators.ArmorGenerator;
+import com.project.rpg.generators.PotionGenerator;
 import com.project.rpg.intents.ActionIntent;
 import com.project.rpg.intents.BagIntent;
 import com.project.rpg.intents.StateIntent;
 import com.project.rpg.intents.StoreIntent;
 import com.project.rpg.models.characters.fighters.AbstractFighter;
-import com.project.rpg.models.items.armor.body.BasicArmor;
-import com.project.rpg.models.items.armor.foot.BasicBoot;
-import com.project.rpg.models.items.armor.head.BasicHelmet;
-import com.project.rpg.models.items.armor.legs.BasicLegArmor;
+import com.project.rpg.models.enumerations.CharacterState;
+import com.project.rpg.models.enumerations.MonsterLevel;
+import com.project.rpg.models.items.armor.body.BasicLeatherArmor;
+import com.project.rpg.models.items.armor.foot.BasicLeatherBoot;
+import com.project.rpg.models.items.armor.head.BasicLeatherHelmet;
+import com.project.rpg.models.items.armor.legs.BasicLeatherLegArmor;
 import com.project.rpg.models.items.weapons.protection.BasicShield;
 import com.project.rpg.models.items.weapons.swords.BasicSword;
 
@@ -31,7 +35,7 @@ public class FighterActivity extends AbstractCharacterActivity {
         super.onResume();
         AbstractFighter fighter = (AbstractFighter) getCharacter();
         if (fighter != null) {
-            if (fighter.getLife() < 1) {
+            if (fighter.getStat().getState() == CharacterState.DEAD) {
                 mActionButton.setEnabled(false);
             } else {
                 mActionButton.setEnabled(true);
@@ -63,10 +67,10 @@ public class FighterActivity extends AbstractCharacterActivity {
     public void onFragmentCreationFinished(String name) {
         super.onFragmentCreationFinished(name);
         AbstractFighter fighter = (AbstractFighter) getCharacter();
-        fighter.setBodyArmor(new BasicArmor(this));
-        fighter.setFootArmor(new BasicBoot(this));
-        fighter.setHeadArmor(new BasicHelmet(this));
-        fighter.setLegArmor(new BasicLegArmor(this));
+        fighter.setBodyArmor(new BasicLeatherArmor(this));
+        fighter.setFootArmor(new BasicLeatherBoot(this));
+        fighter.setHeadArmor(new BasicLeatherHelmet(this));
+        fighter.setLegArmor(new BasicLeatherLegArmor(this));
         fighter.setLeftWeapon(new BasicShield(this));
         fighter.setRightWeapon(new BasicSword(this));
     }

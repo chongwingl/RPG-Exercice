@@ -14,31 +14,45 @@ public class BaseDialogFragment extends DialogFragment {
 
     public static final String TAG = BaseDialogFragment.class.getSimpleName();
     protected static final String SAVED_TITLE = "savedTitle";
-    protected static final String SAVED_MESSAGE = "savedMessage";
+    protected static final String SAVED_MESSAGE_REFID = "savedMessageRefId";
     protected static final String SAVED_POSITIVE = "savedPositive";
     protected static final String SAVED_NEGATIVE = "saveNegative";
 
-    protected int mTitle;
-    protected int mMessage;
+    protected int mTitleRefId = -1;
+    protected int mMessageRefId = -1;
     protected int mPositive = -1;
     protected int mNegative = -1;
 
     protected DialogButtonsListener mPositiveListener;
     protected DialogButtonsListener mNegativeListener;
 
+    protected AlertDialog.Builder mBuilder;
+
     public static BaseDialogFragment newInstance(int title, int message, int positiveButton, int negativeButton) {
         BaseDialogFragment fragment = new BaseDialogFragment();
         Bundle bundle = new Bundle();
         bundle.putInt(SAVED_TITLE, title);
-        bundle.putInt(SAVED_MESSAGE, message);
+        bundle.putInt(SAVED_MESSAGE_REFID, message);
         bundle.putInt(SAVED_POSITIVE, positiveButton);
         bundle.putInt(SAVED_NEGATIVE, negativeButton);
         fragment.setArguments(bundle);
         return fragment;
     }
 
+    public static BaseDialogFragment newInstance(int title, int message, int positiveButton) {
+        BaseDialogFragment fragment = new BaseDialogFragment();
+        Bundle bundle = new Bundle();
+        bundle.putInt(SAVED_TITLE, title);
+        bundle.putInt(SAVED_MESSAGE_REFID, message);
+        bundle.putInt(SAVED_POSITIVE, positiveButton);
+        bundle.putInt(SAVED_NEGATIVE, -1);
+        fragment.setArguments(bundle);
+        return fragment;
+    }
+
     @Override
-    public Dialog onCreateDialog(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         final Bundle data;
         if (savedInstanceState != null) {
             data = savedInstanceState;
@@ -47,11 +61,11 @@ public class BaseDialogFragment extends DialogFragment {
         }
 
         if (data.containsKey(SAVED_TITLE)) {
-            mTitle = data.getInt(SAVED_TITLE);
+            mTitleRefId = data.getInt(SAVED_TITLE);
         }
 
-        if (data.containsKey(SAVED_MESSAGE)) {
-            mMessage = data.getInt(SAVED_MESSAGE);
+        if (data.containsKey(SAVED_MESSAGE_REFID)) {
+            mMessageRefId = data.getInt(SAVED_MESSAGE_REFID);
         }
 
         if (data.containsKey(SAVED_POSITIVE)) {
@@ -62,45 +76,29 @@ public class BaseDialogFragment extends DialogFragment {
             mNegative = data.getInt(SAVED_NEGATIVE);
         }
 
-        AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+        mBuilder = new AlertDialog.Builder(getActivity());
+    }
 
-        builder.setTitle(mTitle);
-        builder.setMessage(mMessage);
+    @Override
+    public Dialog onCreateDialog(Bundle savedInstanceState) {
 
-        if (mPositive != -1) {
-            builder.setPositiveButton(mPositive, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    if (mPositiveListener != null) {
-                        mPositiveListener.onDialogButtonClick(BaseDialogFragment.this, mPositive);
-                    }
-                }
-            });
-        }
+        mBuilder.setTitle(mTitleRefId);
+        mBuilder.setMessage(mMessageRefId);
 
-        if (mNegative != -1) {
-            builder.setNegativeButton(mNegative, new DialogInterface.OnClickListener() {
-                @Override
-                public void onClick(DialogInterface dialogInterface, int i) {
-                    if (mNegativeListener != null) {
-                        mNegativeListener.onDialogButtonClick(BaseDialogFragment.this, mNegative);
-                    }
-                }
-            });
-        }
+        setButtons();
 
-        return builder.create();
+        return mBuilder.create();
     }
 
     @Override
     public void onSaveInstanceState(Bundle outState) {
         super.onSaveInstanceState(outState);
-        if (mTitle != -1) {
-            outState.putInt(SAVED_TITLE, mTitle);
+        if (mTitleRefId != -1) {
+            outState.putInt(SAVED_TITLE, mTitleRefId);
         }
 
-        if (mMessage != -1) {
-            outState.putInt(SAVED_MESSAGE, mMessage);
+        if (mMessageRefId != -1) {
+            outState.putInt(SAVED_MESSAGE_REFID, mMessageRefId);
         }
 
         if (mPositive != -1) {
@@ -133,4 +131,29 @@ public class BaseDialogFragment extends DialogFragment {
     public interface DialogButtonsListener {
         void onDialogButtonClick(DialogFragment dialog, int buttonTitle);
     }
+
+    protected void setButtons() {
+        if (mPositive != -1) {
+            mBuilder.setPositiveButton(mPositive, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    if (mPositiveListener != null) {
+                        mPositiveListener.onDialogButtonClick(BaseDialogFragment.this, mPositive);
+                    }
+                }
+            });
+        }
+
+        if (mNegative != -1) {
+            mBuilder.setNegativeButton(mNegative, new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    if (mNegativeListener != null) {
+                        mNegativeListener.onDialogButtonClick(BaseDialogFragment.this, mNegative);
+                    }
+                }
+            });
+        }
+    }
+
 }

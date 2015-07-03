@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
 
+    <string name="wolf">Loup</string>
+    <string name="spider">Araignée</string>
+    <string name="snake">Serpent</string>
+    <string name="dragon">Dragon</string>
 </resources>

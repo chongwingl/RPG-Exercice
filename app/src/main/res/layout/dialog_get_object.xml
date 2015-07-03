@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="horizontal" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+
+
+    <ImageView
+        android:id="@+id/get_object_icon"
+        android:layout_width="0dp"
+        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical|right"
+        android:padding="@dimen/normal_padding"
+        android:src="@drawable/potion_basic"/>
+
+    <TextView
+        android:id="@+id/get_object_name"
+        android:layout_width="0dp"
+        style="@style/SubTitleText"
+        android:layout_height="match_parent"
+        android:gravity="center_vertical|left"
+        android:padding="@dimen/normal_padding"
+        android:text="Potion"
+        android:layout_weight="1"/>
+
+</LinearLayout>

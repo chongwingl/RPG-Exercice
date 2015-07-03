@@ -1,7 +1,7 @@
 package com.project.rpg.models.powers;
 
 import com.project.rpg.models.enumerations.Probability;
-import com.project.rpg.utils.RandomGenerator;
+import com.project.rpg.generators.RandomGenerator;
 
 import java.io.Serializable;
 

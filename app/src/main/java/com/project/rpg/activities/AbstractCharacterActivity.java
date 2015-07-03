@@ -61,7 +61,11 @@ public abstract class AbstractCharacterActivity extends ToolbarActivity implemen
         mIsCreating = false;
         AbstractCharacter character = getCharacter();
         setCharacterInfo(
-                name, character.getGold(), character.getSpecialStat(), character.getSpecialStatIconId()
+                name,
+                character.getGold(),
+                character.getSpecialStat(),
+                character.getSpecialStatIconId(),
+                character.getSpecialMaxStat()
         );
         mFragmentManager.beginTransaction()
                 .remove(mCreationFragment)

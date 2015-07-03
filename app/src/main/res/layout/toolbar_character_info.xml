@@ -14,7 +14,7 @@
 
         <TextView
             android:id="@+id/header_character_name"
-            style="@style/Base.TextAppearance.AppCompat.Title.Inverse"
+            style="@style/TitleTextInverse"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:gravity="center"
@@ -34,11 +34,11 @@
                 android:layout_width="@dimen/header_icon_size"
                 android:layout_height="@dimen/header_icon_size"
                 android:padding="@dimen/small_padding"
-                android:src="@drawable/heart" />
+                android:src="@drawable/heart_white" />
 
             <TextView
                 android:id="@+id/header_special_stat"
-                style="@style/Base.TextAppearance.AppCompat.Medium.Inverse"
+                style="@style/SubTitleTextInverse"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center"
@@ -59,11 +59,11 @@
                 android:layout_width="@dimen/header_icon_size"
                 android:layout_height="@dimen/header_icon_size"
                 android:padding="@dimen/small_padding"
-                android:src="@drawable/coins" />
+                android:src="@drawable/coins_white" />
 
             <TextView
                 android:id="@+id/header_gold"
-                style="@style/Base.TextAppearance.AppCompat.Medium.Inverse"
+                style="@style/SubTitleTextInverse"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
                 android:gravity="center"

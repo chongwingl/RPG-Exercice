@@ -14,6 +14,7 @@ import com.project.rpg.fragments.dialogs.BaseDialogFragment;
 import com.project.rpg.intents.BagIntent;
 import com.project.rpg.intents.CharacterIntent;
 import com.project.rpg.intents.FightingIntent;
+import com.project.rpg.intents.VictoryIntent;
 import com.project.rpg.models.characters.fighters.AbstractFighter;
 import com.project.rpg.models.monsters.AbstractMonster;
 
@@ -189,8 +190,7 @@ public class FightingActivity extends ToolbarActivity {
     private void noMoreLifeDialog(NoMoreLifeException e) {
         BaseDialogFragment dialog = BaseDialogFragment.newInstance(R.string.no_more_life_error_message_title,
                 e.getMessageRefId(),
-                R.string.ok,
-                -1
+                R.string.ok
         );
         dialog.setPositiveListener(new BaseDialogFragment.DialogButtonsListener() {
             @Override
@@ -207,11 +207,11 @@ public class FightingActivity extends ToolbarActivity {
     private void noMoreLifeMonsterDialog() {
         BaseDialogFragment dialog = BaseDialogFragment.newInstance(R.string.character_victory,
                 R.string.monster_cannot_fight,
-                R.string.ok, -1);
+                R.string.ok);
         dialog.setPositiveListener(new BaseDialogFragment.DialogButtonsListener() {
             @Override
             public void onDialogButtonClick(DialogFragment dialog, int buttonTitle) {
-                CharacterIntent intent = new CharacterIntent(FightingActivity.this, mCharacter.getCharacterType());
+                VictoryIntent intent = new VictoryIntent(FightingActivity.this, mMonster.getLevel(), mMonster.getStrength());
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
                 FightingActivity.this.finish();

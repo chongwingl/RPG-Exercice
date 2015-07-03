@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="healing_potion">Potion</string>
+    <string name="healing_super_potion">Super Potion</string>
+    <string name="healing_hyper_potion">Hyper Potion</string>
+    <string name="healing_mega_potion">Mega Potion</string>
+    <string name="healing_ultimate_potion">Potion Ultime</string>
 </resources>

@@ -3,6 +3,7 @@ package com.project.rpg.activities;
 import android.os.Bundle;
 
 import com.project.rpg.R;
+import com.project.rpg.models.characters.fighters.AbstractArmoredFighter;
 import com.project.rpg.models.characters.fighters.AbstractFighter;
 
 /**
@@ -14,7 +15,7 @@ public class FighterStateActivity extends StateActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        AbstractFighter character = (AbstractFighter) getApp().getCharacter();
+        AbstractArmoredFighter character = (AbstractArmoredFighter) getApp().getCharacter();
         mStrength.setText("" + character.getStat().getStrength());
         mSpeed.setText("" + character.getStat().getSpeed());
         mResistance.setText("" + character.getStat().getResistance());

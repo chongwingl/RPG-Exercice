@@ -1,18 +1,21 @@
 package com.project.rpg.models.characters.fighters;
 
+import android.os.Parcel;
 import android.util.Pair;
-import android.util.SparseArray;
 
 import com.project.rpg.R;
 import com.project.rpg.exceptions.AttackMissedException;
 import com.project.rpg.exceptions.NoMoreLifeException;
 import com.project.rpg.generators.StatGenerator;
+import com.project.rpg.interfaces.Attack;
+import com.project.rpg.interfaces.SpecialStat;
 import com.project.rpg.models.Equipment;
 import com.project.rpg.models.Stat;
+import com.project.rpg.models.actions.FighterAttack;
+import com.project.rpg.models.actions.FighterLifeStat;
 import com.project.rpg.models.characters.AbstractCharacter;
 import com.project.rpg.models.enumerations.CharacterState;
 import com.project.rpg.models.enumerations.CharacterType;
-import com.project.rpg.models.enumerations.ItemType;
 import com.project.rpg.models.enumerations.StatType;
 import com.project.rpg.models.events.UpdateSpecialStatEvent;
 import com.project.rpg.models.items.armor.AbstractArmor;
@@ -24,7 +27,6 @@ import de.greenrobot.event.EventBus;
 
 public abstract class AbstractFighter extends AbstractCharacter {
 
-    private static final long serialVersionUID = 7431707900608571006L;
     private static final int HEALING_PROB = 50;
     private static final int ARMOR_PROB = 25;
     private static final int WEAPON_PROB = 25;
@@ -33,38 +35,48 @@ public abstract class AbstractFighter extends AbstractCharacter {
     protected Stat mStat;
     protected Stat mBasicStat;
     public static Pair[] mItemProbability = ItemUtils.getItemProbablityArray(HEALING_PROB, ARMOR_PROB, WEAPON_PROB, MATERIAL_PROB);
+    protected Attack mAttack;
 
-
-    private Equipment mEquipment;
+    public AbstractFighter() {
+    }
 
     public AbstractFighter(CharacterType characterType, String name, int maxLifePoints, int strength,
                            int speed, int accuracy, int resistance) {
-        super(characterType, name, BAG_SIZE_MAX);
+        super(characterType, name, BAG_SIZE_MAX, new FighterLifeStat(maxLifePoints, maxLifePoints, R.drawable.heart_white));
         mStat = new Stat(maxLifePoints);
         mBasicStat = new Stat(maxLifePoints, strength, speed, accuracy, resistance);
-        mEquipment = new Equipment();
-
+        mAttack = new FighterAttack();
     }
 
     public int getLife() {
-        return mStat.getLifePoints().getLifePoints();
+        return mStat.getLifePoints().getLife();
     }
 
     public void removeLife(int points) throws NoMoreLifeException {
         try {
-            mStat.getLifePoints().removeLifePoints(points);
+            mStat.getLifePoints().removeLife(points);
         } catch (NoMoreLifeException e) {
             mStat.setState(CharacterState.DEAD);
             throw e;
         }
+        mSpecialStat.setSpecialStat(getLife());
         EventBus.getDefault().post(new UpdateSpecialStatEvent(getSpecialStat(), getSpecialMaxStat()));
     }
 
     public void addLife(int points) {
-        mStat.getLifePoints().addLifePoints(points);
+        mStat.getLifePoints().addLife(points);
         if (mStat.getState() == CharacterState.DEAD) {
             mStat.setState(CharacterState.NOR);
         }
+        mSpecialStat.setSpecialStat(getLife());
+        EventBus.getDefault().post(new UpdateSpecialStatEvent(getSpecialStat(), getSpecialMaxStat()));
+    }
+
+    public void addMaxLife(int points) {
+        mStat.getLifePoints().setMaxLifePoint(
+                mStat.getLifePoints().getMaxLifePoint() + points
+        );
+        mSpecialStat.setSpecialMaxStat(mStat.getLifePoints().getMaxLifePoint());
         EventBus.getDefault().post(new UpdateSpecialStatEvent(getSpecialStat(), getSpecialMaxStat()));
     }
 
@@ -72,116 +84,12 @@ public abstract class AbstractFighter extends AbstractCharacter {
         return mStat;
     }
 
-    public void addStat(int add) {}
-
-    @Override
-    public int getSpecialStat() {
-        return getLife();
+    public int attack(AbstractMonster monster) throws AttackMissedException {
+        return mAttack.attack(monster, mStat);
     }
 
-    @Override
-    public int getSpecialMaxStat() {
-        return getStat().getLifePoints().getMaxLifePoint();
-    }
-
-    @Override
-    public int getSpecialStatIconId() {
-        return R.drawable.heart_white;
-    }
-
-    public abstract int attack(AbstractMonster monster) throws AttackMissedException;
-
-    public abstract boolean willAttackFirst(AbstractMonster monster);
-
-    public AbstractWeapon getRightWeapon() {
-        return mEquipment.getRightWeapon();
-    }
-
-    public void setRightWeapon(AbstractWeapon rightWeapon) {
-        mEquipment.setRightWeapon(rightWeapon);
-        updateStat();
-    }
-
-    public void removeRightWeapon() {
-        mEquipment.removeRightWeapon();
-        updateStat();
-    }
-
-    public AbstractWeapon getLeftWeapon() {
-        return mEquipment.getLeftWeapon();
-    }
-
-    public void setLeftWeapon(AbstractWeapon leftWeapon) {
-        mEquipment.setLeftWeapon(leftWeapon);
-        updateStat();
-    }
-
-    public void removeLeftWeapon() {
-        mEquipment.removeLeftWeapon();
-        updateStat();
-    }
-
-    public AbstractArmor getHeadArmor() {
-        return mEquipment.getHeadArmor();
-    }
-
-    public void setHeadArmor(AbstractArmor headArmor) {
-        mEquipment.setHeadArmor(headArmor);
-        updateStat();
-    }
-
-    public void removeHeadArmor() {
-        mEquipment.removeHeadArmor();
-        updateStat();
-    }
-
-    public AbstractArmor getBodyArmor() {
-        return mEquipment.getBodyArmor();
-    }
-
-    public void setBodyArmor(AbstractArmor bodyArmor) {
-        mEquipment.setBodyArmor(bodyArmor);
-        updateStat();
-    }
-
-    public void removeBodyArmor() {
-        mEquipment.removeBodyArmor();
-        updateStat();
-    }
-
-    public AbstractArmor getLegArmor() {
-        return mEquipment.getLegArmor();
-    }
-
-    public void setLegArmor(AbstractArmor legArmor) {
-        mEquipment.setLegArmor(legArmor);
-        updateStat();
-    }
-
-    public void removeLegArmor() {
-        mEquipment.removeLegArmor();
-        updateStat();
-    }
-
-    public AbstractArmor getFootArmor() {
-        return mEquipment.getFootArmor();
-    }
-
-    public void setFootArmor(AbstractArmor footArmor) {
-        mEquipment.setFootArmor(footArmor);
-        updateStat();
-    }
-
-    public void removeFootArmor() {
-        mEquipment.removeFootArmor();
-        updateStat();
-    }
-
-    private void updateStat() {
-        mStat.setAccuracy(StatGenerator.generateAccuracy(mEquipment.getEquipementAccuracy(), mBasicStat.getAccuracy()));
-        mStat.setResistance(StatGenerator.generateResistance(mEquipment.getEquipementResistance(), mBasicStat.getResistance()));
-        mStat.setSpeed(StatGenerator.generateSpeed(mEquipment.getEquipementWeight(), mBasicStat.getSpeed()));
-        mStat.setStrength(StatGenerator.generateStrength(mEquipment.getEquipementStrength(), mBasicStat.getStrength()));
+    public boolean willAttackFirst(AbstractMonster monster) {
+        return mAttack.isAttackFirst(monster, mStat);
     }
 
     public void addStat(StatType statType, int add) {
@@ -193,13 +101,25 @@ public abstract class AbstractFighter extends AbstractCharacter {
                 mStat.addSpeed(add);
                 break;
             case RESISTANCE:
-                mStat.addResisteance(add);
+                mStat.addResistance(add);
                 break;
             case ACCURACY:
                 mStat.addAccuracy(add);
                 break;
         }
     }
+    public void writeToParcel(Parcel out, int flags) {
+        super.writeToParcel(out, flags);
+        out.writeParcelable(mStat, flags);
+        out.writeParcelable(mBasicStat, flags);
+        out.writeParcelable(mAttack, flags);
+    }
 
+    protected AbstractFighter(Parcel in) {
+        super(in);
+        mStat = in.readParcelable(mStat.getClass().getClassLoader());
+        mBasicStat = in.readParcelable(mBasicStat.getClass().getClassLoader());
+        mAttack = in.readParcelable(mAttack.getClass().getClassLoader());
+    }
 
 }

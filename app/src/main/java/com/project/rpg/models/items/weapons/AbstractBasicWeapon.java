@@ -1,5 +1,7 @@
 package com.project.rpg.models.items.weapons;
 
+import android.os.Parcel;
+
 import com.project.rpg.models.enumerations.Probability;
 
 /**
@@ -7,7 +9,8 @@ import com.project.rpg.models.enumerations.Probability;
  */
 public class AbstractBasicWeapon extends AbstractWeapon {
 
-    private static final long serialVersionUID = 4492089374812767198L;
+    public AbstractBasicWeapon() {
+    }
 
     public AbstractBasicWeapon(String name) {
         super(name);
@@ -15,6 +18,10 @@ public class AbstractBasicWeapon extends AbstractWeapon {
 
     @Override
     public Probability getProbabilityToFind() {
-        return  Probability.LEVEL7;
+        return Probability.LEVEL7;
+    }
+
+    protected AbstractBasicWeapon(Parcel in) {
+        super(in);
     }
 }

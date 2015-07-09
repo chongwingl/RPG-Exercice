@@ -1,86 +1,53 @@
 package com.project.rpg.models.items.weapons;
 
 import android.content.Context;
+import android.os.Parcel;
 
 import com.project.rpg.fragments.dialogs.StringMessageDialogFragment;
 import com.project.rpg.models.characters.AbstractCharacter;
 import com.project.rpg.models.enumerations.Accuracy;
 import com.project.rpg.models.enumerations.ItemType;
 import com.project.rpg.models.enumerations.Strength;
+import com.project.rpg.models.enumerations.Weight;
 import com.project.rpg.models.items.AbstractItem;
 import com.project.rpg.models.powers.AbstractPower;
 
 public abstract class AbstractWeapon extends AbstractItem {
 
-    private static final long serialVersionUID = 5161970984203019127L;
+    protected Strength mStrength;
+    protected Accuracy mAccuracy;
+    protected AbstractPower mPower;
 
-    private Strength mStrength; // en pourcentage
-	private Strength mStrengthWhenBroken;
-	private Accuracy mAccuracy; // en pourcentage
-	private Accuracy mAccuracyWhenBroken;
-	private int mNumberOfSharpening;
-	private int mHitsBeforeSharpening;
-	private AbstractPower mPower;
+    public AbstractWeapon() {
+    }
 
     protected AbstractWeapon(String name) {
         super(name);
     }
 
-	public Strength getStrength() {
-		return mStrength;
-	}
+    public Strength getStrength() {
+        return mStrength;
+    }
 
-	protected void setStrength(Strength strength) {
-		this.mStrength = strength;
-	}
+    protected void setStrength(Strength strength) {
+        this.mStrength = strength;
+    }
 
-	public Strength getStrengthWhenBroken() {
-		return mStrengthWhenBroken;
-	}
+    public Accuracy getAccuracy() {
+        return mAccuracy;
+    }
 
-	protected void setStrengthWhenBroken(Strength strengthWhenBroken) {
-		this.mStrengthWhenBroken = strengthWhenBroken;
-	}
+    protected void setAccuracy(Accuracy accuracy) {
+        this.mAccuracy = accuracy;
+    }
 
-	public Accuracy getAccuracy() {
-		return mAccuracy;
-	}
+    public AbstractPower getPower() {
+        return mPower;
+    }
 
-	protected void setAccuracy(Accuracy accuracy) {
-		this.mAccuracy = accuracy;
-	}
-
-	public Accuracy getmAccuracyWhenBroken() {
-		return mAccuracyWhenBroken;
-	}
-
-	protected void setAccuracyWhenBroken(Accuracy mAccuracyWhenBroken) {
-		this.mAccuracyWhenBroken = mAccuracyWhenBroken;
-	}
-
-	public int getNumberOfSharpening() {
-		return mNumberOfSharpening;
-	}
-
-	protected void setNumberOfSharpening(int numberOfSharpening) {
-		this.mNumberOfSharpening = numberOfSharpening;
-	}
-
-	public int getmHitsBeforeSharpening() {
-		return mHitsBeforeSharpening;
-	}
-
-	protected void setHitsBeforeSharpening(int mHitsBeforeSharpening) {
-		this.mHitsBeforeSharpening = mHitsBeforeSharpening;
-	}
-
-	public AbstractPower getmPower() {
-		return mPower;
-	}
-
-	protected void setmPower(AbstractPower mPower) {
-		this.mPower = mPower;
-	}
+    protected void setPower(AbstractPower mPower) {
+        this.mPower = mPower;
+    }
 
     @Override
     protected void setItemType() {
@@ -92,8 +59,26 @@ public abstract class AbstractWeapon extends AbstractItem {
 
     }
 
-	@Override
-	public StringMessageDialogFragment getUseItemDialogFragment(Context context) {
-		return null;
-	}
+    @Override
+    public StringMessageDialogFragment getUseItemDialogFragment(Context context) {
+        return null;
+    }
+
+    public int describeContents() {
+        return 0;
+    }
+
+    public void writeToParcel(Parcel out, int flags) {
+        super.writeToParcel(out, flags);
+        out.writeParcelable(mPower, flags);
+        out.writeSerializable(mStrength);
+        out.writeSerializable(mAccuracy);
+    }
+
+    protected AbstractWeapon(Parcel in) {
+        super(in);
+        mPower = in.readParcelable(mPower.getClass().getClassLoader());
+        mStrength = (Strength) in.readSerializable();
+        mAccuracy = (Accuracy) in.readSerializable();
+    }
 }

@@ -3,15 +3,14 @@ package com.project.rpg.models.monsters;
 import com.project.rpg.R;
 import com.project.rpg.exceptions.AttackMissedException;
 import com.project.rpg.exceptions.NoMoreLifeException;
+import com.project.rpg.generators.RandomGenerator;
 import com.project.rpg.models.Stat;
-import com.project.rpg.models.characters.AbstractCharacter;
 import com.project.rpg.models.characters.fighters.AbstractFighter;
 import com.project.rpg.models.enumerations.CharacterType;
 import com.project.rpg.models.enumerations.MonsterLevel;
 import com.project.rpg.models.powers.AbstractPower;
-import com.project.rpg.generators.RandomGenerator;
 
-public abstract class AbstractMonster extends AbstractCharacter {
+public abstract class AbstractMonster extends AbstractFighter {
 
     private static final long serialVersionUID = -4281126169918483572L;
 
@@ -21,7 +20,7 @@ public abstract class AbstractMonster extends AbstractCharacter {
 
     public AbstractMonster(String name, int maxLifePoints, int strength,
                            int speed, int accuracy, int resistance) {
-        super(CharacterType.MONSTER, name, 0);
+        super(CharacterType.MONSTER, name, maxLifePoints, strength, speed, accuracy, resistance);
         mStat = new Stat(maxLifePoints, strength, speed, accuracy, resistance);
     }
 
@@ -38,11 +37,11 @@ public abstract class AbstractMonster extends AbstractCharacter {
     }
 
     public int getLife() {
-        return mStat.getLifePoints().getLifePoints();
+        return mStat.getLifePoints().getLife();
     }
 
     public void removeLife(int points) throws NoMoreLifeException {
-        mStat.getLifePoints().removeLifePoints(points);
+        mStat.getLifePoints().removeLife(points);
     }
 
     @Override

@@ -148,7 +148,7 @@ public class VictoryActivity extends ToolbarActivity {
             @Override
             public void onDialogButtonClick(DialogFragment dialog, int buttonTitle) {
                 dialog.dismiss();
-                mFighter.getStat().getLifePoints().setMaxLifePoint(
+                mFighter.addMaxLife(
                         mFighter.getStat().getLifePoints().getMaxLifePoint() + lifePointsWon
                 );
                 goToNextActivity();

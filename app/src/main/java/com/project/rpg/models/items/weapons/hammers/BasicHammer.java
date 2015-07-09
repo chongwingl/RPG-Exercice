@@ -1,6 +1,8 @@
 package com.project.rpg.models.items.weapons.hammers;
 
 import android.content.Context;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import com.project.rpg.R;
 import com.project.rpg.models.enumerations.Accuracy;
@@ -18,13 +20,23 @@ public class BasicHammer extends AbstractBasicWeapon {
     public BasicHammer(Context context) {
 		super(context.getString(R.string.weapon_hammer));
 		setAccuracy(Accuracy.NORMAL);
-		setAccuracyWhenBroken(Accuracy.LOW);
-		setHitsBeforeSharpening(25);
-		setNumberOfSharpening(3);
 		setStrength(Strength.MEDIUM);
-		setStrengthWhenBroken(Strength.LOW);
 		setWeight(Weight.NORMAL);
         setPrice(PRICE);
 	}
 
+	public static final Parcelable.Creator<BasicHammer> CREATOR
+			= new Parcelable.Creator<BasicHammer>() {
+		public BasicHammer createFromParcel(Parcel in) {
+			return new BasicHammer(in);
+		}
+
+		public BasicHammer[] newArray(int size) {
+			return new BasicHammer[size];
+		}
+	};
+
+	private BasicHammer(Parcel in) {
+		super(in);
+	}
 }

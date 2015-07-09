@@ -1,48 +1,77 @@
 package com.project.rpg.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.project.rpg.exceptions.NoMoreLifeException;
+import com.project.rpg.models.enumerations.CharacterState;
 
 import java.io.Serializable;
 
-public class LifePoint implements Serializable {
+public class LifePoint implements Parcelable {
 
-    private static final long serialVersionUID = 4129751603983840843L;
-    private int lifePoints;
-	private int MAX_LIFE_POINTS;
+    private int mLife;
+    private int MAX_LIFE;
 
-	public LifePoint(int maxLifePoints) {
-		MAX_LIFE_POINTS = maxLifePoints;
-		lifePoints = maxLifePoints;
-	}
-
-    public void setMaxLifePoint(int maxLifePoint) {
-        MAX_LIFE_POINTS = maxLifePoint;
+    public LifePoint(int maxLife) {
+        MAX_LIFE = maxLife;
+        mLife = maxLife;
     }
 
-    public void setLifePoint(int lifePoint) {
-        lifePoints = lifePoint;
+    public void setMaxLifePoint(int maxLife) {
+        MAX_LIFE = maxLife;
+    }
+
+    public void setLifePoint(int life) {
+        mLife = life;
     }
 
     public int getMaxLifePoint() {
-        return MAX_LIFE_POINTS;
+        return MAX_LIFE;
     }
 
-    public int getLifePoints() {
-		return lifePoints;
-	}
+    public int getLife() {
+        return mLife;
+    }
 
-	public void addLifePoints(int lifePoints) {
-		this.lifePoints += lifePoints;
-		if (this.lifePoints > MAX_LIFE_POINTS) {
-			this.lifePoints = MAX_LIFE_POINTS;
-		}
-	}
+    public void addLife(int life) {
+        this.mLife += life;
+        if (this.mLife > MAX_LIFE) {
+            this.mLife = MAX_LIFE;
+        }
+    }
 
-	public void removeLifePoints(int lifePoints) throws NoMoreLifeException {
-		this.lifePoints -= lifePoints;
-		if (this.lifePoints <= 0) {
-			this.lifePoints = 0;
-			throw new NoMoreLifeException();
-		}
-	}
+    public void removeLife(int life) throws NoMoreLifeException {
+        this.mLife -= life;
+        if (this.mLife <= 0) {
+            this.mLife = 0;
+            throw new NoMoreLifeException();
+        }
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    public void writeToParcel(Parcel out, int flags) {
+        out.writeInt(mLife);
+        out.writeInt(MAX_LIFE);
+    }
+
+    public static final Parcelable.Creator<LifePoint> CREATOR
+            = new Parcelable.Creator<LifePoint>() {
+        public LifePoint createFromParcel(Parcel in) {
+            return new LifePoint(in);
+        }
+
+        public LifePoint[] newArray(int size) {
+            return new LifePoint[size];
+        }
+    };
+
+    private LifePoint(Parcel in) {
+        mLife = in.readInt();
+        MAX_LIFE = in.readInt();
+    }
 }

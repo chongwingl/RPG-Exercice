@@ -1,39 +1,43 @@
 package com.project.rpg.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.project.rpg.models.enumerations.Accuracy;
+import com.project.rpg.models.enumerations.CharacterType;
 import com.project.rpg.models.enumerations.Resistance;
 import com.project.rpg.models.enumerations.Strength;
 import com.project.rpg.models.enumerations.Weight;
 import com.project.rpg.models.items.armor.AbstractArmor;
 import com.project.rpg.models.items.weapons.AbstractWeapon;
 
-import java.io.Serializable;
+public class Equipment implements Parcelable {
 
-public class Equipment implements Serializable {
-
-    private static final long serialVersionUID = -2708294008490069216L;
     private AbstractWeapon rightWeapon;
 	private AbstractWeapon leftWeapon;
 	private AbstractArmor headArmor;
 	private AbstractArmor bodyArmor;
 	private AbstractArmor legArmor;
 	private AbstractArmor footArmor;
-	private int weaponNumber = 0;
-	private int armorNumber = 0;
+	private int mWeaponNumber = 0;
+	private int mArmorNumber = 0;
 
-    public AbstractWeapon getRightWeapon() {
+	public Equipment() {
+	}
+
+	public AbstractWeapon getRightWeapon() {
 		return rightWeapon;
 	}
 	
 	public void setRightWeapon(AbstractWeapon rightWeapon) {
 		this.rightWeapon = rightWeapon;
-		weaponNumber += 1;
+		mWeaponNumber += 1;
 	}
 	
 	public void removeRightWeapon(){
 		if(rightWeapon != null){
 			rightWeapon = null;
-			weaponNumber -= 1;
+			mWeaponNumber -= 1;
 		}
 	}
 	
@@ -43,13 +47,13 @@ public class Equipment implements Serializable {
 	
 	public void setLeftWeapon(AbstractWeapon leftWeapon) {
 		this.leftWeapon = leftWeapon;
-		weaponNumber += 1;
+		mWeaponNumber += 1;
 	}
 	
 	public void removeLeftWeapon(){
 		if(leftWeapon != null){
 			leftWeapon = null;
-			weaponNumber -= 1;
+			mWeaponNumber -= 1;
 		}
 	}
 	
@@ -59,13 +63,13 @@ public class Equipment implements Serializable {
 	
 	public void setHeadArmor(AbstractArmor headArmor) {
 		this.headArmor = headArmor;
-		armorNumber += 1;
+		mArmorNumber += 1;
 	}
 	
 	public void removeHeadArmor(){
 		if(headArmor != null){
 			headArmor = null;
-			armorNumber -= 1;
+			mArmorNumber -= 1;
 		}
 	}
 	
@@ -75,13 +79,13 @@ public class Equipment implements Serializable {
 	
 	public void setBodyArmor(AbstractArmor bodyArmor) {
 		this.bodyArmor = bodyArmor;
-		armorNumber += 1;
+		mArmorNumber += 1;
 	}
 	
 	public void removeBodyArmor(){
 		if(bodyArmor != null){
 			bodyArmor = null;
-			armorNumber -= 1;
+			mArmorNumber -= 1;
 		}
 	}
 	
@@ -91,13 +95,13 @@ public class Equipment implements Serializable {
 	
 	public void setLegArmor(AbstractArmor legArmor) {
 		this.legArmor = legArmor;
-		armorNumber += 1;
+		mArmorNumber += 1;
 	}
 	
 	public void removeLegArmor(){
 		if(legArmor != null){
 			legArmor = null;
-			armorNumber -= 1;
+			mArmorNumber -= 1;
 		}
 	}
 
@@ -107,26 +111,26 @@ public class Equipment implements Serializable {
 
     public void setFootArmor(AbstractArmor footArmor) {
         this.footArmor = footArmor;
-        armorNumber += 1;
+        mArmorNumber += 1;
     }
 
     public void removeFootArmor(){
         if(legArmor != null){
             legArmor = null;
-            armorNumber -= 1;
+            mArmorNumber -= 1;
         }
     }
 	
 	public int getArmorNumber(){
-		return armorNumber;
+		return mArmorNumber;
 	}
 	
 	public int getWeaponNumber(){
-		return weaponNumber;
+		return mWeaponNumber;
 	}
 	
 	public Weight getEquipementWeight(){
-        if (armorNumber + weaponNumber > 0) {
+        if (mArmorNumber + mWeaponNumber > 0) {
             int totalWeight = 0;
             if (rightWeapon != null) {
                 totalWeight += rightWeapon.getWeight().getValue();
@@ -144,13 +148,13 @@ public class Equipment implements Serializable {
                 totalWeight += legArmor.getWeight().getValue();
             }
 
-            return Weight.getConstant(Math.round(totalWeight / (armorNumber + weaponNumber)));
+            return Weight.getConstant(Math.round(totalWeight / (mArmorNumber + mWeaponNumber)));
         }
         return Weight.NONE;
 	}
 	
 	public Resistance getEquipementResistance(){
-        if (armorNumber > 0) {
+        if (mArmorNumber > 0) {
             int totalResistance = 0;
             if (headArmor != null) {
                 totalResistance += headArmor.getResistance().getValue();
@@ -162,13 +166,13 @@ public class Equipment implements Serializable {
                 totalResistance += legArmor.getResistance().getValue();
             }
 
-            return Resistance.getConstant(Math.round(totalResistance / armorNumber));
+            return Resistance.getConstant(Math.round(totalResistance / mArmorNumber));
         }
         return Resistance.NONE;
 	}
 	
 	public Strength getEquipementStrength(){
-        if (weaponNumber > 0) {
+        if (mWeaponNumber > 0) {
             int totalStrength = 0;
             if (rightWeapon != null) {
                 totalStrength += rightWeapon.getStrength().getValue();
@@ -177,13 +181,13 @@ public class Equipment implements Serializable {
                 totalStrength += leftWeapon.getStrength().getValue();
             }
 
-            return Strength.getConstant(Math.round(totalStrength / weaponNumber));
+            return Strength.getConstant(Math.round(totalStrength / mWeaponNumber));
         }
         return Strength.NONE;
 	}
 	
 	public Accuracy getEquipementAccuracy(){
-        if (weaponNumber > 0) {
+        if (mWeaponNumber > 0) {
             int totalAccuracy = 0;
             if (rightWeapon != null) {
                 totalAccuracy += rightWeapon.getAccuracy().getValue();
@@ -192,8 +196,45 @@ public class Equipment implements Serializable {
                 totalAccuracy += leftWeapon.getAccuracy().getValue();
             }
 
-            return Accuracy.getConstant(Math.round(totalAccuracy / weaponNumber));
+            return Accuracy.getConstant(Math.round(totalAccuracy / mWeaponNumber));
         }
         return Accuracy.NONE;
+	}
+
+	public int describeContents() {
+		return 0;
+	}
+
+	public void writeToParcel(Parcel out, int flags) {
+		out.writeParcelable(leftWeapon, flags);
+		out.writeParcelable(rightWeapon, flags);
+		out.writeParcelable(headArmor, flags);
+		out.writeParcelable(bodyArmor, flags);
+		out.writeParcelable(legArmor, flags);
+		out.writeParcelable(footArmor, flags);
+		out.writeInt(mWeaponNumber);
+		out.writeInt(mArmorNumber);
+	}
+
+	public static final Parcelable.Creator<Equipment> CREATOR
+			= new Parcelable.Creator<Equipment>() {
+		public Equipment createFromParcel(Parcel in) {
+			return new Equipment(in);
+		}
+
+		public Equipment[] newArray(int size) {
+			return new Equipment[size];
+		}
+	};
+
+	private Equipment(Parcel in) {
+		leftWeapon = in.readParcelable(leftWeapon.getClass().getClassLoader());
+		rightWeapon = in.readParcelable(rightWeapon.getClass().getClassLoader());
+		headArmor = in.readParcelable(headArmor.getClass().getClassLoader());
+		bodyArmor = in.readParcelable(bodyArmor.getClass().getClassLoader());
+		legArmor = in.readParcelable(legArmor.getClass().getClassLoader());
+		footArmor = in.readParcelable(footArmor.getClass().getClassLoader());
+		mWeaponNumber = in.readInt();
+		mWeaponNumber = in.readInt();
 	}
 }

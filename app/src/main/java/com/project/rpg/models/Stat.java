@@ -1,11 +1,14 @@
 package com.project.rpg.models;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.project.rpg.models.enumerations.CharacterState;
+import com.project.rpg.models.powers.Life;
 
 import java.io.Serializable;
 
-public class Stat implements Serializable {
-    private static final long serialVersionUID = 3012347748078701155L;
+public class Stat implements Parcelable {
     public static final int MAX_STAT = 200;
 
     private LifePoint mLifePoints;
@@ -14,6 +17,9 @@ public class Stat implements Serializable {
     private int mAccuracy;
     private int mResistance;
     private CharacterState mState = CharacterState.NOR;
+
+    public Stat() {
+    }
 
     public Stat(int maxLifePoints) {
         mLifePoints = new LifePoint(maxLifePoints);
@@ -82,7 +88,7 @@ public class Stat implements Serializable {
         return mResistance;
     }
 
-    public void addResisteance(int add) {
+    public void addResistance(int add) {
         mResistance += add;
     }
 
@@ -100,5 +106,38 @@ public class Stat implements Serializable {
 
     public void setState(CharacterState state) {
         this.mState = state;
+    }
+
+    public int describeContents() {
+        return 0;
+    }
+
+    public void writeToParcel(Parcel out, int flags) {
+        out.writeParcelable(mLifePoints, flags);
+        out.writeSerializable(mState);
+        out.writeInt(mStrength);
+        out.writeInt(mResistance);
+        out.writeInt(mSpeed);
+        out.writeInt(mAccuracy);
+    }
+
+    public static final Parcelable.Creator<Stat> CREATOR
+            = new Parcelable.Creator<Stat>() {
+        public Stat createFromParcel(Parcel in) {
+            return new Stat(in);
+        }
+
+        public Stat[] newArray(int size) {
+            return new Stat[size];
+        }
+    };
+
+    private Stat(Parcel in) {
+        mLifePoints = in.readParcelable(LifePoint.class.getClassLoader());
+        mState = (CharacterState) in.readSerializable();
+        mStrength = in.readInt();
+        mResistance = in.readInt();
+        mSpeed = in.readInt();
+        mAccuracy = in.readInt();
     }
 }

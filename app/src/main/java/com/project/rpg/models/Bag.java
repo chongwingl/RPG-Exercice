@@ -1,49 +1,49 @@
 package com.project.rpg.models;
 
 import android.content.Context;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import com.project.rpg.exceptions.NoItemInBagException;
 import com.project.rpg.models.enumerations.ItemType;
 import com.project.rpg.models.items.AbstractItem;
 
-import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by laetitia on 5/7/15.
  */
-public class Bag implements Serializable {
-
-    private static final long serialVersionUID = -5316787694933819023L;
+public class Bag implements Parcelable {
 
     private static int MAX_SIZE;
-    private static Bag instance;
+    private static Bag mInstance;
 
-    private HashMap<ItemType, List<AbstractItem>> itemsList;
+    private HashMap<ItemType, List<AbstractItem>> mItemsList;
     private int mCurrentBagSize = 0;
 
     public synchronized static Bag getInstance(int maxSize) {
-        if (instance == null) {
-            instance = new Bag(maxSize);
+        if (mInstance == null) {
+            mInstance = new Bag(maxSize);
         }
-        return instance;
+        return mInstance;
     }
 
     private Bag(int maxSize) {
-        itemsList = new HashMap<>();
+        mItemsList = new HashMap<>();
         MAX_SIZE = maxSize;
     }
 
     public void addItem(AbstractItem item) {
         ItemType itemType = item.getItemType();
-        if (!itemsList.containsKey(itemType)) {
+        if (!mItemsList.containsKey(itemType)) {
             List<AbstractItem> items = new ArrayList<>();
             items.add(item);
-            itemsList.put(itemType, items);
+            mItemsList.put(itemType, items);
         } else {
-            List<AbstractItem> items = itemsList.get(itemType);
+            List<AbstractItem> items = mItemsList.get(itemType);
             items.add(item);
         }
         mCurrentBagSize++;
@@ -51,7 +51,7 @@ public class Bag implements Serializable {
 
     public void removeItem(AbstractItem item) throws NoItemInBagException {
         ItemType itemType = item.getItemType();
-        List<AbstractItem> items = itemsList.get(itemType);
+        List<AbstractItem> items = mItemsList.get(itemType);
         AbstractItem itemToRemove = null;
         for (AbstractItem abstractItem : items) {
             if (abstractItem.getName().equals(item.getName())) {
@@ -64,7 +64,7 @@ public class Bag implements Serializable {
             items.remove(itemToRemove);
         }
         if (mCurrentBagSize == 0) {
-            itemsList = new HashMap<>();
+            mItemsList = new HashMap<>();
             throw new NoItemInBagException();
         }
     }
@@ -74,14 +74,52 @@ public class Bag implements Serializable {
     }
 
     public List<AbstractItem> getItemByType(ItemType itemType) {
-        return itemsList.get(itemType);
+        return mItemsList.get(itemType);
     }
 
     public List<String> getItemTypes(Context context) {
         List<String> temp = new ArrayList<>();
-        for (ItemType itemtype : itemsList.keySet()) {
+        for (ItemType itemtype : mItemsList.keySet()) {
             temp.add(context.getString(itemtype.getNameRefId()));
         }
         return temp;
     }
+
+    public int describeContents() {
+        return 0;
+    }
+
+    public void writeToParcel(Parcel out, int flags) {
+        out.writeParcelable(mInstance, flags);
+        out.writeInt(mCurrentBagSize);
+        out.writeInt(mItemsList.size());
+        for (Map.Entry<ItemType, List<AbstractItem>> entry : mItemsList.entrySet()){
+            out.writeSerializable(entry.getKey());
+            out.writeList(entry.getValue());
+        }
+    }
+
+    public static final Parcelable.Creator<Bag> CREATOR
+            = new Parcelable.Creator<Bag>() {
+        public Bag createFromParcel(Parcel in) {
+            return new Bag(in);
+        }
+
+        public Bag[] newArray(int size) {
+            return new Bag[size];
+        }
+    };
+
+    private Bag(Parcel in) {
+        mInstance = in.readParcelable(mInstance.getClass().getClassLoader());
+        mCurrentBagSize = in.readInt();
+        int size = in.readInt();
+        for(int i = 0; i < size; i++){
+            ItemType key = (ItemType) in.readSerializable();
+            List<AbstractItem> value = new ArrayList<>();
+            in.readList(value, AbstractItem.class.getClassLoader());
+            mItemsList.put(key,value);
+        }
+    }
+
 }

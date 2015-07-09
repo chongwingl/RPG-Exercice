@@ -1,6 +1,8 @@
 package com.project.rpg.models.items;
 
 import android.content.Context;
+import android.os.Parcel;
+import android.os.Parcelable;
 
 import com.project.rpg.fragments.dialogs.StringMessageDialogFragment;
 import com.project.rpg.models.characters.AbstractCharacter;
@@ -9,22 +11,22 @@ import com.project.rpg.models.enumerations.Probability;
 import com.project.rpg.models.enumerations.Weight;
 
 import java.io.Serializable;
-import java.security.Provider;
 
-public abstract class AbstractItem implements Serializable {
-
-    private static final long serialVersionUID = 7993915847142984426L;
+public abstract class AbstractItem implements Parcelable {
 
     private String mName;
-    private int price;
-    private Weight weight; // used for calculate the speed of the knight( lighter
+    private int mPrice;
+    private Weight mWeight; // used for calculate the speed of the knight( lighter
     // -> faster)
     protected ItemType mItemType;
 
+    public AbstractItem() {
+    }
 
     public AbstractItem(String name) {
         mName = name;
         setItemType();
+        mWeight = Weight.NONE;
     }
 
     public String getName() {
@@ -32,19 +34,19 @@ public abstract class AbstractItem implements Serializable {
     }
 
     public int getPrice() {
-        return price;
+        return mPrice;
     }
 
     protected void setPrice(int price) {
-        this.price = price;
+        this.mPrice = price;
     }
 
     public Weight getWeight() {
-        return weight;
+        return mWeight;
     }
 
-    protected void setWeight(Weight weight) {
-        this.weight = weight;
+    protected void setWeight(Weight mWeight) {
+        this.mWeight = mWeight;
     }
 
     public abstract Probability getProbabilityToFind();
@@ -63,4 +65,22 @@ public abstract class AbstractItem implements Serializable {
     public abstract void use(AbstractCharacter character);
 
     public abstract StringMessageDialogFragment getUseItemDialogFragment(Context context);
+
+    public int describeContents() {
+        return 0;
+    }
+
+    public void writeToParcel(Parcel out, int flags) {
+        out.writeString(mName);
+        out.writeInt(mPrice);
+        out.writeSerializable(mWeight);
+        out.writeSerializable(mItemType);
+    }
+
+    protected AbstractItem(Parcel in) {
+        mName = in.readString();
+        mPrice = in.readInt();
+        mWeight = (Weight) in.readSerializable();
+        mItemType = (ItemType) in.readSerializable();
+    }
 }

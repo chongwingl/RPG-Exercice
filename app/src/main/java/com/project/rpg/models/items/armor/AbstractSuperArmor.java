@@ -1,5 +1,7 @@
 package com.project.rpg.models.items.armor;
 
+import android.os.Parcel;
+
 import com.project.rpg.models.enumerations.Probability;
 
 /**
@@ -7,7 +9,8 @@ import com.project.rpg.models.enumerations.Probability;
  */
 public class AbstractSuperArmor extends AbstractArmor{
 
-    private static final long serialVersionUID = -5281858818206714715L;
+    public AbstractSuperArmor() {
+    }
 
     public AbstractSuperArmor(String name) {
         super(name);
@@ -17,5 +20,9 @@ public class AbstractSuperArmor extends AbstractArmor{
     @Override
     public Probability getProbabilityToFind() {
         return  Probability.LEVEL6;
+    }
+
+    protected AbstractSuperArmor(Parcel in) {
+        super(in);
     }
 }

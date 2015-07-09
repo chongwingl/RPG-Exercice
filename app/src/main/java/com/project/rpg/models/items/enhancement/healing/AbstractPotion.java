@@ -1,6 +1,7 @@
 package com.project.rpg.models.items.enhancement.healing;
 
 import android.content.Context;
+import android.os.Parcel;
 import android.support.v4.app.DialogFragment;
 
 import com.project.rpg.R;
@@ -17,9 +18,10 @@ import com.project.rpg.models.powers.Life;
  */
 public abstract class AbstractPotion extends AbstractItem {
 
-    private static final long serialVersionUID = -373216204069937455L;
-    
     private Life mLifePower;
+
+    public AbstractPotion() {
+    }
 
     protected AbstractPotion(String name, int lifePointsRestored) {
         super(name);
@@ -58,4 +60,17 @@ public abstract class AbstractPotion extends AbstractItem {
 
     // Reminder
     // Potion type : basic : 20, normal: 50, super: 100, hyper: 200, mega: 500
+
+    public int describeContents() {
+        return 0;
+    }
+
+    public void writeToParcel(Parcel out, int flags) {
+        out.writeParcelable(mLifePower, flags);
+    }
+
+    protected AbstractPotion(Parcel in) {
+        super(in);
+        mLifePower = in.readParcelable(mLifePower.getClass().getClassLoader());
+    }
 }

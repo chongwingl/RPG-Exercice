@@ -9,6 +9,7 @@ import com.project.rpg.intents.ActionIntent;
 import com.project.rpg.intents.BagIntent;
 import com.project.rpg.intents.StateIntent;
 import com.project.rpg.intents.StoreIntent;
+import com.project.rpg.models.characters.fighters.AbstractArmoredFighter;
 import com.project.rpg.models.characters.fighters.AbstractFighter;
 import com.project.rpg.models.enumerations.CharacterState;
 import com.project.rpg.models.enumerations.MonsterLevel;
@@ -66,7 +67,7 @@ public class FighterActivity extends AbstractCharacterActivity {
     @Override
     public void onFragmentCreationFinished(String name) {
         super.onFragmentCreationFinished(name);
-        AbstractFighter fighter = (AbstractFighter) getCharacter();
+        AbstractArmoredFighter fighter = (AbstractArmoredFighter) getCharacter();
         fighter.setBodyArmor(new BasicLeatherArmor(this));
         fighter.setFootArmor(new BasicLeatherBoot(this));
         fighter.setHeadArmor(new BasicLeatherHelmet(this));

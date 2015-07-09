@@ -1,34 +1,38 @@
 package com.project.rpg.models.characters;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.project.rpg.exceptions.NoItemInBagException;
 import com.project.rpg.exceptions.NotEnoughGoldException;
+import com.project.rpg.interfaces.SpecialStat;
 import com.project.rpg.models.Bag;
-import com.project.rpg.models.enumerations.CharacterState;
 import com.project.rpg.models.enumerations.CharacterType;
 import com.project.rpg.models.events.UpdateGoldEvent;
 import com.project.rpg.models.items.AbstractItem;
 
-import java.io.Serializable;
-
 import de.greenrobot.event.EventBus;
 
-public abstract class AbstractCharacter
-        implements Serializable {
-
-    private static final long serialVersionUID = 7574347050097636816L;
+public abstract class AbstractCharacter implements Parcelable {
 
     private static final int INIT_GOLD = 200;
 
-    private CharacterType mCharacterType;
-    private String mName;
-    private int mGold;
-    private Bag mBag;
+    protected CharacterType mCharacterType;
+    protected String mName;
+    protected int mGold;
+    protected Bag mBag;
 
-    protected AbstractCharacter(CharacterType characterType, String name, int maxBagSize) {
+    protected SpecialStat mSpecialStat;
+
+    public AbstractCharacter() {
+    }
+
+    protected AbstractCharacter(CharacterType characterType, String name, int maxBagSize, SpecialStat specialStat) {
         this.mCharacterType = characterType;
         this.mName = name;
         mBag = Bag.getInstance(maxBagSize);
         setGold(INIT_GOLD);
+        mSpecialStat = specialStat;
     }
 
     public CharacterType getCharacterType() {
@@ -72,10 +76,36 @@ public abstract class AbstractCharacter
         mBag.removeItem(item);
     }
 
-    public abstract int getSpecialStat();
+    public int getSpecialStat() {
+        return mSpecialStat.getSpecialStat();
+    }
 
-    public abstract int getSpecialMaxStat();
+    public int getSpecialMaxStat() {
+        return mSpecialStat.getSpecialMaxStat();
+    }
 
-    public abstract int getSpecialStatIconId();
+    public int getSpecialStatIconId(){
+        return mSpecialStat.getSpecialStatIconId();
+    }
+
+    public int describeContents() {
+        return 0;
+    }
+
+    public void writeToParcel(Parcel out, int flags) {
+        out.writeSerializable(mCharacterType);
+        out.writeParcelable(mBag, flags);
+        out.writeParcelable(mSpecialStat, flags);
+        out.writeString(mName);
+        out.writeInt(mGold);
+    }
+
+    protected AbstractCharacter(Parcel in) {
+        mCharacterType = (CharacterType) in.readSerializable();
+        mBag = in.readParcelable(mBag.getClass().getClassLoader());
+        mSpecialStat = in.readParcelable(mSpecialStat.getClass().getClassLoader());
+        mName = in.readString();
+        mGold = in.readInt();
+    }
 
 }

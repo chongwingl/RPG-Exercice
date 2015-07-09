@@ -1,6 +1,7 @@
 package com.project.rpg.models.items.armor.legs;
 
 import android.content.Context;
+import android.os.Parcel;
 
 import com.project.rpg.R;
 import com.project.rpg.models.enumerations.Resistance;
@@ -16,10 +17,17 @@ public class BasicPants extends AbstractBasicArmor {
 
     private static final int PRICE = 30;
 
+    public BasicPants() {
+    }
+
     public BasicPants(Context context) {
         super(context.getString(R.string.armor_pants));
         setResistance(Resistance.WEAK);
         setWeight(Weight.LIGHT);
         setPrice(PRICE);
+    }
+
+    protected BasicPants(Parcel in) {
+        super(in);
     }
 }

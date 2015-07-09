@@ -1,10 +1,12 @@
 package com.project.rpg.models.powers;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.project.rpg.models.enumerations.Probability;
 
 public class Poison extends AbstractPower {
 
-    private static final long serialVersionUID = -7539033269352909843L;
     private static int percentPointsTaken = 10;
 	
 	public Poison() {
@@ -20,4 +22,18 @@ public class Poison extends AbstractPower {
         return null;
     }
 
+    public static final Parcelable.Creator<Poison> CREATOR
+            = new Parcelable.Creator<Poison>() {
+        public Poison createFromParcel(Parcel in) {
+            return new Poison(in);
+        }
+
+        public Poison[] newArray(int size) {
+            return new Poison[size];
+        }
+    };
+
+    private Poison(Parcel in) {
+        super(in);
+    }
 }

@@ -1,7 +1,7 @@
 package com.project.rpg.models.enumerations;
 
 public enum Weight {
-	// Objets directement construits3
+	// Objets directement construits
     NONE(0),
 	SUPERLIGHT (10),
 	LIGHT(15),

@@ -7,6 +7,7 @@ import android.os.Environment;
 import android.widget.Toast;
 
 import com.project.rpg.database.tables.ItemTable;
+import com.project.rpg.database.tables.PowerTable;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -31,8 +32,10 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         mTablesCreationQuery = new ArrayList<>();
         mTablesDeletionQuery = new ArrayList<>();
+        mTablesCreationQuery.add(PowerTable.SQL_CREATE_ENTRIES);
         mTablesCreationQuery.add(ItemTable.SQL_CREATE_ENTRIES);
         mTablesDeletionQuery.add(ItemTable.SQL_DELETE_ENTRIES);
+        mTablesDeletionQuery.add(PowerTable.SQL_DELETE_ENTRIES);
     }
 
     @Override

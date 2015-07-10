@@ -56,7 +56,6 @@ public class ItemDatabaseHelper {
     }
 
     public void saveItem(AbstractItem item, ContentValues values) {
-        values.put(ItemContract.ItemEntry.COLUMN_NAME_CLASS_NAME, item.getClass().toString());
         values.put(ItemContract.ItemEntry.COLUMN_NAME_NAME, item.getName());
         values.put(ItemContract.ItemEntry.COLUMN_NAME_PRICE, item.getPrice());
         values.put(ItemContract.ItemEntry.COLUMN_NAME_WEIGHT, item.getWeight().getValue());

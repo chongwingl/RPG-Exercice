@@ -1,7 +1,7 @@
 package com.project.rpg.models.characters.supports;
 
 import com.project.rpg.models.characters.AbstractCharacter;
-import com.project.rpg.models.enumerations.CharacterType;
+import com.project.rpg.models.enumerations.CharacterClass;
 
 public abstract class AbstractSupportCharacter extends AbstractCharacter {
 
@@ -9,8 +9,8 @@ public abstract class AbstractSupportCharacter extends AbstractCharacter {
 
     private final static int BAG_SIZE_MAX = 50;
 
-    public AbstractSupportCharacter(CharacterType characterType, String name) {
-        super(characterType, name, BAG_SIZE_MAX);
+    public AbstractSupportCharacter(CharacterClass characterClass, String name) {
+        super(characterClass, name, BAG_SIZE_MAX);
     }
 
     @Override

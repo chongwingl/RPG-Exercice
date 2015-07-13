@@ -8,7 +8,7 @@ import android.widget.BaseAdapter;
 import android.widget.TextView;
 
 import com.project.rpg.R;
-import com.project.rpg.models.enumerations.CharacterType;
+import com.project.rpg.models.enumerations.CharacterClass;
 
 import java.util.ArrayList;
 
@@ -20,8 +20,8 @@ public class CharacterSelectionAdapter extends BaseAdapter{
 	public CharacterSelectionAdapter(Activity activity) {
 		this.activity = activity;
 		characters = new ArrayList<>();
-        for (CharacterType characterType : CharacterType.values()) {
-            String type = activity.getString(characterType.getTypeRefId());
+        for (CharacterClass characterClass : CharacterClass.values()) {
+            String type = activity.getString(characterClass.getTypeRefId());
             characters.add(type);
         }
 	}

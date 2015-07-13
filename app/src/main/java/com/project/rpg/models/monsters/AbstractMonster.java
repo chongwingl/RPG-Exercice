@@ -6,7 +6,7 @@ import com.project.rpg.exceptions.NoMoreLifeException;
 import com.project.rpg.models.Stat;
 import com.project.rpg.models.characters.AbstractCharacter;
 import com.project.rpg.models.characters.fighters.AbstractFighter;
-import com.project.rpg.models.enumerations.CharacterType;
+import com.project.rpg.models.enumerations.CharacterClass;
 import com.project.rpg.models.enumerations.MonsterLevel;
 import com.project.rpg.models.powers.AbstractPower;
 import com.project.rpg.generators.RandomGenerator;
@@ -21,7 +21,7 @@ public abstract class AbstractMonster extends AbstractCharacter {
 
     public AbstractMonster(String name, int maxLifePoints, int strength,
                            int speed, int accuracy, int resistance) {
-        super(CharacterType.MONSTER, name, 0);
+        super(CharacterClass.MONSTER, name, 0);
         mStat = new Stat(maxLifePoints, strength, speed, accuracy, resistance);
     }
 

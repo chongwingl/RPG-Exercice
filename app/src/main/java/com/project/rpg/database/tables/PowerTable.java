@@ -1,7 +1,10 @@
 package com.project.rpg.database.tables;
 
+import com.project.rpg.database.contracts.EffectContract;
 import com.project.rpg.database.contracts.ItemContract;
 import com.project.rpg.database.contracts.PowerContract;
+import com.project.rpg.database.contracts.ProbabilityContract;
+import com.project.rpg.database.contracts.StatContract;
 
 /**
  * Created by laetitia on 7/8/15.
@@ -14,14 +17,22 @@ public class PowerTable {
     private static final String COMMA_SEP = ",";
     private static final String END_SEP = ";";
     public static final String SQL_CREATE_ENTRIES =
-            "CREATE TABLE " + ItemContract.ItemEntry.TABLE_NAME + " (" +
-                    PowerContract.PowerEntry._ID + " INTEGER PRIMARY KEY," +
+            "CREATE TABLE " + PowerContract.PowerEntry.TABLE_NAME + " (" +
+                    PowerContract.PowerEntry._ID + " INTEGER PRIMARY KEY" + COMMA_SEP +
                     PowerContract.PowerEntry.COLUMN_NAME_NAME + TEXT_NOT_NULL_TYPE + COMMA_SEP +
                     PowerContract.PowerEntry.COLUMN_NAME_DESCRIPTION + TEXT_TYPE + COMMA_SEP +
                     PowerContract.PowerEntry.COLUMN_NAME_MINIMUM_ROUND + INTEGER_TYPE + COMMA_SEP +
                     PowerContract.PowerEntry.COLUMN_NAME_MAXIMUM_ROUND + INTEGER_TYPE + COMMA_SEP +
                     PowerContract.PowerEntry.COLUMN_NAME_PERCENT_OF_EFFECT + INTEGER_TYPE + COMMA_SEP +
-                    PowerContract.PowerEntry.COLUMN_NAME_PROBABILITY_TO_HAPPEN + INTEGER_TYPE +
+                    PowerContract.PowerEntry.COLUMN_NAME_PROBABILITY_TO_HAPPEN_ID + INTEGER_TYPE + COMMA_SEP +
+                    PowerContract.PowerEntry.COLUMN_NAME_EFFECT_ID + INTEGER_TYPE + COMMA_SEP +
+                    PowerContract.PowerEntry.COLUMN_NAME_STAT_ID + INTEGER_TYPE + COMMA_SEP +
+                    "FOREIGN KEY(" + PowerContract.PowerEntry.COLUMN_NAME_EFFECT_ID + ") " + COMMA_SEP +
+                    "REFERENCES " + EffectContract.EffectEntry.TABLE_NAME + "(" + EffectContract.EffectEntry._ID + ")" + COMMA_SEP +
+                    "FOREIGN KEY(" + PowerContract.PowerEntry.COLUMN_NAME_PROBABILITY_TO_HAPPEN_ID + ") " +
+                    "REFERENCES " + ProbabilityContract.ProbabilityEntry.TABLE_NAME + "(" + ProbabilityContract.ProbabilityEntry._ID + ")" + COMMA_SEP +
+                    "FOREIGN KEY(" + PowerContract.PowerEntry.COLUMN_NAME_STAT_ID + ") " +
+                    "REFERENCES " + StatContract.StatEntry.TABLE_NAME + "(" + StatContract.StatEntry._ID + ")" +
                     " )" + END_SEP;
 
     public static final String SQL_DELETE_ENTRIES =

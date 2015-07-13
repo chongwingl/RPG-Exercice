@@ -9,9 +9,11 @@ public class Power {
     private String name;
     private String description;
     private int minimumRound;
-    private int manimumRound;
+    private int maximumRound;
     private int percentOfEffect;
+    private Stat statAffected;
     private Probability probabilityToHappen;
+    private Effect effect;
 
     public Power() {
     }
@@ -40,12 +42,12 @@ public class Power {
         this.minimumRound = minimumRound;
     }
 
-    public int getManimumRound() {
-        return manimumRound;
+    public int getMaximumRound() {
+        return maximumRound;
     }
 
-    public void setManimumRound(int manimumRound) {
-        this.manimumRound = manimumRound;
+    public void setMaximumRound(int maximumRound) {
+        this.maximumRound = maximumRound;
     }
 
     public int getPercentOfEffect() {
@@ -62,5 +64,21 @@ public class Power {
 
     public void setProbabilityToHappen(Probability probabilityToHappen) {
         this.probabilityToHappen = probabilityToHappen;
+    }
+
+    public Stat getStatAffected() {
+        return statAffected;
+    }
+
+    public void setStatAffected(Stat statAffected) {
+        this.statAffected = statAffected;
+    }
+
+    public Effect getEffect() {
+        return effect;
+    }
+
+    public void setEffect(Effect effect) {
+        this.effect = effect;
     }
 }

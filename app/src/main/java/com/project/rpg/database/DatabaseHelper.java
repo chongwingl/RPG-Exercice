@@ -6,8 +6,23 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Environment;
 import android.widget.Toast;
 
+import com.project.rpg.database.tables.ItemPossessedTable;
+import com.project.rpg.database.tables.CharacterTable;
+import com.project.rpg.database.tables.ClassTable;
+import com.project.rpg.database.tables.EffectTable;
+import com.project.rpg.database.tables.EquippedTable;
+import com.project.rpg.database.tables.ItemSubtypeTable;
 import com.project.rpg.database.tables.ItemTable;
+import com.project.rpg.database.tables.ItemTypeTable;
+import com.project.rpg.database.tables.LevelTable;
+import com.project.rpg.database.tables.LootTable;
+import com.project.rpg.database.tables.MonsterTable;
+import com.project.rpg.database.tables.MonsterTypeTable;
 import com.project.rpg.database.tables.PowerTable;
+import com.project.rpg.database.tables.ProbabilityTable;
+import com.project.rpg.database.tables.SlotTable;
+import com.project.rpg.database.tables.StatAtributedTable;
+import com.project.rpg.database.tables.StatTable;
 
 import java.io.File;
 import java.io.FileInputStream;
@@ -32,10 +47,42 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
         mTablesCreationQuery = new ArrayList<>();
         mTablesDeletionQuery = new ArrayList<>();
+
+        mTablesCreationQuery.add(ClassTable.SQL_CREATE_ENTRIES);
+        mTablesCreationQuery.add(LevelTable.SQL_CREATE_ENTRIES);
+        mTablesCreationQuery.add(EffectTable.SQL_CREATE_ENTRIES);
+        mTablesCreationQuery.add(ItemSubtypeTable.SQL_CREATE_ENTRIES);
+        mTablesCreationQuery.add(ItemTypeTable.SQL_CREATE_ENTRIES);
+        mTablesCreationQuery.add(MonsterTypeTable.SQL_CREATE_ENTRIES);
+        mTablesCreationQuery.add(ProbabilityTable.SQL_CREATE_ENTRIES);
+        mTablesCreationQuery.add(SlotTable.SQL_CREATE_ENTRIES);
+        mTablesCreationQuery.add(StatTable.SQL_CREATE_ENTRIES);
         mTablesCreationQuery.add(PowerTable.SQL_CREATE_ENTRIES);
+        mTablesCreationQuery.add(CharacterTable.SQL_CREATE_ENTRIES);
+        mTablesCreationQuery.add(MonsterTable.SQL_CREATE_ENTRIES);
         mTablesCreationQuery.add(ItemTable.SQL_CREATE_ENTRIES);
+        mTablesCreationQuery.add(ItemPossessedTable.SQL_CREATE_ENTRIES);
+        mTablesCreationQuery.add(StatAtributedTable.SQL_CREATE_ENTRIES);
+        mTablesCreationQuery.add(LootTable.SQL_CREATE_ENTRIES);
+        mTablesCreationQuery.add(EquippedTable.SQL_CREATE_ENTRIES);
+
+        mTablesDeletionQuery.add(EquippedTable.SQL_DELETE_ENTRIES);
+        mTablesDeletionQuery.add(LootTable.SQL_DELETE_ENTRIES);
+        mTablesDeletionQuery.add(StatAtributedTable.SQL_DELETE_ENTRIES);
+        mTablesDeletionQuery.add(ItemPossessedTable.SQL_DELETE_ENTRIES);
         mTablesDeletionQuery.add(ItemTable.SQL_DELETE_ENTRIES);
+        mTablesDeletionQuery.add(MonsterTable.SQL_DELETE_ENTRIES);
+        mTablesDeletionQuery.add(CharacterTable.SQL_DELETE_ENTRIES);
         mTablesDeletionQuery.add(PowerTable.SQL_DELETE_ENTRIES);
+        mTablesDeletionQuery.add(StatTable.SQL_DELETE_ENTRIES);
+        mTablesDeletionQuery.add(SlotTable.SQL_DELETE_ENTRIES);
+        mTablesDeletionQuery.add(ProbabilityTable.SQL_DELETE_ENTRIES);
+        mTablesDeletionQuery.add(MonsterTypeTable.SQL_DELETE_ENTRIES);
+        mTablesDeletionQuery.add(ItemTypeTable.SQL_DELETE_ENTRIES);
+        mTablesDeletionQuery.add(ItemSubtypeTable.SQL_DELETE_ENTRIES);
+        mTablesDeletionQuery.add(EffectTable.SQL_DELETE_ENTRIES);
+        mTablesDeletionQuery.add(LevelTable.SQL_DELETE_ENTRIES);
+        mTablesDeletionQuery.add(ClassTable.SQL_DELETE_ENTRIES);
     }
 
     @Override
@@ -47,9 +94,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        for (String query : mTablesDeletionQuery) {
-            db.execSQL(query);
-        }
+//        for (String query : mTablesDeletionQuery) {
+//            db.execSQL(query);
+//        }
         onCreate(db);
     }
 

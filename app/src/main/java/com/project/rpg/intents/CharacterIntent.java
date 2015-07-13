@@ -3,7 +3,7 @@ package com.project.rpg.intents;
 import android.content.Context;
 import android.content.Intent;
 
-import com.project.rpg.models.enumerations.CharacterType;
+import com.project.rpg.models.enumerations.CharacterClass;
 
 /**
  * Created by laetitia on 4/20/15.
@@ -11,9 +11,9 @@ import com.project.rpg.models.enumerations.CharacterType;
 public class CharacterIntent extends Intent {
 
 
-    public CharacterIntent(Context context, CharacterType characterType) {
+    public CharacterIntent(Context context, CharacterClass characterClass) {
         super();
-        setClass(context, characterType.getCharacterActivity());
+        setClass(context, characterClass.getCharacterActivity());
 
     }
 

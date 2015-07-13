@@ -1,35 +1,20 @@
 package com.project.rpg.database.model;
 
-import com.project.rpg.models.enumerations.ItemType;
-import com.project.rpg.models.enumerations.Probability;
-
 /**
  * Created by laetitia on 7/9/15.
  */
 public class Item {
 
     private ItemType itemType;
+    private ItemSubtype itemSubtype;
     private String name;
     private String description;
     private int price;
-    private int weight;
-    private int strength;
-    private int accuracy;
-    private int resistance;
-    private int partOfBody;
     private Power power;
-    private int lifePoints;
+    private Slot slot;
     private Probability probabilityToFind;
 
     public Item() {
-    }
-
-    public ItemType getItemType() {
-        return itemType;
-    }
-
-    public void setItemType(ItemType itemType) {
-        this.itemType = itemType;
     }
 
     public String getName() {
@@ -56,44 +41,20 @@ public class Item {
         this.price = price;
     }
 
-    public int getWeight() {
-        return weight;
+    public ItemType getItemType() {
+        return itemType;
     }
 
-    public void setWeight(int weight) {
-        this.weight = weight;
+    public void setItemType(ItemType itemType) {
+        this.itemType = itemType;
     }
 
-    public int getStrength() {
-        return strength;
+    public ItemSubtype getItemSubtype() {
+        return itemSubtype;
     }
 
-    public void setStrength(int strength) {
-        this.strength = strength;
-    }
-
-    public int getAccuracy() {
-        return accuracy;
-    }
-
-    public void setAccuracy(int accuracy) {
-        this.accuracy = accuracy;
-    }
-
-    public int getResistance() {
-        return resistance;
-    }
-
-    public void setResistance(int resistance) {
-        this.resistance = resistance;
-    }
-
-    public int getPartOfBody() {
-        return partOfBody;
-    }
-
-    public void setPartOfBody(int partOfBody) {
-        this.partOfBody = partOfBody;
+    public void setItemSubtype(ItemSubtype itemSubtype) {
+        this.itemSubtype = itemSubtype;
     }
 
     public Power getPower() {
@@ -104,19 +65,19 @@ public class Item {
         this.power = power;
     }
 
-    public int getLifePoints() {
-        return lifePoints;
-    }
-
-    public void setLifePoints(int lifePoints) {
-        this.lifePoints = lifePoints;
-    }
-
     public Probability getProbabilityToFind() {
         return probabilityToFind;
     }
 
     public void setProbabilityToFind(Probability probabilityToFind) {
         this.probabilityToFind = probabilityToFind;
+    }
+
+    public Slot getSlot() {
+        return slot;
+    }
+
+    public void setSlot(Slot slot) {
+        this.slot = slot;
     }
 }

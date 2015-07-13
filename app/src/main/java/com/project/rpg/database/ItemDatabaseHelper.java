@@ -28,7 +28,6 @@ public class ItemDatabaseHelper {
     public void saveItem(AbstractArmor armor) {
         mDb = mDbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(ItemContract.ItemEntry.COLUMN_NAME_RESISTANCE, armor.getResistance().getValue());
         saveItem(armor, values);
 
     }
@@ -49,8 +48,6 @@ public class ItemDatabaseHelper {
     public void saveItem(AbstractWeapon weapon) {
         mDb = mDbHelper.getWritableDatabase();
         ContentValues values = new ContentValues();
-        values.put(ItemContract.ItemEntry.COLUMN_NAME_STRENGTH, weapon.getStrength().getValue());
-        values.put(ItemContract.ItemEntry.COLUMN_NAME_ACCURACY, weapon.getAccuracy().getValue());
         saveItem(weapon, values);
 
     }
@@ -58,9 +55,6 @@ public class ItemDatabaseHelper {
     public void saveItem(AbstractItem item, ContentValues values) {
         values.put(ItemContract.ItemEntry.COLUMN_NAME_NAME, item.getName());
         values.put(ItemContract.ItemEntry.COLUMN_NAME_PRICE, item.getPrice());
-        values.put(ItemContract.ItemEntry.COLUMN_NAME_WEIGHT, item.getWeight().getValue());
-        values.put(ItemContract.ItemEntry.COLUMN_NAME_ITEM_TYPE, item.getItemType().getNameRefId());
-        values.put(ItemContract.ItemEntry.COLUMN_NAME_PROBABILITY_TO_FIND, item.getProbabilityToFind().getValue());
         mDb.insert(ItemContract.ItemEntry.TABLE_NAME, null, values);
         mDbHelper.exportDB(mContext);
     }

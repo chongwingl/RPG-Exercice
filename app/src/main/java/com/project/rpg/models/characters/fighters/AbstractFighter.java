@@ -1,7 +1,6 @@
 package com.project.rpg.models.characters.fighters;
 
 import android.util.Pair;
-import android.util.SparseArray;
 
 import com.project.rpg.R;
 import com.project.rpg.exceptions.AttackMissedException;
@@ -11,8 +10,7 @@ import com.project.rpg.models.Equipment;
 import com.project.rpg.models.Stat;
 import com.project.rpg.models.characters.AbstractCharacter;
 import com.project.rpg.models.enumerations.CharacterState;
-import com.project.rpg.models.enumerations.CharacterType;
-import com.project.rpg.models.enumerations.ItemType;
+import com.project.rpg.models.enumerations.CharacterClass;
 import com.project.rpg.models.enumerations.StatType;
 import com.project.rpg.models.events.UpdateSpecialStatEvent;
 import com.project.rpg.models.items.armor.AbstractArmor;
@@ -37,9 +35,9 @@ public abstract class AbstractFighter extends AbstractCharacter {
 
     private Equipment mEquipment;
 
-    public AbstractFighter(CharacterType characterType, String name, int maxLifePoints, int strength,
+    public AbstractFighter(CharacterClass characterClass, String name, int maxLifePoints, int strength,
                            int speed, int accuracy, int resistance) {
-        super(characterType, name, BAG_SIZE_MAX);
+        super(characterClass, name, BAG_SIZE_MAX);
         mStat = new Stat(maxLifePoints);
         mBasicStat = new Stat(maxLifePoints, strength, speed, accuracy, resistance);
         mEquipment = new Equipment();

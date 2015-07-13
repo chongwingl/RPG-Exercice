@@ -6,7 +6,7 @@ import android.support.v4.view.ViewPager;
 import com.project.rpg.R;
 import com.project.rpg.adapters.AbstractItemCategoryPagerAdapter;
 import com.project.rpg.models.characters.AbstractCharacter;
-import com.project.rpg.models.enumerations.CharacterType;
+import com.project.rpg.models.enumerations.CharacterClass;
 import com.project.rpg.widgets.SlidingTabLayout;
 
 import butterknife.InjectView;
@@ -28,22 +28,9 @@ public abstract class AbstractShowCategoryItemActivity extends ToolbarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        AbstractCharacter character = getApp().getCharacter();
-
-        final CharacterType characterType = character.getCharacterType();
-
         mItemCategoryAdapter = getAdapter();
         if (mItemCategoryAdapter != null) {
             mItemViewPager.setAdapter(mItemCategoryAdapter);
-
-            mSlidingTabLayout.setCustomTabColorizer(new SlidingTabLayout.TabColorizer() {
-                @Override
-                public int getIndicatorColor(int position) {
-                    return getResources().getColor(characterType.getColorId());
-                }
-
-
-            });
             mSlidingTabLayout.setViewPager(mItemViewPager);
         }
     }

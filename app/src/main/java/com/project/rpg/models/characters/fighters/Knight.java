@@ -2,7 +2,7 @@ package com.project.rpg.models.characters.fighters;
 
 import com.project.rpg.exceptions.AttackMissedException;
 import com.project.rpg.models.Stat;
-import com.project.rpg.models.enumerations.CharacterType;
+import com.project.rpg.models.enumerations.CharacterClass;
 import com.project.rpg.models.monsters.AbstractMonster;
 import com.project.rpg.generators.RandomGenerator;
 
@@ -17,7 +17,7 @@ public class Knight extends AbstractFighter {
     private static final int RESISTANCE = 30;
 
     public Knight(String name) {
-        super(CharacterType.KNIGHT, name, LIFE, STRENGTH, SPEED, ACCURACY, RESISTANCE);
+        super(CharacterClass.FIGHTER, name, LIFE, STRENGTH, SPEED, ACCURACY, RESISTANCE);
     }
 
     @Override

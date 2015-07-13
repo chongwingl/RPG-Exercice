@@ -3,8 +3,7 @@ package com.project.rpg.models.characters;
 import com.project.rpg.exceptions.NoItemInBagException;
 import com.project.rpg.exceptions.NotEnoughGoldException;
 import com.project.rpg.models.Bag;
-import com.project.rpg.models.enumerations.CharacterState;
-import com.project.rpg.models.enumerations.CharacterType;
+import com.project.rpg.models.enumerations.CharacterClass;
 import com.project.rpg.models.events.UpdateGoldEvent;
 import com.project.rpg.models.items.AbstractItem;
 
@@ -19,20 +18,20 @@ public abstract class AbstractCharacter
 
     private static final int INIT_GOLD = 200;
 
-    private CharacterType mCharacterType;
+    private CharacterClass mCharacterClass;
     private String mName;
     private int mGold;
     private Bag mBag;
 
-    protected AbstractCharacter(CharacterType characterType, String name, int maxBagSize) {
-        this.mCharacterType = characterType;
+    protected AbstractCharacter(CharacterClass characterClass, String name, int maxBagSize) {
+        this.mCharacterClass = characterClass;
         this.mName = name;
         mBag = Bag.getInstance(maxBagSize);
         setGold(INIT_GOLD);
     }
 
-    public CharacterType getCharacterType() {
-        return mCharacterType;
+    public CharacterClass getCharacterType() {
+        return mCharacterClass;
     }
 
     public String getName() {

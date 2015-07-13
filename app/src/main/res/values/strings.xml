@@ -20,11 +20,16 @@
     <string name="speed">Vitesse</string>
     <string name="resistance">Résistance</string>
     <string name="accuracy">Précision</string>
+    <string name="dexterity">Dextérité</string>
+    <string name="agility">Agilité</string>
+    <string name="weight">Poids</string>
     <string name="equipment">Equipement</string>
     <string name="head">Tête</string>
     <string name="body">Corps</string>
     <string name="legs">Jambes</string>
     <string name="foot">Pied</string>
+    <string name="hand">Main</string>
+    <string name="bag">Sac</string>
     <string name="left_hand">Main gauche</string>
     <string name="right_hand">Main droite</string>
 
@@ -32,6 +37,9 @@
     <string name="type_weapon">Arme</string>
     <string name="type_material">Materiel</string>
     <string name="type_healing">Soin</string>
+    <string name="type_animal">animal</string>
+    <string name="type_natural">natural</string>
+    <string name="type_metal">metal</string>
 
     <string name="character_button_fight">Combat</string>
     <string name="character_button_state">État</string>
@@ -82,5 +90,10 @@
     <string name="victory_object_title">Objet obtenu</string>
     <string name="victory_life_message">Vie : %1$d -> %2$d</string>
     <string name="victory_object_message">Vous obtenez : %1$s</string>
+
+    <string name="beginner">débutant</string>
+    <string name="intermediary">intermédiaire</string>
+    <string name="advanced">avancé</string>
+    <string name="expert">expert</string>
 
 </resources>

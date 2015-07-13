@@ -2,6 +2,7 @@ package com.project.rpg.activities;
 
 import android.os.Bundle;
 import android.support.v7.app.ActionBarActivity;
+import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 
 import com.project.rpg.core.RPGApplication;
@@ -15,7 +16,7 @@ import butterknife.ButterKnife;
 /**
  * Created by laetitia on 4/20/15.
  */
-public abstract class AbstractActivity extends ActionBarActivity {
+public abstract class AbstractActivity extends AppCompatActivity {
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -45,10 +45,6 @@ public abstract class AbstractCharacterActivity extends ToolbarActivity implemen
 
     }
 
-    @Override
-    public int getLayoutResourceId() {
-        return R.layout.activity_character;
-    }
 
     @Override
     protected void onSaveInstanceState(Bundle outState) {

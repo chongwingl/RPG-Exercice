@@ -12,6 +12,7 @@ import com.project.rpg.exceptions.AttackMissedException;
 import com.project.rpg.exceptions.NoMoreLifeException;
 import com.project.rpg.fragments.dialogs.BaseDialogFragment;
 import com.project.rpg.intents.BagIntent;
+import com.project.rpg.intents.CharacterCreationIntent;
 import com.project.rpg.intents.CharacterIntent;
 import com.project.rpg.intents.FightingIntent;
 import com.project.rpg.intents.VictoryIntent;
@@ -195,7 +196,7 @@ public class FightingActivity extends ToolbarActivity {
         dialog.setPositiveListener(new BaseDialogFragment.DialogButtonsListener() {
             @Override
             public void onDialogButtonClick(DialogFragment dialog, int buttonTitle) {
-                CharacterIntent intent = new CharacterIntent(FightingActivity.this, mCharacter.getCharacterType());
+                CharacterIntent intent = new CharacterIntent(FightingActivity.this);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
                 startActivity(intent);
                 FightingActivity.this.finish();

@@ -16,7 +16,7 @@ public class RPGApplication extends Application {
 
     private AbstractCharacter abstractCharacter;
 
-    public void createKnight(String name) {
+    public void createFighter(String name) {
         abstractCharacter = new Knight(name);
     }
 

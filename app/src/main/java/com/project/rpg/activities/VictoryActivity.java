@@ -16,6 +16,7 @@ import com.project.rpg.generators.CoinGenerator;
 import com.project.rpg.generators.ItemTypeGenerator;
 import com.project.rpg.generators.PotionGenerator;
 import com.project.rpg.generators.WeaponGenerator;
+import com.project.rpg.intents.CharacterCreationIntent;
 import com.project.rpg.intents.CharacterIntent;
 import com.project.rpg.intents.VictoryIntent;
 import com.project.rpg.models.characters.fighters.AbstractFighter;
@@ -195,7 +196,7 @@ public class VictoryActivity extends ToolbarActivity {
     }
 
     private void goToNextActivity() {
-        CharacterIntent intent = new CharacterIntent(this, getCharacter().getCharacterType());
+        CharacterIntent intent = new CharacterIntent(this);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
         startActivity(intent);
         finish();

@@ -1,5 +1,6 @@
 package com.project.rpg.activities;
 
+import android.os.Bundle;
 import android.widget.Button;
 
 import com.project.rpg.R;
@@ -9,6 +10,7 @@ import com.project.rpg.intents.ActionIntent;
 import com.project.rpg.intents.BagIntent;
 import com.project.rpg.intents.StateIntent;
 import com.project.rpg.intents.StoreIntent;
+import com.project.rpg.models.characters.AbstractCharacter;
 import com.project.rpg.models.characters.fighters.AbstractFighter;
 import com.project.rpg.models.enumerations.CharacterState;
 import com.project.rpg.models.enumerations.MonsterLevel;
@@ -25,10 +27,24 @@ import butterknife.OnClick;
 /**
  * Created by laetitia on 4/22/15.
  */
-public class FighterActivity extends AbstractCharacterActivity {
+public class FighterActivity extends ToolbarActivity {
 
     @InjectView(R.id.character_button_action)
     Button mActionButton;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+
+        AbstractCharacter character = getCharacter();
+        setCharacterInfo(
+                character.getName(),
+                character.getGold(),
+                character.getSpecialStat(),
+                character.getSpecialStatIconId(),
+                character.getSpecialMaxStat()
+        );
+    }
 
     @Override
     protected void onResume() {
@@ -64,14 +80,8 @@ public class FighterActivity extends AbstractCharacterActivity {
     }
 
     @Override
-    public void onFragmentCreationFinished(String name) {
-        super.onFragmentCreationFinished(name);
-        AbstractFighter fighter = (AbstractFighter) getCharacter();
-        fighter.setBodyArmor(new BasicLeatherArmor(this));
-        fighter.setFootArmor(new BasicLeatherBoot(this));
-        fighter.setHeadArmor(new BasicLeatherHelmet(this));
-        fighter.setLegArmor(new BasicLeatherLegArmor(this));
-        fighter.setLeftWeapon(new BasicShield(this));
-        fighter.setRightWeapon(new BasicSword(this));
+    public int getLayoutResourceId() {
+        return R.layout.activity_character;
     }
+
 }

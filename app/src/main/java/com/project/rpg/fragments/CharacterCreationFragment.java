@@ -35,7 +35,7 @@ public class CharacterCreationFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 			final Bundle savedInstanceState) {
         super.onCreateView(inflater, container, savedInstanceState);
-        View fragmentView = inflater.inflate(R.layout.fragment_creation, container, false);
+        View fragmentView = inflater.inflate(R.layout.activity_creation, container, false);
 
         ButterKnife.inject(this, fragmentView);
 
@@ -47,7 +47,7 @@ public class CharacterCreationFragment extends Fragment {
         String name = mCharacterName.getText().toString();
         if (!TextUtils.isEmpty(name)){
 
-            ((RPGApplication)getActivity().getApplication()).createKnight(name);
+            ((RPGApplication)getActivity().getApplication()).createFighter(name);
             AbstractCharacter character = ((RPGApplication)getActivity().getApplication()).getCharacter();
 
             try {

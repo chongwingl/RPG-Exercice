@@ -4,17 +4,17 @@ import android.content.Context;
 import android.content.Intent;
 
 import com.project.rpg.activities.CharacterCreationActivity;
-import com.project.rpg.activities.FighterActivity;
+import com.project.rpg.models.enumerations.CharacterClass;
 
 /**
  * Created by laetitia on 4/20/15.
  */
-public class CharacterIntent extends Intent {
+public class CharacterCreationIntent extends Intent {
 
 
-    public CharacterIntent(Context context) {
+    public CharacterCreationIntent(Context context) {
         super();
-        setClass(context, FighterActivity.class);
+        setClass(context, CharacterCreationActivity.class);
 
     }
 

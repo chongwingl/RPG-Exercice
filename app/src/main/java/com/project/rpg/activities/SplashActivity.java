@@ -10,8 +10,9 @@ import android.support.v7.appcompat.BuildConfig;
 
 import com.project.rpg.R;
 import com.project.rpg.core.RPGApplication;
+import com.project.rpg.database.CharacterDatabaseHelper;
+import com.project.rpg.intents.CharacterCreationIntent;
 import com.project.rpg.intents.CharacterIntent;
-import com.project.rpg.intents.HomeIntent;
 import com.project.rpg.models.characters.AbstractCharacter;
 import com.project.rpg.utils.ItemUtils;
 import com.project.rpg.utils.MonsterUtils;
@@ -84,14 +85,16 @@ public class SplashActivity extends Activity {
         @Override
         public void handleMessage(final Message msg) {
             if (msg.what == MSG_FINISH && mSplashActivity != null) {
+                CharacterDatabaseHelper helper = new CharacterDatabaseHelper(mSplashActivity);
+
                 ItemUtils.loadAllItems(mSplashActivity);
                 MonsterUtils.loadMonsters(mSplashActivity);
                 Intent intent;
                 AbstractCharacter character = ((RPGApplication)mSplashActivity.getApplication()).getCharacter();
                 if (character == null) {
-                    intent = new HomeIntent(mSplashActivity);
+                    intent = new CharacterCreationIntent(mSplashActivity);
                 } else {
-                    intent = new CharacterIntent(mSplashActivity, character.getCharacterType());
+                    intent = new CharacterIntent(mSplashActivity);
                 }
                 mSplashActivity.startActivity(intent);
                 mSplashActivity.finish();

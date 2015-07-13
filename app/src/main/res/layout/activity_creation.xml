@@ -4,8 +4,8 @@
     android:layout_height="match_parent"
     android:background="@color/background_light"
     android:orientation="vertical">
-    
-    <TextView 
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/character_creation"
@@ -33,7 +33,7 @@
             android:id="@+id/create_character_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_margin="5dip"
+            android:layout_margin="5dp"
             android:inputType="textCapWords"
             android:padding="5dip"
             android:layout_weight="1"/>

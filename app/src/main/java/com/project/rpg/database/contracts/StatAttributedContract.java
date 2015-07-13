@@ -13,7 +13,7 @@ public class StatAttributedContract {
 
     /* Inner class that defines the table contents */
     public static abstract class StatAttributedEntry implements BaseColumns {
-        public static final String TABLE_NAME = "monster";
+        public static final String TABLE_NAME = "stat_attributed";
         public static final String COLUMN_NAME_VALUE = "value";
         public static final String COLUMN_NAME_MONSTER_ID = "monster_id";
         public static final String COLUMN_NAME_CHARACTER_ID = "character_id";

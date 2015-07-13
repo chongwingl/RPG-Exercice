@@ -27,7 +27,7 @@ public class PowerTable {
                     PowerContract.PowerEntry.COLUMN_NAME_PROBABILITY_TO_HAPPEN_ID + INTEGER_TYPE + COMMA_SEP +
                     PowerContract.PowerEntry.COLUMN_NAME_EFFECT_ID + INTEGER_TYPE + COMMA_SEP +
                     PowerContract.PowerEntry.COLUMN_NAME_STAT_ID + INTEGER_TYPE + COMMA_SEP +
-                    "FOREIGN KEY(" + PowerContract.PowerEntry.COLUMN_NAME_EFFECT_ID + ") " + COMMA_SEP +
+                    "FOREIGN KEY(" + PowerContract.PowerEntry.COLUMN_NAME_EFFECT_ID + ") " +
                     "REFERENCES " + EffectContract.EffectEntry.TABLE_NAME + "(" + EffectContract.EffectEntry._ID + ")" + COMMA_SEP +
                     "FOREIGN KEY(" + PowerContract.PowerEntry.COLUMN_NAME_PROBABILITY_TO_HAPPEN_ID + ") " +
                     "REFERENCES " + ProbabilityContract.ProbabilityEntry.TABLE_NAME + "(" + ProbabilityContract.ProbabilityEntry._ID + ")" + COMMA_SEP +

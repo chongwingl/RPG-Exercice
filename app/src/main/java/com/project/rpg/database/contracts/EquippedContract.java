@@ -13,7 +13,7 @@ public class EquippedContract {
 
     /* Inner class that defines the table contents */
     public static abstract class EquippedEntry implements BaseColumns {
-        public static final String TABLE_NAME = "loot";
+        public static final String TABLE_NAME = "equipped";
         public static final String COLUMN_NAME_CHARACTER_ID = "character_id";
         public static final String COLUMN_NAME_BAG_ID = "bag_id";
     }

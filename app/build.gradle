@@ -1,26 +1,41 @@
 apply plugin: 'com.android.application'
+apply from: 'pmd.gradle'
+apply from: 'findbugs.gradle'
 
 android {
     compileSdkVersion 21
     buildToolsVersion "21.1.2"
-
     defaultConfig {
         applicationId "com.project.rpg"
         minSdkVersion 16
-        targetSdkVersion 21
+        targetSdkVersion 22
+        versionName 'RPG - default'
     }
-
     buildTypes {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.txt'
         }
     }
+    productFlavors {
+        farmer {
+            applicationId 'com.project.rpg.farmer'
+            minSdkVersion 16
+            targetSdkVersion 22
+            versionName 'RPG - farmer'
+        }
+        fighter {
+            applicationId 'com.project.rpg.fighter'
+            minSdkVersion 16
+            targetSdkVersion 22
+            versionName 'RPG - fighter'
+        }
+    }
 }
 
 dependencies {
-    compile 'com.android.support:appcompat-v7:21.0.3'
-    compile 'com.android.support:support-v4:21.0.3'
+    compile 'com.android.support:appcompat-v7:22.2.0'
+    compile 'com.android.support:support-v4:22.2.0'
     compile 'com.jakewharton:butterknife:5.0.0'
     compile 'de.greenrobot:eventbus:2.4.0'
 }

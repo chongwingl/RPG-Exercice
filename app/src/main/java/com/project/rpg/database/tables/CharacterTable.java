@@ -26,7 +26,7 @@ public class CharacterTable {
                     CharacterContract.CharacterEntry.COLUMN_NAME_CLASS_ID + INTEGER_TYPE + COMMA_SEP +
                     CharacterContract.CharacterEntry.COLUMN_NAME_LEVEL_ID + INTEGER_TYPE + COMMA_SEP +
                     CharacterContract.CharacterEntry.COLUMN_NAME_AFFECTED_BY_POWER_ID + INTEGER_TYPE + COMMA_SEP +
-                    "FOREIGN KEY(" + CharacterContract.CharacterEntry.COLUMN_NAME_AFFECTED_BY_POWER_ID + ") " + COMMA_SEP +
+                    "FOREIGN KEY(" + CharacterContract.CharacterEntry.COLUMN_NAME_AFFECTED_BY_POWER_ID + ") " +
                     "REFERENCES " + PowerContract.PowerEntry.TABLE_NAME + "(" + PowerContract.PowerEntry._ID + ")" + COMMA_SEP +
                     "FOREIGN KEY(" + CharacterContract.CharacterEntry.COLUMN_NAME_LEVEL_ID + ") " +
                     "REFERENCES " + LevelContract.LevelEntry.TABLE_NAME + "(" + LevelContract.LevelEntry._ID + ")" + COMMA_SEP +

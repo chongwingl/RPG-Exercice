@@ -1,0 +1,25 @@
+/**
+ * Plugin document
+ * http://www.gradle.org/docs/current/dsl/org.gradle.api.plugins.quality.Pmd.html
+ * http://www.gradle.org/docs/current/dsl/org.gradle.api.plugins.quality.PmdExtension.html
+ */
+apply plugin: 'pmd'
+
+check.dependsOn 'pmd'
+
+task pmd(type: Pmd) {
+    ignoreFailures = true
+
+    /* ruleSets resource : http://stackoverflow.com/questions/20710704/gradles-pmd-plugin-what-are-acceptable-arguments */
+    // issues : "unnecessary" seems not support
+    ruleSets = ["java-android", "java-basic", "java-unusedcode","java-imports"]
+
+    source 'src/main/java'
+    include '**/*.java'
+    exclude 'androidTest/**'
+
+    reports {
+        xml.enabled = false
+        html.enabled = true
+    }
+}

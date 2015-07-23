@@ -19,8 +19,8 @@ public class PowerContract {
         public static final String COLUMN_NAME_MINIMUM_ROUND = "minimumRound";
         public static final String COLUMN_NAME_MAXIMUM_ROUND = "maximumRound";
         public static final String COLUMN_NAME_PERCENT_OF_EFFECT = "percentOfEffect";
-        public static final String COLUMN_NAME_PROBABILITY_TO_HAPPEN_ID = "probability_id";
+        public static final String COLUMN_NAME_PROBABILITY_TO_HAPPEN = "probability";
+        public static final String COLUMN_NAME_EFFECT = "effect";
         public static final String COLUMN_NAME_STAT_ID = "stat_id";
-        public static final String COLUMN_NAME_EFFECT_ID = "effect_id";
     }
 }

@@ -9,9 +9,19 @@ public class Life {
     private int mLife;
     private int MAX_LIFE;
 
+    public Life() {
+        MAX_LIFE = 0;
+        mLife = 0;
+    }
+
     public Life(int maxLife) {
         MAX_LIFE = maxLife;
         mLife = maxLife;
+    }
+
+    public void initMaxLife(int maxLife) {
+        MAX_LIFE = maxLife;
+        setLife(maxLife);
     }
 
     public void setMaxLife(int maxLife) {

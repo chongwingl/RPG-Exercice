@@ -3,12 +3,18 @@ package com.project.rpg.database.model;
 /**
  * Created by laetitia on 7/10/15.
  */
-public class ItemPossessed {
+public class MItemPossessed {
 
+    private long _id;
     private int numberOfItem;
-    private Item item;
+    private long itemId;
 
-    public ItemPossessed() {
+    public long getId() {
+        return _id;
+    }
+
+    public void setId(long _id) {
+        this._id = _id;
     }
 
     public int getNumberOfItem() {
@@ -19,11 +25,11 @@ public class ItemPossessed {
         this.numberOfItem = numberOfItem;
     }
 
-    public Item getItem() {
-        return item;
+    public long getItemId() {
+        return itemId;
     }
 
-    public void setItem(Item item) {
-        this.item = item;
+    public void setItemId(long item) {
+        this.itemId = item;
     }
 }

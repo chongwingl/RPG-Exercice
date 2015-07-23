@@ -3,18 +3,24 @@ package com.project.rpg.database.model;
 /**
  * Created by laetitia on 7/9/15.
  */
-public class Item {
+public class MItem {
 
-    private ItemType itemType;
-    private ItemSubtype itemSubtype;
+    private long _id;
+    private String itemType;
+    private String itemSubtype;
     private String name;
     private String description;
     private int price;
-    private Power power;
-    private Slot slot;
-    private Probability probabilityToFind;
+    private long powerId;
+    private String slot;
+    private int probabilityToFind;
 
-    public Item() {
+    public long getId() {
+        return _id;
+    }
+
+    public void setId(long _id) {
+        this._id = _id;
     }
 
     public String getName() {
@@ -41,43 +47,43 @@ public class Item {
         this.price = price;
     }
 
-    public ItemType getItemType() {
+    public String getItemType() {
         return itemType;
     }
 
-    public void setItemType(ItemType itemType) {
+    public void setItemType(String itemType) {
         this.itemType = itemType;
     }
 
-    public ItemSubtype getItemSubtype() {
+    public String getItemSubtype() {
         return itemSubtype;
     }
 
-    public void setItemSubtype(ItemSubtype itemSubtype) {
+    public void setItemSubtype(String itemSubtype) {
         this.itemSubtype = itemSubtype;
     }
 
-    public Power getPower() {
-        return power;
+    public long getPowerId() {
+        return powerId;
     }
 
-    public void setPower(Power power) {
-        this.power = power;
+    public void setPowerId(long power) {
+        this.powerId = power;
     }
 
-    public Probability getProbabilityToFind() {
+    public int getProbabilityToFind() {
         return probabilityToFind;
     }
 
-    public void setProbabilityToFind(Probability probabilityToFind) {
+    public void setProbabilityToFind(int probabilityToFind) {
         this.probabilityToFind = probabilityToFind;
     }
 
-    public Slot getSlot() {
+    public String getSlot() {
         return slot;
     }
 
-    public void setSlot(Slot slot) {
+    public void setSlot(String slot) {
         this.slot = slot;
     }
 }

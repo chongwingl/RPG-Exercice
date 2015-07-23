@@ -1,21 +1,25 @@
 package com.project.rpg.database.model;
 
-import com.project.rpg.models.enumerations.Probability;
-
 /**
  * Created by laetitia on 7/9/15.
  */
-public class Power {
+public class MPower {
+    private long _id;
     private String name;
     private String description;
     private int minimumRound;
     private int maximumRound;
     private int percentOfEffect;
-    private Stat statAffected;
-    private Probability probabilityToHappen;
-    private Effect effect;
+    private long statAffectedId;
+    private int probabilityToHappen;
+    private String effect;
 
-    public Power() {
+    public long getId() {
+        return _id;
+    }
+
+    public void setId(long _id) {
+        this._id = _id;
     }
 
     public String getName() {
@@ -58,27 +62,27 @@ public class Power {
         this.percentOfEffect = percentOfEffect;
     }
 
-    public Probability getProbabilityToHappen() {
+    public int getProbabilityToHappen() {
         return probabilityToHappen;
     }
 
-    public void setProbabilityToHappen(Probability probabilityToHappen) {
+    public void setProbabilityToHappen(int probabilityToHappen) {
         this.probabilityToHappen = probabilityToHappen;
     }
 
-    public Stat getStatAffected() {
-        return statAffected;
+    public long getStatAffectedId() {
+        return statAffectedId;
     }
 
-    public void setStatAffected(Stat statAffected) {
-        this.statAffected = statAffected;
+    public void setStatAffectedId(long statAffectedId) {
+        this.statAffectedId = statAffectedId;
     }
 
-    public Effect getEffect() {
+    public String getEffect() {
         return effect;
     }
 
-    public void setEffect(Effect effect) {
+    public void setEffect(String effect) {
         this.effect = effect;
     }
 }

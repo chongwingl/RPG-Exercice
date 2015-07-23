@@ -11,7 +11,9 @@ public enum StatType {
     STRENGTH(R.string.strength),
     SPEED(R.string.speed),
     ACCURACY(R.string.accuracy),
-    RESISTANCE(R.string.resistance);
+    RESISTANCE(R.string.resistance),
+    AGILITY(R.string.agility),
+    DEXTERITY(R.string.dexterity);
 
     private int mRefId;
 

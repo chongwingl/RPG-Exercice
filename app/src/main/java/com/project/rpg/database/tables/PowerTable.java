@@ -1,9 +1,6 @@
 package com.project.rpg.database.tables;
 
-import com.project.rpg.database.contracts.EffectContract;
-import com.project.rpg.database.contracts.ItemContract;
 import com.project.rpg.database.contracts.PowerContract;
-import com.project.rpg.database.contracts.ProbabilityContract;
 import com.project.rpg.database.contracts.StatContract;
 
 /**
@@ -24,13 +21,9 @@ public class PowerTable {
                     PowerContract.PowerEntry.COLUMN_NAME_MINIMUM_ROUND + INTEGER_TYPE + COMMA_SEP +
                     PowerContract.PowerEntry.COLUMN_NAME_MAXIMUM_ROUND + INTEGER_TYPE + COMMA_SEP +
                     PowerContract.PowerEntry.COLUMN_NAME_PERCENT_OF_EFFECT + INTEGER_TYPE + COMMA_SEP +
-                    PowerContract.PowerEntry.COLUMN_NAME_PROBABILITY_TO_HAPPEN_ID + INTEGER_TYPE + COMMA_SEP +
-                    PowerContract.PowerEntry.COLUMN_NAME_EFFECT_ID + INTEGER_TYPE + COMMA_SEP +
+                    PowerContract.PowerEntry.COLUMN_NAME_PROBABILITY_TO_HAPPEN + INTEGER_TYPE + COMMA_SEP +
+                    PowerContract.PowerEntry.COLUMN_NAME_EFFECT + TEXT_TYPE + COMMA_SEP +
                     PowerContract.PowerEntry.COLUMN_NAME_STAT_ID + INTEGER_TYPE + COMMA_SEP +
-                    "FOREIGN KEY(" + PowerContract.PowerEntry.COLUMN_NAME_EFFECT_ID + ") " +
-                    "REFERENCES " + EffectContract.EffectEntry.TABLE_NAME + "(" + EffectContract.EffectEntry._ID + ")" + COMMA_SEP +
-                    "FOREIGN KEY(" + PowerContract.PowerEntry.COLUMN_NAME_PROBABILITY_TO_HAPPEN_ID + ") " +
-                    "REFERENCES " + ProbabilityContract.ProbabilityEntry.TABLE_NAME + "(" + ProbabilityContract.ProbabilityEntry._ID + ")" + COMMA_SEP +
                     "FOREIGN KEY(" + PowerContract.PowerEntry.COLUMN_NAME_STAT_ID + ") " +
                     "REFERENCES " + StatContract.StatEntry.TABLE_NAME + "(" + StatContract.StatEntry._ID + ")" +
                     " )" + END_SEP;

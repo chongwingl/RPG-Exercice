@@ -15,6 +15,6 @@ public class EquippedContract {
     public static abstract class EquippedEntry implements BaseColumns {
         public static final String TABLE_NAME = "equipped";
         public static final String COLUMN_NAME_CHARACTER_ID = "character_id";
-        public static final String COLUMN_NAME_BAG_ID = "bag_id";
+        public static final String COLUMN_NAME_ITEM_POSSESSED_ID = "itemPossessed_id";
     }
 }

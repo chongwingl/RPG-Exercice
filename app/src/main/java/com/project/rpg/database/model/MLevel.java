@@ -3,11 +3,17 @@ package com.project.rpg.database.model;
 /**
  * Created by laetitia on 7/10/15.
  */
-public class ItemSubtype {
+public class MLevel {
 
+    private long _id;
     private String name;
 
-    public ItemSubtype() {
+    public long getId() {
+        return _id;
+    }
+
+    public void setId(long _id) {
+        this._id = _id;
     }
 
     public String getName() {

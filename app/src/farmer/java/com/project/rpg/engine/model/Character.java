@@ -4,7 +4,7 @@ import android.content.Context;
 import android.content.ContextWrapper;
 
 import com.project.rpg.R;
-import com.project.rpg.database.model.ItemPossessed;
+import com.project.rpg.database.model.MItemPossessed;
 import com.project.rpg.exceptions.NotEnoughGoldException;
 
 /**
@@ -19,7 +19,7 @@ public class Character extends ContextWrapper {
     private String affectedByPower;
     private Life mLife;
     private CharacterStat stat;
-    private List<ItemPossessed> bag;
+    private List<MItemPossessed> bag;
 
 
     public Character(Context context) {

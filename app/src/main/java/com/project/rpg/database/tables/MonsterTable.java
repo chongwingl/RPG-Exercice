@@ -16,6 +16,8 @@ public class MonsterTable {
     public static final String SQL_CREATE_ENTRIES =
             "CREATE TABLE " + MonsterContract.MonsterEntry.TABLE_NAME + " (" +
                     MonsterContract.MonsterEntry._ID + " INTEGER PRIMARY KEY" + COMMA_SEP +
+                    MonsterContract.MonsterEntry.COLUMN_NAME_LIFE + INTEGER_TYPE + COMMA_SEP +
+                    MonsterContract.MonsterEntry.COLUMN_NAME_MAX_LIFE + INTEGER_TYPE + COMMA_SEP +
                     MonsterContract.MonsterEntry.COLUMN_NAME_MONSTER_TYPE_ID + INTEGER_TYPE + COMMA_SEP +
                     MonsterContract.MonsterEntry.COLUMN_NAME_LEVEL_ID + INTEGER_TYPE + COMMA_SEP +
                     MonsterContract.MonsterEntry.COLUMN_NAME_POWER_ID + INTEGER_TYPE + COMMA_SEP +

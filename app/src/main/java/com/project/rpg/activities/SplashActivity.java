@@ -1,6 +1,7 @@
 package com.project.rpg.activities;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -85,12 +86,11 @@ public class SplashActivity extends Activity {
         @Override
         public void handleMessage(final Message msg) {
             if (msg.what == MSG_FINISH && mSplashActivity != null) {
-                CharacterDatabaseHelper helper = new CharacterDatabaseHelper(mSplashActivity);
-
+                fillDB(mSplashActivity);
                 ItemUtils.loadAllItems(mSplashActivity);
                 MonsterUtils.loadMonsters(mSplashActivity);
                 Intent intent;
-                AbstractCharacter character = ((RPGApplication)mSplashActivity.getApplication()).getCharacter();
+                AbstractCharacter character = ((RPGApplication) mSplashActivity.getApplication()).getCharacter();
                 if (character == null) {
                     intent = new CharacterCreationIntent(mSplashActivity);
                 } else {
@@ -101,6 +101,34 @@ public class SplashActivity extends Activity {
                 mSplashActivity.overridePendingTransition(R.anim.abc_fade_in, R.anim.abc_fade_out);
             }
         }
+    }
+
+    private static void fillDB(Context context) {
+        CharacterDatabaseHelper helper = new CharacterDatabaseHelper(context);
+        helper.saveLevel("Debutant");
+        helper.saveLevel("Intermediaire");
+        helper.saveLevel("Avance");
+        helper.saveLevel("Expert");
+
+        helper.saveStat("Force");
+        helper.saveStat("Vitesse");
+        helper.saveStat("Résistance");
+        helper.saveStat("Précision");
+        helper.saveStat("Dextérité");
+        helper.saveStat("Agilité");
+        helper.saveStat("Vie");
+
+        helper.savePower("Poison", "Permet d'empoisonner l'adversaire", 2, 5, 20, helper.getStatIdByName("Vie"), 30, "substract");
+        helper.savePower("Sleep", "Endort l'adversaire", 2, 5, 0, 0, 30, "");
+        helper.savePower("Paralysie", "Ralentit l'adversaire", 2, 5, 20, helper.getStatIdByName("Vitesse"), 30, "substract");
+        helper.savePower("Life", "Redonne de la vie", 1, 1, 100, helper.getStatIdByName("Vie"), 100, "add");
+
+        helper.saveItem("Potion", "Rend 20 points de vie", "healing", "", 40, helper.getPowerIdByName("Vie"), "bag", 80);
+        helper.saveItem("Super Potion", "Rend 50 points de vie", "healing", "", 80, helper.getPowerIdByName("Vie"), "bag", 70);
+        helper.saveItem("Armure en cuir", "Une armure simple en cuir", "armor", "", 50, 0, "body", 70);
+        helper.saveItem("Epee", "Epee simple", "weapon", "", 50, 0, "body", 70);
+
+        helper.exportDb(context);
     }
 }
 

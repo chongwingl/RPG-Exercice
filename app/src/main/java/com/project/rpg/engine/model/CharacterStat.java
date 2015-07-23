@@ -26,6 +26,7 @@ public class CharacterStat {
         if (mAccuracy > MAX_STAT) {
             mAccuracy = MAX_STAT;
         }
+
     }
 
     public int getAgility() {

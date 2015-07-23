@@ -8,8 +8,16 @@ import com.project.rpg.exceptions.NotEnoughGoldException;
 public class Gold {
     private int mGold;
 
+    public Gold() {
+        mGold = 0;
+    }
+
     public Gold(int gold) {
         mGold = gold;
+    }
+
+    public int getGold() {
+        return mGold;
     }
 
     public void addGold(int gold) {

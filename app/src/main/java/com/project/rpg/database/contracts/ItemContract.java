@@ -14,13 +14,13 @@ public class ItemContract {
     /* Inner class that defines the table contents */
     public static abstract class ItemEntry implements BaseColumns {
         public static final String TABLE_NAME = "item";
-        public static final String COLUMN_NAME_ITEM_TYPE_ID = "itemType";
-        public static final String COLUMN_NAME_ITEM_SUBTYPE_ID = "itemSubtype";
         public static final String COLUMN_NAME_NAME = "name";
         public static final String COLUMN_NAME_DESCRIPTION = "description";
         public static final String COLUMN_NAME_PRICE = "price";
+        public static final String COLUMN_NAME_ITEM_TYPE = "itemType";
+        public static final String COLUMN_NAME_ITEM_SUBTYPE = "itemSubtype";
+        public static final String COLUMN_NAME_SLOT = "slot";
+        public static final String COLUMN_NAME_PROBABILITY_TO_FIND = "probability";
         public static final String COLUMN_NAME_POWER_ID = "power_id";
-        public static final String COLUMN_NAME_SLOT_ID = "slot_id";
-        public static final String COLUMN_NAME_PROBABILITY_TO_FIND_ID = "probability_id";
     }
 }

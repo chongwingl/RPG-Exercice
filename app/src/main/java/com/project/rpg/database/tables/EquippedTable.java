@@ -16,10 +16,10 @@ public class EquippedTable {
             "CREATE TABLE " + EquippedContract.EquippedEntry.TABLE_NAME + " (" +
                     EquippedContract.EquippedEntry._ID + " INTEGER PRIMARY KEY" + COMMA_SEP +
                     EquippedContract.EquippedEntry.COLUMN_NAME_CHARACTER_ID + INTEGER_TYPE + COMMA_SEP +
-                    EquippedContract.EquippedEntry.COLUMN_NAME_BAG_ID + INTEGER_TYPE + COMMA_SEP +
+                    EquippedContract.EquippedEntry.COLUMN_NAME_ITEM_POSSESSED_ID + INTEGER_TYPE + COMMA_SEP +
                     "FOREIGN KEY(" + EquippedContract.EquippedEntry.COLUMN_NAME_CHARACTER_ID+ ") " +
                     "REFERENCES " + CharacterContract.CharacterEntry.TABLE_NAME + "(" + CharacterContract.CharacterEntry._ID + ")" + COMMA_SEP +
-                    "FOREIGN KEY(" + EquippedContract.EquippedEntry.COLUMN_NAME_BAG_ID+ ") " +
+                    "FOREIGN KEY(" + EquippedContract.EquippedEntry.COLUMN_NAME_ITEM_POSSESSED_ID + ") " +
                     "REFERENCES " + ItemPossessedContract.ItemPossessedEntry.TABLE_NAME + "(" + ItemPossessedContract.ItemPossessedEntry._ID + ")" +
                     " )" + END_SEP;
 

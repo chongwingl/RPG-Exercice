@@ -18,6 +18,12 @@ android {
         }
     }
     productFlavors {
+        main() {
+            applicationId 'com.project.rpg.main'
+            minSdkVersion 16
+            targetSdkVersion 22
+            versionName 'RPG - main'
+        }
         farmer {
             applicationId 'com.project.rpg.farmer'
             minSdkVersion 16
